@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "bridge-project"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Bridge Ptoject}
+    gem.description = %Q{Bridge Ptoject Website}
     gem.email = "cvandyke@demosphere.com"
     gem.homepage = "http://github.com/cvandyke/bridge-project"
     gem.authors = ["cvandyke"]
     gem.add_development_dependency "bacon", ">= 0"
+    gem.files = %w(LICENSE README Rakefile) + Dir.glob("{lib,spec}/**/*")      
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

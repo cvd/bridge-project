@@ -1,0 +1,16 @@
+<script type="text/javascript">
+  function initialize() {
+
+    var latlng = new google.maps.LatLng();
+    var myOptions = {
+      zoom: 12,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+  }
+  $(document).ready(initialize);
+</script>
+
+
+  <div id="map" class="map" style=""></div>        
