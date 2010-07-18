@@ -1,3 +1,6 @@
+body{
+  font-family: verdana;
+}
 #index-body{}
 .middle{
   margin: 10px auto;
@@ -104,4 +107,21 @@ li.g {
   background-position: 0 0;
   height: 40px;
   display: block
+}
+
+.form-body{
+  margin: 10px auto;
+  width: 680px;
+}
+
+.form-body label{
+  margin-right: ;
+}
+
+table.form-table {
+  
+}
+
+table.form-table td.label{
+  width: 50px;
 }

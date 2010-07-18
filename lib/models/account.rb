@@ -1,4 +1,5 @@
 class Account
+
   include MongoMapper::Document
   attr_accessor :password
 
