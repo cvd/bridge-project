@@ -26,14 +26,14 @@ class Service
   def create_search_terms
     [site_name, description, primary_service, secondary_service, website, quadrant].each do |term|
       next if term.nil?
-      self.search_terms += term.split
+      self.search_terms += term.downcase.split
     end
   end
   
   def calculate_search_relavance
     @search_relevance = 1
   end
-  scope :search,  lambda { |search_term| where(:search_terms => search_term.split) }
+  scope :search,  lambda { |search_term| where(:search_terms => search_term.downcase.split) }
   
   
   def geocode
