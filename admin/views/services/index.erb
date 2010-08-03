@@ -1,0 +1,46 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to pat(:list), url(:services, :index) %></li>
+      <li><%= link_to pat(:new), url(:services, :new) %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title"><%= pat(:all) %> <% mt(:service) %></h2>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"><%= mat(:service, :site_name) %></th>
+          <th><%= mat(:service, :primary_service) %></th>
+          <th><%= mat(:service, :secondary_service) %></th>
+          <!-- <th><%= mat(:service, :lat) %></th>
+          <th><%= mat(:service, :lng) %></th> -->
+          <!-- <th><%= mat(:service, :website) %></th> -->
+          <th><%= mat(:service, :description) %></th>
+          <th><%= mat(:service, :quadrant) %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @services.each do |service| %>
+        <tr>
+          <td class="first"><%= service.site_name %></td>
+          <td><%= service.primary_service %></td>          
+          <td><%= service.secondary_service %></td>
+          <!-- <td><%= service.lat %></td>
+          <td><%= service.lng %></td> -->
+          <!-- <td><%= service.website %></td> -->
+          <td><%= service.description %></td>
+          <td><%= service.quadrant %></td>
+          <td class="last">
+            <%= button_to pat(:edit), url(:services, :edit, :id => service.id), :method => :get, :class => :button_to %> |
+            <%= button_to pat(:delete), url(:services, :destroy, :id => service.id), :method => :delete, :class => :button_to %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>

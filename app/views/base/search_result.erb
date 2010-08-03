@@ -1,0 +1,11 @@
+<ul>
+  <% result.each do |result| %>
+    <li lat="<%= result.lat %>" lng="<%= result.lng %>" class="mapable">
+      <%= link_to result.site_name, url(:services, :show, :id => result.id) %>
+    </li>
+  <% end %>
+</ul>
+
+<div id="map" lat="38.876067" lng="-77.036133">
+  
+</div>

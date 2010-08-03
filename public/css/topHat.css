@@ -1,0 +1,303 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#container #header {
+	width: 100%;
+	background-color: #fff;
+	background-image: url(../images/bgHeader.gif);
+	background-repeat: repeat-x;
+}
+
+#container #header #topHat {
+	width: 940px;
+	margin: 0 auto;	
+	height: 47px;
+	position: relative;
+}
+
+#container #header #topHat #logo {
+	float: left;
+	margin-right: 40px;
+}
+
+#container #header #topHat #logo a {
+	display: block;
+	text-indent: -9999em;
+	width: 367px;
+	height: 47px;	
+	background-image: url(../images/spriteTopHat.gif);
+	background-repeat: no-repeat;
+}
+
+#container #header #topHat #mainMenu {
+	float: left;
+}
+
+#container #header #topHat #mainMenu ul {
+	list-style: none;
+}
+
+#container #header #topHat #mainMenu ul.parent {
+	height: 47px;
+}
+
+#container #header #topHat #mainMenu ul.parent li {
+	float: left;	
+	font-family: Arial;
+	text-transform: uppercase;
+	color: #6e9fbf;
+	font-weight: bold;
+	font-size: 11px;
+	line-height: 47px;
+	height: 100%;		
+	width: 90px;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child {
+	color: #fff;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	display: none;
+	height: 25px;
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child.secondaryMenuTwo {
+	left: 140px;
+	width: 800px;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li {
+	font-size: 14px;
+	line-height: 25px;
+	text-transform: capitalize;
+	font-weight: bold;
+	float: left;
+	width: auto;
+	width: 156px;
+}
+
+
+#container #header #topHat #mainMenu ul.parent li ul.child li.close {
+	position: absolute;
+	top: 3px;
+	right: 0px;
+	width: 16px;
+	padding: 0;
+	margin: 0;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li.close a {
+	background-image: url(../images/spriteTopHat.gif);
+	background-position: -134px -48px;
+	display: block;
+	height: 16px;
+	width: 14px;
+	text-indent: -9999em;
+	padding: 0;
+	margin: 0;
+}
+
+
+#container #header #topHat #mainMenu ul.parent li ul.child li.students {
+	width: 312px;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li.parted6 {
+	margin-top: -10.5em;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li.parted6,
+#container #header #topHat #mainMenu ul.parent li ul.child li.parted7,
+#container #header #topHat #mainMenu ul.parent li ul.child li.parted8,
+#container #header #topHat #mainMenu ul.parent li ul.child li.parted9,
+#container #header #topHat #mainMenu ul.parent li ul.child li.parted10 {
+	margin-left: 15em;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li a {
+	padding: 0px 11px;
+	color: #f1f9fe;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li:hover a {
+	/*color: #fff;
+	text-decoration: underline;*/
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li:hover ul.grandChild li a {
+	text-decoration: none;
+	background-image: url(../images/bgGrandChildMenuDotHover.gif);
+	background-position: 11px top;
+	background-repeat: no-repeat;
+	
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li ul.grandChild li:hover {
+	color: #fff;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li ul.grandChild li a:hover {
+	color: #fff;
+	background-image: url(../images/bgGrandChildMenuDotOn.gif);
+	background-position: 11px top;
+	background-repeat: no-repeat;
+	background-color: #0e7a9d;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li:hover ul.grandChild {
+	background-color: #d8e6f0;
+	
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li ul.grandChild {
+	background-color: transparent;
+	color: #fff;
+	width: 100%;
+	list-style: none;
+	list-style-position: outside;
+	margin-left: 0;
+	padding-left: 0;
+	height: 133px;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li ul.grandChild:hover {
+	background-color: #d8e6f0;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li ul.grandChild li {
+	font-size: 10px;
+	text-transform: capitalize;
+	float: none;		
+	color: #073f5e;
+	border-top: 1px solid transparent;
+	line-height: 10px;
+	height: auto;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul.child li ul.grandChild li a {
+	color: #073f5e;
+	padding: 4px 0 4px 18px;
+	line-height: 1.0em;
+	font-weight: normal;
+	background-image: url(../images/bgGrandChildMenuDotOff.gif);
+	background-position: 11px top;	
+	background-repeat: no-repeat;
+}
+
+#container #header #topHat #search {
+	float: right;
+	margin-top: 11px;
+}
+
+#container #header #topHat #search fieldset,
+#container #header #topHat #search form {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	width: 242px;
+}
+
+#container #header #topHat #search div.inputHolder {
+	float: left;
+	background-color: #085584;
+	height: 14px;
+	padding: 3px 0 3px 10px;
+	border: 1px solid #226793;
+	width: 200px !important;
+}
+
+#container #header #topHat #search div.inputHolder label {
+	display: none;
+}
+
+#container #header #topHat #search div.inputHolder input {
+	border: none;
+	background-color: #085584;
+	color: #6da2c8;
+	font-size: 10px;
+	font-weight: bold;
+	width: 110px;
+	float: left;
+	
+}
+
+#container #header #topHat #search div.inputHolder .selectHolder input {
+	width: 80px;
+	color: #07405f;
+	height: 13px;
+}
+
+#container #header #topHat #search div.inputHolder .selectHolder {
+	float: left;
+}
+
+#container #header #topHat #search button {
+	background-color: #085484;
+	border: none;
+	text-indent: -9999em;
+	height: 21px;
+	width: 21px;
+	background-image: url(../images/spriteTopHat.gif);
+	background-position: -133px -65px;
+	margin-left: 0.5em;
+	cursor: pointer;
+	float: right;
+}
+
+
+
+#container #header #topHat #mainMenu ul.parent {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+#container #header #topHat #mainMenu ul.parent li a {
+	display: block;
+	color: #a2d6ff;
+	text-decoration: none;
+	background-image: url(../images/arrowRight.gif);
+	background-position: right;
+	background-repeat: no-repeat;
+	padding: 0 2.0em 0 1.0em;
+	height: 100%;
+	border-right: 1px solid transparent;
+	border-left: 1px solid transparent;	
+	text-align: left;
+	cursor: pointer;
+}
+
+#container #header #topHat #mainMenu ul.parent li.first a {
+	background-image: none;
+	padding: 0 1.0em;
+}
+
+#container #header #topHat #mainMenu ul.parent li.first a:hover {
+	background-image: none;
+}
+
+#container #header #topHat #mainMenu ul.parent li a:visited {
+	color: #a2d6ff;
+	text-decoration: none;
+}
+
+#container #header #topHat #mainMenu ul.parent li a:hover {
+	color: #fff;
+	text-decoration: none;
+	background-image: url(../images/arrowDown.gif);
+}
+
+#container #header #topHat #mainMenu ul.parent li ul li a {
+	background-image: none;
+}
+
+#container #header #topHat #mainMenu ul.parent li ul li a:hover {
+	background-image: none;
+}

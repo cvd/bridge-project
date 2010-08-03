@@ -1,0 +1,7 @@
+<ul>
+    <% service_types.each do |type| %>
+      <li>
+        <%= link_to type, url(:service, :show, :type => type) %>        
+      </li>
+    <% end %>
+</ul>

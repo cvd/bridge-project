@@ -1,0 +1,154 @@
+body{
+  font-family: verdana;
+}
+#index-body{}
+.middle{
+  margin: 10px auto;
+  width: 680px;
+}
+#left_panel{
+  left: 0;
+  position: absolute;
+  width: 26em;
+  top: 3.75em;
+  height: 500px;
+  z-index: 2;
+  background: #E3E3E3;
+}
+#logo{
+  float: left;
+  font: 25px verdana,sans-serif;
+  margin-right: 10em;
+  position: absolute;  
+}
+#main_map{
+  left: 26em;
+  position: relative;
+  margin-right: 26em;
+}
+.map{
+  width: 100%;
+/*  margin: 10px auto;*/
+  height: 100%;
+}
+li {
+  line-height: 1.2
+}
+li.g {
+  margin-top: 0;
+  margin-bottom: 12px
+}
+.lst-b,.lst {
+  border: 1px solid #ccc;
+  border-bottom: none;
+  height: 26px;
+  padding: 4px 0 0
+}
+.lst-b {
+  border-right: none
+}
+.lst {
+  -moz-box-sizing: content-box;
+  background: #fff;
+  color: #000;
+  font: 18px arial,sans-serif;
+  float: left;
+  padding-left: 6px;
+  padding-right: 10px;
+  vertical-align: top;
+  width: 100%
+}
+.lst-td {
+  border-bottom: 1px solid #999;
+  padding-right: 16px
+}
+.ds {
+  border-right: 1px solid #e7e7e7;
+  position: relative;
+  height: 32px;
+  z-index: 100
+}
+.lsbb {
+  background: #eee;
+  border: 1px solid #999;
+  border-top-color: #ccc;
+  border-left-color: #ccc;
+  height: 30px
+}
+.lsb {
+  font: 15px arial,sans-serif;
+  background-position: bottom;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  height: 30px;
+  margin: 0;
+  vertical-align: top
+}
+.lsb:active {
+  background: #ccc
+}
+.lst:focus {
+  outline: none
+}
+.lsd {
+  font-size: 11px;
+  height: 32px;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  width: 256px
+}
+.csb,.ss,#logo span,.play_icon,.mini_play_icon,.micon,.close_btn,#tbp,.lsb,.mbi {
+  background: url(public/images/search_background.png) no-repeat;
+  overflow: hidden
+}
+.csb,.ss {
+  background-position: 0 0;
+  height: 40px;
+  display: block
+}
+
+.form-body{
+  margin: 10px auto;
+  width: 680px;
+}
+
+.form-body label{
+  margin-right: ;
+}
+
+table.form-table {
+  
+}
+
+table.form-table td.label{
+  width: 200px;
+}
+table.form-table td{
+  padding: 4px;
+}
+
+.map{
+  width:500px;
+  height:500px;
+}
+
+.hide{
+  display: none;
+}
+.service-display{
+  font-size: 12pt;
+  margin-bottom: 10px;
+}
+
+
+.service-display div{
+  margin: 10px 0;
+}
+.service-display div.address div{
+  margin: 0;
+}
+.service-display div.map, .service-display div.map div{
+  margin: 0;
+}

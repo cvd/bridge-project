@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>The BRIDGE Project DC</title>
+  <!-- &key=ABQIAAAArLOJHLCmusqPGuyt1-g0GhR-GnEQV2Q1KV0CZ-zB-cw9e0o6BBSHsKNvjni1y7dBC402siK_2BHAOA -->
+   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script src="/javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/javascripts/application.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="/master.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<script type="text/javascript" charset="utf-8">
+	  
+	</script>
+  <%= yield_content :head %>
+</head>
+
+<body>
+  <div class="flash">
+    <%= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
+  </div>
+
+<%= yield %>
+
+</body>
+</html>

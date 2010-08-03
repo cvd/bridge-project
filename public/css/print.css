@@ -1,0 +1,53 @@
+body {
+  color: #000000;
+  background: #ffffff;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+}
+
+a {
+  text-decoration: underline;
+  color: #0000ff;
+}
+
+#container #header,
+#container #header #topHat,
+#container #header #topHat #mainMenu,
+#container #header #topHat #search,
+#container #contentWrapperShadow #contentWrapper #alert,
+#container #contentWrapperShadow #contentWrapper #hero,
+#container #contentWrapperShadow #contentWrapper #heroMenu,
+#container #contentWrapperShadow #contentWrapper #contentColumns #contentNav,
+#container #contentWrapperShadow #contentWrapper #contentColumns #contentRelated {
+	display: none;
+}
+
+#container #contentWrapperShadow #contentWrapper #contentMain {
+	float: none !important;
+}
+
+/* Hides AddThis button */
+#container #contentWrapperShadow #contentWrapper #moduleCM15 {
+	display: none;
+}
+
+/* Hides images, video previews, sliding carousels within #contentMain */
+#container #contentWrapperShadow #contentWrapper #contentColumns #contentMain a.imglink,
+#container #contentWrapperShadow #contentWrapper #contentColumns #contentMain img,
+#container #contentWrapperShadow #contentWrapper #contentMain #moduleCM3 .videoCarousel,
+#container #contentWrapperShadow #contentWrapper #contentMain #moduleCM3-1 .videoCarousel,
+#container #contentWrapperShadow #contentWrapper #contentMain #moduleCM3-2 .videoCarousel,
+#container #contentWrapperShadow #contentWrapper #contentMain #moduleCM9 .carouselHorizontal {
+	display: none;
+}
+
+/* Hides right side of footer */
+#container #contentWrapperShadow #contentWrapper #footer #footerRight,
+#container #contentWrapperShadow #contentWrapper #footer #footerParentMenu {
+	display: none;
+}
+
+/* Removes DevTools bar used during testing */
+#devTools {
+	display: none;
+}
