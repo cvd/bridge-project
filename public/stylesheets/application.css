@@ -1,0 +1,23 @@
+#contentMain ul#search-result li.site{
+  list-style: none;
+  padding: 5px 10px;
+}
+#contentMain ul#search-result {
+  float:left;
+  height:450px;
+  margin: 0 0 1em 0;
+  padding: 0;
+  overflow:auto;
+  width:300px; 
+  background-color: #FFF;  
+}
+
+#contentMain ul#search-result li:hover {
+  background-color: #EDE2CD;
+}
+
+.search-results #map{
+  width: 400px;
+  height: 450px;
+  float: left;
+}

@@ -1,0 +1,12 @@
+<li lat="<%= site.lat %>" lng="<%= site.lng %>" class="mapable site">
+  <div class="result">
+    <div class="site-name"><%= link_to site.site_name, url(:services, :show, :id => site.id) %></div>
+    <div class="address">
+      <div class="street"><%= site.address %></div>
+      <div class="city-state"><%= site.city %> <%= site.state %> <%= site.zip %></div>
+    </div>
+    <div class="primary-service">
+      <em>Primary Service: </em><%= site.primary_service %>
+    </div>
+  </div>
+</li>
