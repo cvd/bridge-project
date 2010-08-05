@@ -17,7 +17,18 @@
 }
 
 .search-results #map{
-  width: 400px;
+  width: 630px;
   height: 450px;
   float: left;
+}
+
+.left{
+  float: left;
+}
+.clear{
+  clear: both;
+}
+
+.result{
+  padding-left: 5px;
 }

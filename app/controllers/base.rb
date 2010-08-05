@@ -29,12 +29,10 @@ Bridge.controllers :base do
   post :search, :map => "/search" do
     logger.debug "in search"
     logger.debug "params: #{params.inspect}"
-    result = Service.search(params[:q])
-    logger.debug result.inspect
-    # if request.xhr?
-    #   return result.to_json
-    # end
-    # erb :search, :locals => {:result => result}
+    result = Service.search(params[:q]).limit(10)
+    if request.xhr?
+      return result.to_json
+    end
     render :"base/search_result", :locals => {:result => result}, :layout => true
   end
   

@@ -152,3 +152,6 @@ table.form-table td{
 .service-display div.map, .service-display div.map div{
   margin: 0;
 }
+body #container #contentWrapperShadow div#contentWrapper div#contentMain.full{
+  width: 100%;
+}
