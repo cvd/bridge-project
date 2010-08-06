@@ -23,17 +23,24 @@ Bridge.controllers :base do
   end
 
   get :search, :map => "/search" do
-    render "base/search"
-  end
-  
-  post :search, :map => "/search" do
-    logger.debug "in search"
-    logger.debug "params: #{params.inspect}"
-    result = Service.search(params[:q]).limit(10)
+    @query = params[:q]
+    @page = params[:page] || 1
+    result = Service.search(params[:q]).paginate(:per_page => 10, :page => @page)
+    @total_pages = result.total_pages
+    
     if request.xhr?
       return result.to_json
     end
-    render :"base/search_result", :locals => {:result => result}, :layout => true
+    render :"base/search_result", :locals => {:result => result}, :layout => !request.xhr?
+  end
+  
+  post :search, :map => "/search" do
+    @query = params[:q]
+    @page = params[:page] || 1
+    result = Service.search(params[:q]).paginate(:per_page => 10, :page => @page)
+    @total_pages = result.total_pages
+    
+    render :"base/search_result", :locals => {:result => result}, :layout => !request.xhr?
   end
   
   

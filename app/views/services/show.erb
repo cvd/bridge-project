@@ -1,54 +1,56 @@
+<div id="contentMain" class="full">
+	<div class="hr"><hr /></div>
+    <div class="service-display mapable" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>">
+    <h2 class='site-name'><%= service.site_name %></h2>
+      <% if service.description? %>  
+        <div class="description">
+          <%= service.description %>
+        </div>
+      <% end %>
 
-<h2><%= service.site_name %></h2>
-<div class="service-display">
-  <% if service.description? %>  
-    <div class="description">
-      <%= service.description %>
+      <% if service.address? %>
+      <div class="address">
+        <div><%= service.address %></div>
+        <div><%= service.city %> <%= service.state %> <%= service.zip %></div>
+      </div>
+      <% end %>
+  
+      <% if service.phone? %>
+        <div class"phone"><em>Phone:</em> <%= service.phone %></div>
+      <% end %>
+  
+      <% if service.website? %>
+        <div class="website"><em>Website:</em> <%= service.website %></div>
+      <% end %>
+  
+      <% if service.primary_service? %>
+        <div class="primary-service">
+          <em>Primary Service:</em> <%= service.primary_service %>
+        </div>
+      <% end %>
+  
+      <% if service.secondary_service? %>
+        <div class="secondary-service">
+          <em>Secondary Service:</em> <%= service.secondary_service %>
+        </div>
+      <% end %>
+  
+      <% if service.hours? %>
+        <div><em>Hours:</em> <%= service.hours %></div>
+      <% end %>
+
+      <% if service.transportation? %>
+        <div><em>Transportation:</em> <%= service.transportation %></div>
+      <% end %>
+
+  
+      <% if service.restrictions? %>
+        <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
+      <% end %>
+
+      <% if service.lat && service.lng %>
+        <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="14"></div>
+      <% end %>
+  
     </div>
-  <% end %>
-
-  <% if service.address? %>
-  <div class="address">
-    <div><%= service.address %></div>
-    <div><%= service.city %> <%= service.state %> <%= service.zip %></div>
-  </div>
-  <% end %>
-  
-  <% if service.phone? %>
-    <div class"phone"><em>Phone:</em> <%= service.phone %></div>
-  <% end %>
-  
-  <% if service.website? %>
-    <div class="website"><em>Website:</em> <%= service.website %></div>
-  <% end %>
-  
-  <% if service.primary_service? %>
-    <div class="primary-service">
-      <em>Primary Service:</em> <%= service.primary_service %>
-    </div>
-  <% end %>
-  
-  <% if service.secondary_service? %>
-    <div class="secondary-service">
-      <em>Secondary Service:</em> <%= service.secondary_service %>
-    </div>
-  <% end %>
-  
-  <% if service.hours? %>
-    <div><em>Hours:</em> <%= service.hours %></div>
-  <% end %>
-
-  <% if service.transportation? %>
-    <div><em>Transportation:</em> <%= service.transportation %></div>
-  <% end %>
-
-  
-  <% if service.restrictions? %>
-    <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
-  <% end %>
-
-  <% if service.lat && service.lng %>
-    <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>"></div>
-  <% end %>
-  
 </div>

@@ -63,17 +63,19 @@ li.g {
   padding-right: 16px
 }
 .ds {
-  border-right: 1px solid #e7e7e7;
   position: relative;
   height: 32px;
-  z-index: 100
+  z-index: 100;
+  padding: 5px;
+  
 }
 .lsbb {
   background: #eee;
   border: 1px solid #999;
   border-top-color: #ccc;
   border-left-color: #ccc;
-  height: 30px
+  height: 30px;
+  padding: 8px 8px 10px 8px;
 }
 .lsb {
   font: 15px arial,sans-serif;
@@ -153,5 +155,12 @@ table.form-table td{
   margin: 0;
 }
 body #container #contentWrapperShadow div#contentWrapper div#contentMain.full{
+  width: 100%;
+}
+body #container #contentWrapperShadow div#contentWrapper div#contentMain.limited{
+  width: 700px;
+  margin-right: 0;
+}
+body #container #contentWrapperShadow div#contentWrapper #contentColumns{
   width: 100%;
 }

@@ -31,4 +31,27 @@
 
 .result{
   padding-left: 5px;
+  width: 90%;
+}
+
+.info-window{
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.search{
+  margin-top: 20px;
+}
+
+#header-title h2{
+  font-size: 30px;
+  font-family: Georgia;
+}
+.empty-result{
+  text-align: center;
+}
+.paginate{
+  text-align: center;
+  margin: 5px 0;
+  font-size: 15px;
 }

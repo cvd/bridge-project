@@ -1,16 +1,5 @@
 // Put your application scripts here
 
-function initMap(lat, lng) {
-  var latlng = new google.maps.LatLng(lat,lng);
-  var myOptions = {
-    zoom: 12,
-    center: latlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
-  map = new google.maps.Map(document.getElementById("map"), myOptions);
-  
-}
-
 function addMarker (latLng, map, i){
   return new google.maps.Marker({
     position: latLng,
@@ -41,15 +30,22 @@ $(document).ready(function(){
       service = $(this).find('.primary-service').html();
       siteName = $(this).find('.site-name').html();
       google.maps.event.addListener(marker, 'click', function() {
-        var myHtml = '<div>' + siteName + '</div><div>' + service+'</div>';
+        var myHtml = '<div class="info-window"><div>' + siteName + '</div><div>' + service+'</div></div>';
         infoWindow.setContent(myHtml);
         infoWindow.open(map, marker);
+        map.panTo(marker.getPosition());
       });
-      
+
       bounds.extend(marker_latlng);
     });
 
-    map.fitBounds(bounds);
+    if($(this).attr('data-zoom')){
+      var z=$(this).attr('data-zoom');
+      map.setZoom(parseInt(z));
+    } 
+    else{
+      map.fitBounds(bounds);
+    }
   });  
 
   $('select ~ .select-other').prev().change(function (){

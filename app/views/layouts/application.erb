@@ -192,17 +192,29 @@
 					<div class="clear"></div>
 
 					<div id="contentColumns">
-						<div id="contentMain" class="full">								
-							<div class="hr"><hr /></div>					
-							  <div class="flash">
-                  <%= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
-                </div>
-
+					  <div class="flash">
+              <%= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
+            </div>
+            <div>
+              <div class="left">
+                <img src="/images/logo-small.jpg" width="80" alt="Logo Full">
+              </div>
+              <div id="header-title">
+                <h2>The BRIDGE Project DC</h2>
+              </div>
+              <div class="search">
+                <form action="/search" method="post" accept-charset="utf-8">
+                  <%= render "base/_search_bar", :layout=> false %>  
+                </form>  
+              </div>
+              
+            </div>
+					  <%= yield_content :sidebar %>
+					  
               <%= yield %>
               
-						</div>		
-						<div class="clear"></div>				
-					</div>					
+						<div class="clear"></div>
+					</div>
 				
 				</div>
 				<div id="footer">
