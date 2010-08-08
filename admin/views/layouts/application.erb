@@ -2,18 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Padrino Admin</title>
+  <title>The BRIDGE Project Admin</title>
   <%= stylesheet_link_tag :base, "themes/default/style" %>
 
   <link rel="stylesheet" href="/master.css" type="text/css" charset="utf-8">
-
+  <link rel="stylesheet" href="/stylesheets/application.css" type="text/css" charset="utf-8">
   <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"></script>
   <script type="text/javascript" charset="utf-8" src="/javascripts/application.js"></script>
 </head>
 <body>
   <div id="container">
     <div id="header">
-      <h1><%= link_to "Padrino Admin", url(:base_index) %></h1>
+      <h1><%= link_to "The BRIDGE Project Admin", url(:base_index) %></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
           <li><%= link_to pat(:profile), url(:accounts, :edit, :id => current_account.id) %></li>

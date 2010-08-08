@@ -1,6 +1,6 @@
 class Service
   include MongoMapper::Document
-  attr_accessor :search_relevance
+  attr_accessor :search_relevance, :rank, :current_page, :total_pages
   USELESS_TERMS = ["a", "the", "of", "it", "for", "is", "i", "to", "in", "be"]
   PUNCTUATION = Regexp.new("[>@!*~`;:<?,./;'\"\\)(*&^{}#]")
 
@@ -44,6 +44,14 @@ class Service
   end
   scope :search,  lambda { |search_term| where(:search_terms => search_term.gsub(PUNCTUATION, "").downcase.split.uniq) }
   
+  def rank_search(search_term)
+    @rank = 0    
+    search_array = search_term.gsub(PUNCTUATION, "").downcase.split.uniq
+    # logger.debug search_array.inspect
+    # logger.debug search_terms.inspect    
+    search_rank_array =  search_array & search_terms.uniq
+    @rank = search_rank_array.length
+  end
 
   def self.service_types
     all.map(&:primary_service).uniq.sort

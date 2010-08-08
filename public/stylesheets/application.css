@@ -25,6 +25,10 @@
 .left{
   float: left;
 }
+.right{
+  float: right;
+}
+
 .clear{
   clear: both;
 }
@@ -53,5 +57,18 @@
 .paginate{
   text-align: center;
   margin: 5px 0;
+  font-size: 13px;
+}
+#search-result .paginate{
   font-size: 15px;
+}
+
+.page-status{
+  font-size: 12px;
+}
+.admin-search{
+  margin: 19px;
+}
+img.marker{
+  cursor: pointer;
 }

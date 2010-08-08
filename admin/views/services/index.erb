@@ -6,7 +6,19 @@
     </ul>
   </div>
   <div class="content">
-    <h2 class="title"><%= pat(:all) %> <% mt(:service) %></h2>
+    <h2 class="title left">All Services 
+      <span class="page-status">
+        page <%= @current_page %> of <%= @total_pages %> <%=", Matching <em>#{@query.gsub(Service::PUNCTUATION, "").downcase.split.uniq.join(", ")}</em>" if @query %>
+      </span>
+    </h2>
+    <div class="right admin-search">
+      <form action="<%= url(:services, :search) %>">
+        <input size="40" value="" title="Search" name="q" maxlength="2048"  autocomplete="off">    
+        <input type="submit" name="submit" value="search" id="submit">
+      </form>      
+    </div>
+    <div class="clear"></div>
+    <%= render "services/paginate", :layout => false %>    
     <div class="inner">
       <table class="table">
         <tr>
@@ -20,7 +32,7 @@
           <th><%= mat(:service, :quadrant) %></th>
           <th class="last">&nbsp;</th>
         </tr>
-        <% @services.each do |service| %>
+        <% @services.each_with_index do |service, index| %>
         <tr>
           <td class="first"><%= service.site_name %></td>
           <td><%= service.primary_service %></td>          
@@ -38,6 +50,7 @@
         <% end %>
       </table>
       <div class="actions-bar wat-cf">
+        <%= render "services/paginate", :layout => false %>    
         <div class="actions"></div>
       </div>
     </div>

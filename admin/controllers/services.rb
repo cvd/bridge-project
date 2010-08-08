@@ -1,9 +1,36 @@
 Admin.controllers :services do
 
   get :index do
-    @services = Service.all
+    @query = nil
+    @page = params[:page] || 1
+    @services = Service.sort(:site_name).paginate(:per_page => 25, :page => @page)
+    @total_pages = @services.total_pages
+    @current_page = @services.current_page
     render 'services/index'
   end
+
+  get :search do
+
+    @query = params[:q]
+    # @page = params[:page] || 1
+    # calc_page = @page.to_i - 1
+    # @current_page = @page.to_i
+    # @per_page = 25    
+    # @start = calc_page * @per_page
+    # @end = @start.to_i + @per_page - 1
+    paginate!
+    @services = Service.search(params[:q]).all#.paginate(:per_page => 25, :page => @page)
+    
+    @total_pages = @services.length/@per_page
+    @total_pages +=1 if @services.length % @per_page
+
+    @services.each {|s| s.rank_search @query}
+    @services.sort! {|a,b|b.rank<=>a.rank}
+    @services = @services.slice!(@start..@end)
+ 
+    render 'services/index'
+  end
+
 
   get :new do
     @service = Service.new
@@ -37,7 +64,8 @@ Admin.controllers :services do
 
   delete :destroy, :with => :id do
     service = Service.find(params[:id])
-    if service.destroy
+    service.destroy
+    if service.destroyed?
       flash[:notice] = 'Service was successfully destroyed.'
     else
       flash[:error] = 'Impossible destroy Service!'

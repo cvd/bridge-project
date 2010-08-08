@@ -7,6 +7,8 @@ function addMarker (latLng, map, i){
     icon: "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
   });
 }
+
+
 $(document).ready(function(){
   $("[data-method=map]").each(function () {
     var lat, lng, map, latLng, infoWindow = new google.maps.InfoWindow();
@@ -29,13 +31,15 @@ $(document).ready(function(){
       marker = addMarker(marker_latlng, map, index);
       service = $(this).find('.primary-service').html();
       siteName = $(this).find('.site-name').html();
-      google.maps.event.addListener(marker, 'click', function() {
-        var myHtml = '<div class="info-window"><div>' + siteName + '</div><div>' + service+'</div></div>';
-        infoWindow.setContent(myHtml);
-        infoWindow.open(map, marker);
-        map.panTo(marker.getPosition());
-      });
-
+      function showInfoWindow () {
+          var myHtml = '<div class="info-window"><div>' + siteName + '</div><div>' + service+'</div></div>';
+          infoWindow.setContent(myHtml);
+          infoWindow.open(map, marker);
+          map.panTo(marker.getPosition());
+          if(map.getZoom()!=13) map.setZoom(13);
+      }
+      google.maps.event.addListener(marker, 'click', showInfoWindow);
+      $(".marker", this).click(showInfoWindow);
       bounds.extend(marker_latlng);
     });
 
