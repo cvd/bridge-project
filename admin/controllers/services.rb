@@ -12,13 +12,13 @@ Admin.controllers :services do
   get :search do
 
     @query = params[:q]
-    # @page = params[:page] || 1
-    # calc_page = @page.to_i - 1
-    # @current_page = @page.to_i
-    # @per_page = 25    
-    # @start = calc_page * @per_page
-    # @end = @start.to_i + @per_page - 1
-    paginate!
+    @page = params[:page] || 1
+    @page = @page.to_i
+    @current_page = @page.to_i
+    @per_page = 25    
+    @start = (@page-1) * @per_page
+    @end = @start.to_i + @per_page - 1
+    # paginate!
     @services = Service.search(params[:q]).all#.paginate(:per_page => 25, :page => @page)
     
     @total_pages = @services.length/@per_page

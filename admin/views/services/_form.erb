@@ -13,7 +13,10 @@
 
 <div class="group">
   <%= f.label :secondary_service %><%= f.error_message_on :secondary_service %>
-  <%= f.text_field :secondary_service, :class => :text_field %>
+  <%= f.select :secondary_service, :class => :select_field, :options => Service.service_types.unshift('').push("Other") %>
+  <div class="select-other hide">
+    <%= f.text_field :secondary_service, :class => :text_field, :disabled => true %>
+  </div>
 </div>
 
 <div class="group">

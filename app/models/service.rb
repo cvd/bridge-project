@@ -47,8 +47,6 @@ class Service
   def rank_search(search_term)
     @rank = 0    
     search_array = search_term.gsub(PUNCTUATION, "").downcase.split.uniq
-    # logger.debug search_array.inspect
-    # logger.debug search_terms.inspect    
     search_rank_array =  search_array & search_terms.uniq
     @rank = search_rank_array.length
   end
@@ -58,10 +56,6 @@ class Service
   end
   
   def geocode
-    # self.lat = 1
-    # self.lng = 2
-    return
-
     url = "http://maps.google.com/maps/api/geocode/json?"
     address = "#{address} #{city}, #{state}, #{zip}"
     logger.debug "Geocoding: #{address}"
