@@ -1,0 +1,29 @@
+<div id="contentMain" class="full">
+	<div class="hr"><hr /></div>
+  <% if @services.empty? %>
+    <div class="empty-result"><h2>No results for: <em><%= @query %></em></h2></div>
+  <% else %>
+  <div class="result-summary">
+    Showing page: <%= @current_page %> of <%= @total_pages %> matching: <%= @query.gsub(Service::PUNCTUATION, "").downcase.split.uniq.join(", ") %>
+  </div>
+    <div class="search-results">
+      <ul id="search-result">
+        <%= partial "base/site", :collection => @services %>
+        <div class="paginate">
+          <% (1..@total_pages).each do |p| %>
+          <% if p== 1 && @current_page != 1%>
+            <span><%= link_to "previous", "/search/?q=#{@query}&page=#{@current_page-1}" %></span>
+          <% end %>
+            <span class="page">
+              <%= link_to(p, "/search/?q=#{@query}&page=#{p}", :unless => @current_page == p, :method => "post") unless @total_pages==1%>
+            </span>
+            <% if p==@total_pages && @current_page != @total_pages %>
+              <span><%= link_to "next", "/search/?q=#{@query}&page=#{@current_page+1}" %></span>            
+            <% end %>
+          <% end %>          
+        </div>
+      </ul>
+      <div id="map" data-lat="38.876067" data-lng="-77.036133" data-method="map" ></div>  
+    </div>
+  <% end %>
+</div>
