@@ -1,7 +1,12 @@
+<div id="contentMain" class="full">
+	<div class="hr"><hr /></div>
+
 <ul>
     <% service_types.each do |type| %>
       <li>
-        <%= link_to type, url(:service, :show, :type => type) %>        
+        <%= type %>
+        <%= link_to type, "/list_type?type=#{type}" %>
       </li>
     <% end %>
 </ul>
+</div>

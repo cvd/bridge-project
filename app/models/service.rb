@@ -22,13 +22,28 @@ class Service
   key :lng, Float
   key :description, String
   key :search_terms, Array, :default => []
-
+  key :status, String, :default => "active"
+  key :services, Array, :default => []
   timestamps!
-  
+
+  validates_presence_of :site_name, :address, :city, :state
   before_save :create_search_terms
-  validates_presence_of :site_name, :address
-  # before_save :geocode
+  before_save :clean_services
+  before_save :geocode
+  before_save :set_services
   
+  def clean_services
+    self.primary_service.strip! rescue nil
+    self.secondary_service.strip! rescue nil
+  end
+  
+  def set_services
+    self.services = []
+    
+    self.services << self.primary_service.strip.downcase rescue nil
+    self.services << self.secondary_service.strip.downcase rescue nil
+  end  
+
   def create_search_terms
     [site_name, description, primary_service, secondary_service, quadrant].each do |term|
       next if term.nil?
@@ -37,12 +52,10 @@ class Service
     end
   end
   
-  
-  
   def calculate_search_relavance
     @search_relevance = 1
   end
-  scope :search,  lambda { |search_term| where(:search_terms => search_term.gsub(PUNCTUATION, "").downcase.split.uniq) }
+  scope :search,  lambda { |search_term| where(:status => "active", :search_terms => search_term.gsub(PUNCTUATION, "").downcase.split.uniq) }
   
   def rank_search(search_term)
     @rank = 0    
@@ -51,20 +64,31 @@ class Service
     @rank = search_rank_array.length
   end
 
-  def self.service_types
-    all.map(&:primary_service).uniq.sort
+  def self.service_types_old
+    all_services = all
+    types = all_services.map(&:primary_service)
+    types  += all_services.map(&:secondary_service)
+    # puts types.uniq.inspect
+    types.delete_if(&:nil?).map(&:capitalize).map(&:strip).uniq.delete_if(&:empty?).sort
   end
+
+  def self.service_types
+    types = fields(:services).map(&:services).flatten
+    # puts types.uniq.inspect
+    types.delete_if(&:nil?).map(&:capitalize).map(&:strip).uniq.delete_if(&:empty?).sort
+  end
+
   
   def geocode
+    return if self.lat && self.lng
     url = "http://maps.google.com/maps/api/geocode/json?"
     address = "#{address} #{city}, #{state}, #{zip}"
     logger.debug "Geocoding: #{address}"
     address = URI.escape(address)
     r = RestClient.get(url + "address="+address+"&sensor=false")
     results = Hashie::Mash.new(JSON.parse(r)).results[0]
-    
-    logger.debug results.inspect
-    self.lat = results.geometry.location.lat 
+    logger.debug "Geocoding Results: #{results.inspect}"
+    self.lat = results.geometry.location.lat
     self.lng = results.geometry.location.lng
   end
 end
