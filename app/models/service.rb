@@ -47,7 +47,7 @@ class Service
   def create_search_terms
     [site_name, description, primary_service, secondary_service, quadrant].each do |term|
       next if term.nil?
-      self.search_terms += term.gsub(PUNCTUATION, "").downcase.split.uniq
+      self.search_terms += term.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
       self.search_terms.delete_if {|term| USELESS_TERMS.include? term}
     end
   end
@@ -55,7 +55,7 @@ class Service
   def calculate_search_relavance
     @search_relevance = 1
   end
-  scope :search,  lambda { |search_term| where(:status => "active", :search_terms => search_term.gsub(PUNCTUATION, "").downcase.split.uniq) }
+  scope :search,  lambda { |search_term| where(:status => "active", :search_terms => search_term.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq) }
   
   def rank_search(search_term)
     @rank = 0    

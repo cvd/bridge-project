@@ -5,14 +5,14 @@ Bridge.controllers :services do
     erb :"services/show", :locals => {:service => service}
   end
   
-  get :service_types, :map => "/type" do
+  get :service_types do
     service_types = Service.service_types
     erb :"services/types", :locals => {:service_types => service_types}    
   end
 
   get :list, :map => "/list_type" do
     paginate!
-    @services = Service.where(:primary_service => params[:type].downcase).paginate(:per_page => 10, :page => 1)
+    @services = Service.where(:services => params[:type].downcase, :status => "active").paginate(:per_page => 10, :page => 1)
 
     @query = params[:type]
     logger.info(@query)
@@ -66,12 +66,12 @@ Bridge.controllers :services do
     render "services/new"
   end
 
-  post :new do
+  post :create do
     @service = Service.new(params[:service])
     if @service.save
-      render "base/index"
+      render "services/added"
     else
-      flash[:notice] = "something went wrong!"
+      flash[:notice] = "Error Saving Service!"
       render "services/new"
     end
   end

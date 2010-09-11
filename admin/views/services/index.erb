@@ -33,12 +33,12 @@
           <td class="first"><%= service.site_name %></td>
           <td><%= service.primary_service %> 
             <% if service.primary_service %>
-              (<%= link_to "show all", "#{url(:services, :type)}?primary_service=#{service.primary_service}" %>)
+              (<%= link_to "show all", "#{url(:services, :type)}?service=#{service.primary_service}" %>)
             <% end %>
           </td>          
           <td><%= service.secondary_service %> 
             <% if service.secondary_service %>
-              (<%= link_to "show all", "#{url(:services, :type)}?secondary_service=#{service.secondary_service}" %>)
+              (<%= link_to "show all", "#{url(:services, :type)}?service=#{service.secondary_service}" %>)
             <% end %>
           </td>
           <td class="last">

@@ -32,13 +32,8 @@ Admin.controllers :services do
   end
 
   get :type do
-    if params[:primary_service]
-      @type = params[:primary_service] 
-      @services = Service.where(:primary_service => @type)      
-    elsif params[:secondary_service]
-      @type = params[:secondary_service] 
-      @services = Service.where(:secondary_service => @type)      
-    end
+    @type = params[:service] 
+    @services = Service.where(:services => @type)      
     
     render 'services/type'
   end

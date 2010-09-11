@@ -9,8 +9,12 @@
 	<div class="hr small"><hr></div>
 	<div class="linkList">
 		<ul>
-			<li><a href="/type">Show Services by type</a></li>
-			<li class="last"><a href="/new">Suggest a Service</a></li>
+			<li>
+			  <%= link_to "Show Services by Type", url(:services, :service_types) %>
+			</li>
+			<li class="last">
+			  <%= link_to "Suggest a Service", url(:services, :new) %>
+			</li>
 		</ul>						
 	</div>
 </div>

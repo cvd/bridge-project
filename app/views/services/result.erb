@@ -4,7 +4,7 @@
     <div class="empty-result"><h2>No results for: <em><%= @query %></em></h2></div>
   <% else %>
   <div class="result-summary">
-    Showing page: <%= @current_page %> of <%= @total_pages %> matching: <%= @query.gsub(Service::PUNCTUATION, "").downcase.split.uniq.join(", ") %>
+    Showing page: <%= @current_page %> of <%= @total_pages %> matching: <%= @query.gsub(/\//, " ").gsub(Service::PUNCTUATION, "").downcase.split.uniq.join(", ") %>
   </div>
     <div class="search-results">
       <ul id="search-result">
