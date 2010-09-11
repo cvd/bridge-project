@@ -31,10 +31,37 @@ Admin.controllers :services do
     render 'services/index'
   end
 
-
+  get :type do
+    if params[:primary_service]
+      @type = params[:primary_service] 
+      @services = Service.where(:primary_service => @type)      
+    elsif params[:secondary_service]
+      @type = params[:secondary_service] 
+      @services = Service.where(:secondary_service => @type)      
+    end
+    
+    render 'services/type'
+  end
+  
   get :new do
     @service = Service.new
     render 'services/new'
+  end
+
+  get :pending do
+    @services = Service.where(:status => "pending")
+    render 'services/pending'
+  end
+
+  post :activate, :with => :id do
+    @service = Service.find(params[:id])
+    @service.status = "active"    
+    if @service.save
+      flash[:notice] = 'Service was successfully accepted.'
+      redirect url(:services, :index)
+    else
+      render 'services/edit'
+    end
   end
 
   post :create do

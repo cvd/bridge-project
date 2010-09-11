@@ -2,10 +2,10 @@
   <%= f.label :site_name %><%= f.error_message_on :site_name %>
   <%= f.text_field :site_name, :class => :text_field %>
 </div>
-
+  <% @service_types ||= Service.service_types.unshift('').push("Other") %>
 <div class="group">
   <%= f.label :primary_service %><%= f.error_message_on :primary_service %>
-  <%= f.select :primary_service, :class => :select_field, :options => Service.service_types.unshift('').push("Other") %>
+  <%= f.select :primary_service, :class => :select_field, :options => @service_types %>
   <div class="select-other hide">
     <%= f.text_field :primary_service, :class => :text_field, :disabled => true %>
   </div>
@@ -13,7 +13,7 @@
 
 <div class="group">
   <%= f.label :secondary_service %><%= f.error_message_on :secondary_service %>
-  <%= f.select :secondary_service, :class => :select_field, :options => Service.service_types.unshift('').push("Other") %>
+  <%= f.select :secondary_service, :class => :select_field, :options => @service_types %>
   <div class="select-other hide">
     <%= f.text_field :secondary_service, :class => :text_field, :disabled => true %>
   </div>
@@ -75,6 +75,12 @@
   <%= f.label :restrictions %><%= f.error_message_on :restrictions %>
   <%= f.text_field :restrictions, :class => :text_field %>
 </div>
+
+<div class="group">
+  <%= f.label :status %><%= f.error_message_on :status %>
+  <%= f.select :status, :class => :select_field, :options => ["active", "pending"] %>
+</div>
+
 
 <%= f.hidden_field :lat %>
 <%= f.hidden_field :lng %>

@@ -4,6 +4,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>The BRIDGE Project Admin</title>
   <%= stylesheet_link_tag :base, "themes/default/style" %>
+  <script type="text/javascript" charset="utf-8" src="/javascripts/jquery.js"></script>  
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $('#login-email').focus();
+    })
+  </script>
 </head>
 <body>
   <div id="container">
@@ -21,7 +27,7 @@
                 <label class="label right">Login</label>
               </div>
               <div class="right">
-                <%= text_field_tag :email, :value => params[:email], :class => 'text_field' %>
+                <%= text_field_tag :email, :value => params[:email], :class => 'text_field', :id => 'login-email' %>
               </div>
             </div>
             <div class="group wat-cf">

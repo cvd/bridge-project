@@ -3,6 +3,7 @@
     <ul class="wat-cf">
       <li class="first"><%= link_to pat(:list), url(:services, :index) %></li>
       <li><%= link_to pat(:new), url(:services, :new) %></li>
+      <li><%= link_to "Pending", url(:services, :pending) %></li>      
       <li class="active"><%= link_to pat(:edit), url(:services, :edit, :id => @service.id) %></li>
     </ul>
   </div>

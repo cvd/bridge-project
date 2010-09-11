@@ -1,17 +1,19 @@
 <div class="paginate">
-  <% route = @query ? :search : :index %>
-  <% if @current_page != 1%>
-    <span><%= link_to "previous", url(:services, route, :page => @current_page-1, :q => @query) %></span>
-  <% end %>
+  <ul class='page-list'>
+    <% route = @query ? :search : :index %>
+    <% if @current_page != 1%>
+      <li class="page"><%= link_to "previous", url(:services, route, :page => @current_page-1, :q => @query) %></li>
+    <% end %>
 
-  <% (1..@total_pages).each do |page| %>
-    <span class="page">
-      <%= link_to page, url(:services, route, :page => page, :page => page, :q => @query), :unless => page == @current_page unless @total_pages==1 %>
-    </span>
-  <% end %>          
-  
-  <% if @current_page != @total_pages %>        
-    <span><%= link_to "next", url(:services, route, :page => @current_page+1, :q => @query) %></span>            
-  <% end %>
-  
+    <% (1..@total_pages).each do |page| %>
+      <li class="page <%= "active" if page == @current_page %>">
+        <%= link_to page, url(:services, route, :page => page, :page => page, :q => @query), :unless => page == @current_page unless @total_pages==1 %>
+      </li>
+    <% end %>          
+
+    <% if @current_page != @total_pages %>        
+      <li class="page"><%= link_to "next", url(:services, route, :page => @current_page+1, :q => @query) %></li>
+    <% end %>    
+  </ul>
+  <div class="clear"></div>
 </div>
