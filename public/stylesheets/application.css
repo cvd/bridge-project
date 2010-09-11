@@ -72,3 +72,54 @@
 img.marker{
   cursor: pointer;
 }
+
+
+div.paginate{
+	background: none repeat scroll 0 0 #36393D;
+}
+
+div.paginate ul.page-list{
+	list-style: none;
+	display: block;		
+}
+
+div.paginate ul.page-list li.page{
+	float: left;
+	padding: 4px;
+	color: #FFFFFF;
+	display: block;	
+}
+div.paginate ul.page-list li.page a:link, div.paginate ul.page-list li.page a:visited, div.paginate ul.page-list li.page a:hover, div.paginate ul.page-list li.page a:active{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+div.paginate ul.page-list li.page a{
+	padding: 4px;
+}
+
+div.paginate ul.page-list li.page.active{
+  background: #1A1A1A;
+}
+
+.form .group {
+	margin-bottom:15px;
+}
+
+.form input.text_field, .form input.password_field, .form textarea.text_area {
+	border:1px solid #CFCFCF;
+	width:100%;
+}
+
+form label {
+  font-weight:bold;
+  padding-bottom:2px;
+}
+
+.inner {
+padding:0 15px 15px;
+}
+div.paginate ul.page-list li.page a:hover{
+  background: #666666;
+}
+
