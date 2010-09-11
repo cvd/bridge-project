@@ -1,0 +1,36 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to pat(:list), url(:services, :index) %></li>
+      <li><%= link_to pat(:new), url(:services, :new) %></li>
+      <li><%= link_to "Pending", url(:services, :pending) %></li>      
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title left">Pending Services</h2>
+    <div class="clear"></div>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first"><%= mat(:service, :site_name) %></th>
+          <th><%= mat(:service, :primary_service) %></th>
+          <th><%= mat(:service, :secondary_service) %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @services.each_with_index do |service, index| %>
+        <tr>
+          <td class="first"><%= service.site_name %></td>
+          <td><%= service.primary_service %></td>          
+          <td><%= service.secondary_service %></td>
+          <td class="last">
+            <%= button_to "accept", url(:services, :activate, :id => service.id), :method => :post, :class => :button_to %> |            
+            <%= button_to pat(:edit), url(:services, :edit, :id => service.id), :method => :get, :class => :button_to %> |
+            <%= button_to pat(:delete), url(:services, :destroy, :id => service.id), :method => :delete, :class => :button_to %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>
