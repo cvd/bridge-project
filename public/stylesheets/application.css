@@ -104,6 +104,7 @@ div.paginate ul.page-list li.page.active{
 
 .form .group {
 	margin-bottom:15px;
+	font-size: 12px;
 }
 
 .form input.text_field, .form input.password_field, .form textarea.text_area {
@@ -123,3 +124,36 @@ div.paginate ul.page-list li.page a:hover{
   background: #666666;
 }
 
+
+
+/* flash-messages */
+.flash .message {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  text-align:center;
+  margin: 0 auto 15px;
+
+}
+
+.flash .message p {
+  margin:8px;
+}
+.flash .error {
+  border: 1px solid #fbb;
+  background-color: #fdd;
+}
+.flash .warning {
+  border: 1px solid #fffaaa;
+  background-color: #ffffcc;
+}
+.flash .notice {
+  border: 1px solid #1FDF00;
+  background-color: #BBFFB6;
+}
+.message.notice{
+  font-size: 14px;
+}
+
+.form .error{color:red;}
+
+.message.notice,.message.warning,.message.error{padding:10px;}
