@@ -1,0 +1,7 @@
+--- 
+:test: bacon
+:stylesheet: none
+:mock: none
+:script: jquery
+:renderer: erb
+:orm: mongomapper
