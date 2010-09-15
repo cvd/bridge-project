@@ -1,0 +1,56 @@
+/opt/mongodb/bin/mongod --config /opt/config/mongodb
+
+#!/bin/sh
+#
+# unicorn  Basic init.d script for the unicorn application
+###
+# chkconfig: 2345 65 25
+# description: Manages the unicorn padrino application with the chkconfig command
+###
+
+set -e
+                                 
+APP_ROOT=/var/code/bridge-project 
+PID=$APP_ROOT/tmp/pids/unicorn.pid
+CMD="/usr/local/bin/unicorn -D -E production -c $APP_ROOT/config/unicorn.rb"
+
+old_pid="$PID.oldbin"
+
+cd $APP_ROOT || exit 1
+
+sig () {
+        test -s "$PID" && kill -$1 `cat $PID`
+}
+
+oldsig () {
+        test -s $old_pid && kill -$1 `cat $old_pid`
+}
+
+case $1 in
+start)
+        sig 0 && echo >&2 "Already running" && exit 0
+        $CMD
+        ;;
+stop)
+        sig QUIT && exit 0
+        echo >&2 "Not running"
+        ;;
+force-stop)
+        sig TERM && exit 0
+        echo >&2 "Not running"
+        ;;
+restart|reload)
+        sig HUP && echo reloaded OK && exit 0
+        echo >&2 "Couldn't reload, starting '$CMD' instead"
+        $CMD
+        ;;
+upgrade)
+        sig USR2 && sleep 2 && sig 0 && oldsig QUIT && exit 0
+        echo >&2 "Couldn't upgrade, starting '$CMD' instead"
+        $CMD
+        ;;
+*)
+        echo >&2 "Usage: $0 <start|stop|restart|upgrade|force-stop>"
+        exit 1
+        ;;
+esac
