@@ -32,7 +32,7 @@ Admin.controllers :services do
   end
 
   get :type do
-    @type = params[:service] 
+    @type = params[:service].downcase
     @services = Service.where(:services => @type)      
     
     render 'services/type'

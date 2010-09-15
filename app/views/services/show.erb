@@ -8,10 +8,12 @@
         </div>
       <% end %>
 
+      <%# button_to "save", url(:carts, :add, :service => service.id), :method => :post, :class => :button_to, :remote => true %>
+
       <% if service.address? %>
       <div class="address">
         <div><%= service.address %></div>
-        <div><%= service.city %> <%= service.state %> <%= service.zip %></div>
+        <div><%= service.city %> <%= service.state %> <%= service.zip %> - <span class="directions-url"><a href="<%= service.google_maps_url %>" target="_blank">Get Directions</a></span></div>
       </div>
       <% end %>
   
@@ -49,7 +51,7 @@
       <% end %>
 
       <% if service.lat && service.lng %>
-        <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="14"></div>
+        <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="16"></div>
       <% end %>
   
     </div>

@@ -3,13 +3,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../test_config.rb')
 Service.collection.remove
 
 describe "Service Model" do
-  it 'can be created' do
-    @service = Service.new
-    @service.should.not.be.nil
-  end
-end
-
-describe "BridgeProject" do
   before do
     @params = {
       :site_name => "Sample Site",
@@ -22,6 +15,11 @@ describe "BridgeProject" do
     }
 
   end
+
+  it 'can be created' do
+    @service = Service.new
+    @service.should.not.be.nil
+  end    
     
   it "Should create search terms upon creeation" do
     @service = Service.new(@params)
@@ -48,25 +46,22 @@ describe "BridgeProject" do
     result.site_name.should.equal "Sample Site"
     result.quadrant.should.equal "NW"
   end
+  
+  it "should save the primary_service and secondary_service in services array" do
+    @params[:primary_service] = "Primary Service"
+    @params[:secondary_service] = "Secondary Service"
+    service = Service.new(@params)
+    service.save
+    service.services.should == ["primary service", "secondary service"]
+  end
+
+  it "should strip the primary_service and secondary_service of leading and trailing whitespace and line feeds on save" do
+    @params[:primary_service] = "\nPrimary Service \n\n"
+    @params[:secondary_service] = "\nSecondary Service \n\n"
+    service = Service.new(@params)
+    service.save
+    service.primary_service.should == "Primary Service"
+    service.secondary_service.should == "Secondary Service"    
+  end
+  
 end
-
-
-
-__END__
-
-key :site_name, String
-key :address, String
-key :quadrant, String
-key :city, String
-key :state, String
-key :zip, String
-key :phone, String
-key :hours, String
-key :transportation, String
-key :website, String
-key :primary_service, String
-key :secondary_service, String
-key :restrictions, String
-key :lat, Float
-key :lng, Float
-key :description, String

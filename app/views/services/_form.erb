@@ -48,6 +48,11 @@
 </div>
 
 <div class="group">
+  <%= f.label :quadrant %><%= f.error_message_on :quadrant %>
+  <%= f.select :quadrant, :options =>["", "NE", "NW", "SE", "SW"], :class => :text_field %>
+</div>
+
+<div class="group">
   <%= f.label :transportation %><%= f.error_message_on :transportation %>
   <%= f.text_field :transportation, :class => :text_field %>
 </div>
@@ -65,11 +70,6 @@
 <div class="group">
   <%= f.label :hours %><%= f.error_message_on :hours %>
   <%= f.text_field :hours, :class => :text_field %>
-</div>
-
-<div class="group">
-  <%= f.label :quadrant %><%= f.error_message_on :quadrant %>
-  <%= f.select :quadrant, :options =>["", "NE", "NW", "SE", "SW"], :class => :text_field %>
 </div>
 
 <div class="group">

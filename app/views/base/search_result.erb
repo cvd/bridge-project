@@ -12,13 +12,13 @@
         <div class="paginate">
           <% (1..@total_pages).each do |p| %>
           <% if p== 1 && @current_page != 1%>
-            <span><%= link_to "previous", "/search/?q=#{@query}&page=#{@current_page-1}" %></span>
+            <span><%= link_to "previous", "#{@route}/?q=#{@query}&page=#{@current_page-1}" %></span>
           <% end %>
             <span class="page">
-              <%= link_to(p, "/search/?q=#{@query}&page=#{p}", :unless => @current_page == p, :method => "post") unless @total_pages==1%>
+              <%= link_to(p, "#{@route}/?q=#{@query}&page=#{p}", :unless => @current_page == p, :method => "post") unless @total_pages==1%>
             </span>
             <% if p==@total_pages && @current_page != @total_pages %>
-              <span><%= link_to "next", "/search/?q=#{@query}&page=#{@current_page+1}" %></span>            
+              <span><%= link_to "next", "#{@route}/?q=#{@query}&page=#{@current_page+1}" %></span>            
             <% end %>
           <% end %>          
         </div>

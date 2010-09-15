@@ -44,7 +44,7 @@
 }
 
 .search{
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 #header-title h2{
@@ -74,28 +74,29 @@ img.marker{
 }
 
 
-div.paginate{
+.content div.paginate{
 	background: none repeat scroll 0 0 #36393D;
 }
 
-div.paginate ul.page-list{
+.content div.paginate ul.page-list{
 	list-style: none;
 	display: block;		
 }
 
-div.paginate ul.page-list li.page{
+.content div.paginate ul.page-list li.page{
 	float: left;
-	padding: 4px;
+/*  padding: 4px;*/
 	color: #FFFFFF;
 	display: block;	
 }
-div.paginate ul.page-list li.page a:link, div.paginate ul.page-list li.page a:visited, div.paginate ul.page-list li.page a:hover, div.paginate ul.page-list li.page a:active{
+.content div.paginate ul.page-list li.page a:link, div.paginate ul.page-list li.page a:visited, div.paginate ul.page-list li.page a:hover, div.paginate ul.page-list li.page a:active{
 	color: #FFFFFF;
 	text-decoration: none;
 }
 
-div.paginate ul.page-list li.page a{
-	padding: 4px;
+div.paginate ul.page-list li.page a, div.paginate ul.page-list li.page span.current{
+	padding: 6px;
+	display: block;
 }
 
 div.paginate ul.page-list li.page.active{
@@ -157,3 +158,50 @@ div.paginate ul.page-list li.page a:hover{
 .form .error{color:red;}
 
 .message.notice,.message.warning,.message.error{padding:10px;}
+
+.result-summary {
+font-size:12px;
+font-weight:bold;
+padding:4px;
+}
+
+
+div.inner table tr th.last{
+  width: 85px;
+}
+.error-page{
+  padding: 10px;
+}
+.error-page div.error{
+  font-size: 14px;
+  padding: 10px;
+}
+
+.service-search {
+  padding-top: 2px;
+}
+
+.service-search label{
+  display: block;
+  cursor: pointer;
+}
+
+.button_to input{
+  background:none;
+  border:none;
+  display:inline;
+  font-size:inherit;
+  color:inherit;
+  cursor:pointer;
+}
+
+.linkList .last{
+  padding-bottom: 4px;
+  padding-top: 2px;
+}
+
+.sub-title{
+  font-size: 14px; 
+  font-weight: bold; 
+  padding-top: 4px;
+}

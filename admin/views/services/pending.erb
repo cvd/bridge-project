@@ -25,7 +25,7 @@
           <td class="last">
             <%= button_to "accept", url(:services, :activate, :id => service.id), :method => :post, :class => :button_to %> |            
             <%= button_to pat(:edit), url(:services, :edit, :id => service.id), :method => :get, :class => :button_to %> |
-            <%= button_to pat(:delete), url(:services, :destroy, :id => service.id), :method => :delete, :class => :button_to %>
+            <%= button_to pat(:delete), url(:services, :destroy, :id => service.id), :method => :delete, :class => :button_to, :confirm => true, :remote => true %>
           </td>
         </tr>
         <% end %>

@@ -9,4 +9,19 @@ Bridge.helpers do
     @start = (@page - 1) * @per_page
     @end = @start + @per_page - 1
   end
+  def query_string
+    
+     if @query
+       @query.gsub(/\//, " ").gsub(Service::PUNCTUATION, " ").downcase.split.uniq.join(", ").strip
+     elsif @query_string
+       @query_string.strip
+     else 
+        ""
+     end
+     
+  end
+  
+  def query_url
+    
+  end
 end

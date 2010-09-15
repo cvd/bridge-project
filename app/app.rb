@@ -5,8 +5,8 @@ class Bridge < Padrino::Application
   ##
   # Application configuration options
   #
-  set :raise_errors, true     # Show exceptions (default for development)
-  set :public, "foo/bar"      # Location for static assets (default root/public)
+  # set :raise_errors, true     # Show exceptions (default for development)
+  # set :public, "foo/bar"      # Location for static assets (default root/public)
   # set :reload, false          # Reload application files (default in development)
   # set :default_builder, "foo" # Set a custom form builder (default 'StandardFormBuilder')
   # set :locale_path, "bar"     # Set path for I18n translations (defaults to app/locale/)
@@ -28,10 +28,10 @@ class Bridge < Padrino::Application
   # You can manage errors like:
   #
     error 404 do
-      render 'errors/404'
+      render :"errors/404"
     end
     error do 
-      return "There was an error"
+      render :"errors/error"
     end
     
   #

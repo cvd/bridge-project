@@ -61,8 +61,29 @@ $(document).ready(function(){
     }
   });
   
-  // $('#map').each(function(){
-  //   
-  // });
+  $('[data-remote=true]').each(function(){
+    
+  });
+
+  function confirmSubmit (argument) {
+    var message = $(this).attr('data-confirm');
+    if(message===undefined){
+      message = "Are you sure?";
+    };
+    return confirm(message);
+  };
+
+  $('[confirm=true]').click(confirmSubmit);//.submit(confirmSubmit);
+  
+  $('[data-remote=true]').click(function(){
+    var url = $(this).attr('action');
+    var method = $(this).attr('method');
+    $.ajax({
+      method: method,
+      url: url,
+      success: function(){alert("I'm Back!"); }
+    });
+    return false;
+  });
   
 });

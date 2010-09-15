@@ -7,7 +7,13 @@
 
     <% (1..@total_pages).each do |page| %>
       <li class="page <%= "active" if page == @current_page %>">
+        <% if page == @current_page %>
+          <span class="current">
+        <% end %>
         <%= link_to page, url(:services, route, :page => page, :page => page, :q => @query), :unless => page == @current_page unless @total_pages==1 %>
+        <% if page == @current_page %>
+          </span>
+        <% end %>        
       </li>
     <% end %>          
 
