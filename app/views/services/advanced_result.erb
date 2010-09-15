@@ -12,31 +12,16 @@
         <div class="paginate">
           <% (1..@total_pages).each do |p| %>
           <% if p== 1 && @current_page != 1%>
-            <span><%= link_to "<<", url(:services, :advanced_search)+"?q=#{@request_string}&page=#{@current_page-1}" %></span>
+            <span><%= link_to "<<", url(:services, :advanced_search)+"?#{@request_string}&page=#{@current_page-1}" %></span>
           <% end %>
             <span class="page">
               <%= link_to(p, url(:services, :advanced_search)+"/?#{@request_string}&page=#{p}", :unless => @current_page == p, :method => "post") unless @total_pages==1%>
             </span>
             <% if p==@total_pages && @current_page != @total_pages %>
-              <span><%= link_to ">>", "#{@route}/?q=#{@request_string}&page=#{@current_page+1}" %></span>            
+              <span><%= link_to ">>", url(:services, :advanced_search)+"/?#{@request_string}&page=#{@current_page+1}" %></span>            
             <% end %>
           <% end %>          
         </div>
-
-
-        <!-- <div class="paginate">
-          <%# form_tag(url(:services, :advanced_search)+@request_string, :class=> "button_to", :method => 'get') do %>
-          
-          <input type="hidden" name="service[name]" value="<%= params[:service][:name] %>" id="service[name]">
-            <input type="submit" name="page" value="<%= @current_page-1 %>"><<</input>
-            <%# (1..@total_pages).each do |p| %>
-              <input type="submit" name="page" value="<%= p %>" />
-            <%# end %>
-            <input type="submit" name="page" value="<%= @current_page+1 %>">>></input>
-          <%# end %>
-        </div> -->
-        
-        
       </ul>
       <div id="map" data-lat="38.876067" data-lng="-77.036133" data-method="map" ></div>  
     </div>
