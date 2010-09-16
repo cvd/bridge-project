@@ -179,6 +179,8 @@ div.inner table tr th.last{
 
 .service-search {
   padding-top: 2px;
+  float: left;
+  padding-left: 15px;
 }
 
 .service-search label{

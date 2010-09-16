@@ -31,12 +31,12 @@
         <% @services.each_with_index do |service, index| %>
         <tr>
           <td class="first"><%= service.site_name %></td>
-          <td><%= service.primary_service %> 
+          <td><%= service.primary_service.capitalize unless service.primary_service.nil? %> 
             <% if service.primary_service %>
               (<%= link_to "show all", "#{url(:services, :type)}?service=#{service.primary_service}" %>)
             <% end %>
           </td>          
-          <td><%= service.secondary_service %> 
+          <td><%= service.secondary_service.capitalize unless service.secondary_service.nil? %> 
             <% if service.secondary_service %>
               (<%= link_to "show all", "#{url(:services, :type)}?service=#{service.secondary_service}" %>)
             <% end %>

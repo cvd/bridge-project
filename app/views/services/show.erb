@@ -41,10 +41,13 @@
         <div><em>Hours:</em> <%= service.hours %></div>
       <% end %>
 
+      <% if service.quadrant? %>
+        <div><em>Quadrant:</em> <%= service.quadrant %></div>
+      <% end %>
+
       <% if service.transportation? %>
         <div><em>Transportation:</em> <%= service.transportation %></div>
       <% end %>
-
   
       <% if service.restrictions? %>
         <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>

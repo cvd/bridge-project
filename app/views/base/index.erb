@@ -10,19 +10,26 @@
 
           		<ul style="list-style-type:none;">
           		  <li class="name-search" style="padding-bottom: 4px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
-          		  <li>Filter by Service Type</li>
-            		<ul style="list-style-type:none;">
-            		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="food services"/>Food Services          </label></li>
-          			  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="counseling services"/>Counseling Services    </label></li>
+          		  <li>Filter by Service Type:</li>
+                <!-- <ul style="list-style-type:none;">
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="food services"/>Food Services          </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="counseling services"/>Counseling Services    </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="housing services"/>Housing Services       </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="community garden"/>Community Garden       </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="legal services"/>Legal Services         </label></li>
-            			<li class="service-search"><Label><input type="checkbox" name="service[services][]" value="library"/>Library                </label></li>
+                  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="library"/>Library                </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="meal programs"/>Meal Programs          </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="senior services"/>Senior Services        </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="teen services"/>Teen Services          </label></li>
+                </ul> -->
+
+            		<ul style="list-style-type:none;">
+              		<% Service.service_types.each do |type| %>
+              		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
+          		    <% end %>
             		</ul>
-          			<li>Filter by Quadrant</li>
+                <div class="clear"></div>
+          			<li>Filter by Quadrant:</li>
           			<ul style="list-style-type:none;">
           			  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="NW"/>NW</label></li>
           			  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="NE"/>NE</label></li>

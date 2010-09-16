@@ -34,8 +34,16 @@ class Service
   before_save :set_services
   
   def clean_services
-    self.primary_service.strip!.gsub!("/ ", "/").gsub!('serivces', "services") rescue nil
-    self.secondary_service.strip!.gsub!("/ ", "/").gsub!('serivces', "services") rescue nil
+      self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
+    # else
+    #   logger.debug "blank primary_service"
+    # end
+    
+    # if !secondary_service.nil?
+      self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
+    # else
+    #   logger.debug "blank secondary_service"
+    # end
   end
   
   def set_services
@@ -78,7 +86,7 @@ class Service
   def self.service_types
     types = fields(:services).map(&:services).flatten
     # puts types.uniq.inspect
-    types.delete_if(&:nil?).map(&:capitalize).map(&:strip).uniq.delete_if(&:empty?).sort
+    types.delete_if(&:nil?).map(&:strip).uniq.delete_if(&:empty?).sort
   end
   
   def full_address

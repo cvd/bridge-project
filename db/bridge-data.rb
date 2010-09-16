@@ -4,23 +4,23 @@ require 'restclient'
 require 'json'
 require 'hashie'
 
-filename = 'bridge_data.csv'
+filename = 'bridge-data-9-9-2010.csv'
 rows = []
 i=0
 url, rows, i = "http://maps.google.com/maps/api/geocode/json?", [], 0
 csv = FasterCSV.foreach(filename, {:headers=> true})  do |row|
   i+=1
   m = Hashie::Mash.new(row.to_hash)
-  address = "#{row['ADDRESS']} #{row['CITY']}, #{row['STATE']}, #{row['ZIP CODE']}"
-  puts "#{i}. Geocoding: #{address}"
-  address = URI.escape(address)
-  r = RestClient.get(url + "address="+address+"&sensor=false")
-  results = Hashie::Mash.new(JSON.parse(r)).results[0]
-
-  m.lat, m.lgn = results.geometry.location.lat, results.geometry.location.lng
-  puts "#{m.lat}, #{m.lgn}"
+  # address = "#{row['ADDRESS']} #{row['CITY']}, #{row['STATE']}, #{row['ZIP CODE']}"
+  # puts "#{i}. Geocoding: #{address}"
+  # address = URI.escape(address)
+  # r = RestClient.get(url + "address="+address+"&sensor=false")
+  # results = Hashie::Mash.new(JSON.parse(r)).results[0]
+  # 
+  # m.lat, m.lgn = results.geometry.location.lat, results.geometry.location.lng
+  # puts "#{m.lat}, #{m.lgn}"
   rows << m
-  sleep 1
+  # sleep 1
 end
 
 

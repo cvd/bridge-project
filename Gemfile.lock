@@ -59,6 +59,8 @@ GEM
     rack (1.2.1)
     rack-flash (0.1.1)
       rack
+    rack-recaptcha (0.2.2)
+      json
     rack-test (0.5.4)
       rack (>= 1.0)
     rake (0.8.7)
@@ -88,6 +90,7 @@ DEPENDENCIES
   mongo_mapper
   padrino (= 0.9.15)
   rack-flash
+  rack-recaptcha
   rack-test
   rake
   rest-client

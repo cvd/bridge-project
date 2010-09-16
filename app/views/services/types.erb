@@ -4,7 +4,7 @@
 <ul>
     <% service_types.each do |type| %>
       <li>
-        <%= link_to type, "/list_type?type=#{type}" %>
+        <%= link_to type.capitalize, "/list_type?type=#{type}" %>
       </li>
     <% end %>
 </ul>

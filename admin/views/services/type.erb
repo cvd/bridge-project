@@ -20,8 +20,8 @@
         <% @services.each_with_index do |service, index| %>
         <tr>
           <td class="first"><%= service.site_name %></td>
-          <td><%= service.primary_service %></td>          
-          <td><%= service.secondary_service %></td>
+          <td><%= service.primary_service.capitalize unless service.primary_service.nil? %></td>          
+          <td><%= service.secondary_service.capitalize unless service.secondary_service.nil? %></td>
           <td class="last">
             <%= button_to pat(:edit), url(:services, :edit, :id => service.id), :method => :get, :class => :button_to %> |
             <%= button_to pat(:delete), url(:services, :destroy, :id => service.id), :method => :delete, :class => :button_to %>
