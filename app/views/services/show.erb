@@ -55,7 +55,7 @@
         <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
       <% end %>
 
-      <% if service.lat && service.lng && show_map %>
+      <% if service.lat && service.lng  %>
         <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="16"></div>
       <% end %>
   
