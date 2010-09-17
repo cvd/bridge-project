@@ -1,0 +1,4 @@
+<% @services.each do |s| %>
+  <%= erb :"services/show", :locals => {:service => s, :show_map => false}, :layout => false %>
+<% end %>
+  
