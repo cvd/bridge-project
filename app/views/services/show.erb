@@ -8,9 +8,7 @@
         </div>
       <% end %>
 
-      <% if show_map %>
-        <%= button_to "save", url(:carts, :add, :service => service.id), :method => :post, :class => :button_to, :remote => true %>
-      <% end %>
+        <%# button_to "save", url(:carts, :add, :service => service.id), :method => :post, :class => :button_to, :remote => true %>
 
       <% if service.address? %>
       <div class="address">
