@@ -35,15 +35,7 @@ class Service
   
   def clean_services
       self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
-    # else
-    #   logger.debug "blank primary_service"
-    # end
-    
-    # if !secondary_service.nil?
       self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
-    # else
-    #   logger.debug "blank secondary_service"
-    # end
   end
   
   def set_services

@@ -3,7 +3,7 @@ Bridge.controllers :services do
   get :show, :with => :id do    
     service = Service.find(BSON::ObjectID(params[:id]))
     # logger.debug(service.inspect)
-    erb :"services/show", :locals => {:service => service}
+    erb :"services/show", :locals => {:service => service, :show_map => true}
   end
   
   get :advanced_search do

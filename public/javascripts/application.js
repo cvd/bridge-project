@@ -1,15 +1,18 @@
 // Put your application scripts here
 
-function addMarker (latLng, map, i){
-  return new google.maps.Marker({
-    position: latLng,
-    map: map,
-    icon: "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
-  });
-}
 
 
 $(document).ready(function(){
+
+  function addMarker (latLng, map, i){
+    return new google.maps.Marker({
+      position: latLng,
+      map: map,
+      icon: "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
+    });
+  }
+  
+  
   $("[data-method=map]").each(function () {
     var lat, lng, map, latLng, infoWindow = new google.maps.InfoWindow();
     lat = $(this).attr("data-lat");
