@@ -22,12 +22,14 @@
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="senior services"/>Senior Services        </label></li>
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="teen services"/>Teen Services          </label></li>
                 </ul> -->
-
-            		<ul style="list-style-type:none;">
-              		<% Service.service_types.each do |type| %>
-              		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
-          		    <% end %>
-            		</ul>
+                 <div class="wrapper">
+              		<ul style="list-style-type:none;">
+                		<% Service.service_types.each do |type| %>
+                		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
+            		    <% end %>
+              		</ul>
+              		<br />
+              		</div>
                 <div class="clear"></div>
           			<li>Filter by Quadrant:</li>
           			<ul style="list-style-type:none;">
