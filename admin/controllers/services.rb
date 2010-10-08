@@ -8,7 +8,7 @@ Admin.controllers :services do
     @current_page = @services.current_page
     render 'services/index'
   end
-
+  
   get :search do
 
     @query = params[:q]
