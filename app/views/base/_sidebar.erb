@@ -9,11 +9,15 @@
 	<div class="hr small"><hr></div>
 	<div class="linkList">
 		<ul>
+		  
+			<li>
+			  <%= link_to "Show Services by Name", url(:services, :site_name) %>
+			</li>
 			<li>
 			  <%= link_to "Show Services by Type", url(:services, :service_types) %>
 			</li>
 			<li>
-			  <%= link_to "Suggest a Service", url(:services, :new) %>
+			  <%= link_to "Suggest or Update a Service", url(:services, :new) %>
 			</li>
 			<li><a href="http://hmsr152project.blogspot.com/" target="_blank">Visit our Blog</a></li>
 			<li><a href="mailto: hmsr152project@gmail.com">Contact Us</a></li>

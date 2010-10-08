@@ -185,7 +185,31 @@
 		list-style: disc inside;
 		line-height: 1.3em;
 	}
-	
+	/* allow room for 3 columns */
+  div.wrapper ul
+  {
+    width: 50em;
+  }
+
+  /* float & allow room for the widest item */
+  div.wrapper ul li
+  {
+    float: left;
+    width: 15em;
+    height: 2.5em;
+  }
+
+  /* stop the float */
+  div.wrapper br
+  {
+    clear: left;
+  }
+
+  /* separate the list from subsequent markup */
+  div.wrapper
+  {
+    margin-bottom: 1em;
+  }
 	ul {
 		list-style: disc inside;
 	}

@@ -8,7 +8,7 @@
         </div>
       <% end %>
 
-        <%# button_to "save", url(:carts, :add, :service => service.id), :method => :post, :class => :button_to, :remote => true %>
+      <%# button_to "save", url(:carts, :add, :service => service.id), :method => :post, :class => :button_to, :remote => true %>
 
       <% if service.address? %>
       <div class="address">
@@ -22,7 +22,7 @@
       <% end %>
   
       <% if service.website? %>
-        <div class="website"><em>Website:</em> <%= service.website %></div>
+        <div class="website"><em>Website:</em> <a target="new" href="<%= service.website %>"><%= service.website %></a></div>
       <% end %>
   
       <% if service.primary_service? %>
@@ -53,7 +53,7 @@
         <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
       <% end %>
 
-      <% if service.lat && service.lng  %>
+      <% if service.lat && service.lng %>
         <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="16"></div>
       <% end %>
   
