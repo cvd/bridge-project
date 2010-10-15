@@ -37,7 +37,12 @@ Bridge.controllers :services do
   
   get :service_types do
     service_types = Service.service_types
-    erb :"services/types", :locals => {:service_types => service_types}    
+    if request.xhr?
+      content_type :json
+      return service_types.to_json
+    else
+      erb :"services/types", :locals => {:service_types => service_types}    
+    end
   end
 
   get :list, :map => "/list_type/?" do

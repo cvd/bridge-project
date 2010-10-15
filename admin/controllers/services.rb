@@ -43,6 +43,11 @@ Admin.controllers :services do
     render 'services/new'
   end
 
+  get :selector do
+    @service = Service.new
+    render 'services/selector'
+  end
+
   get :pending do
     @services = Service.where(:status => "pending")
     render 'services/pending'
@@ -83,7 +88,7 @@ Admin.controllers :services do
       render 'services/edit'
     end
   end
-
+    
   delete :destroy, :with => :id do
     service = Service.find(params[:id])
     service.destroy

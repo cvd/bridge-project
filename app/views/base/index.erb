@@ -23,7 +23,7 @@
                   <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="teen services"/>Teen Services          </label></li>
                 </ul> -->
                  <div class="wrapper">
-              		<ul style="list-style-type:none;">
+              		<ul class="service-types">
                 		<% Service.service_types.each do |type| %>
                 		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
             		    <% end %>

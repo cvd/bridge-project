@@ -1,7 +1,5 @@
 // Put your application scripts here
 
-
-
 $(document).ready(function(){
 
   function addMarker (latLng, map, i){
@@ -88,5 +86,24 @@ $(document).ready(function(){
     });
     return false;
   });
+
+  $(".autocomplete-selector").each(function(){
+    var selected = [];
+    $.get("/services/service_types", function(r){
+      $('.autocomplete-selector')
+        .autocomplete({
+           source: r, 
+           minLength: 0,
+           select: function(event, ui) { 
+             if(selected.indexOf(this.value)) selected.push(this.value); 
+             console.log(selected);
+             var span = "<span  class=\"ui-widget-header ui-corner-all\" style=\"padding: 4px; margin-left: 4px;\">";
+             
+             $(".selected").html(span + selected.join("</span>" + span) + "</span>");
+           }
+         });
+    }, 'json');    
+  })
+  
   
 });

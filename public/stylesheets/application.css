@@ -207,3 +207,13 @@ div.inner table tr th.last{
   font-weight: bold; 
   padding-top: 4px;
 }
+#index-search div.wrapper ul.service-types{
+  list-style-type: none; 
+  margin-left: 0pt;
+}
+#index-search div.wrapper ul.service-types li{
+  float: left;
+  width: 15em;
+  height: 2.25em;
+  white-space: nowrap;
+}
