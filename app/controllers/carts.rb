@@ -1,7 +1,8 @@
 Bridge.controllers :carts do
   get :add do
-    logger.debug("I made it!: #{session[:cart]}")
-    @cart = Cart.find(BSON.ObjectId(session[:cart].to_s))
+    # logger.debug("I made it!: #{session[:cart]}")
+    # logger.debug(session[:cart].to_s)
+    @cart = Cart.find(BSON.ObjectId(session[:cart].to_s)) if session[:cart]
     if @cart.nil?
       @cart = Cart.new
       session[:cart] = @cart.id.to_s
