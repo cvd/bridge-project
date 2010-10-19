@@ -116,6 +116,8 @@ div.paginate ul.page-list li.page.active{
 form label {
   font-weight:bold;
   padding-bottom:2px;
+  text-indent: -2em;
+  padding-left: 2em;
 }
 
 .inner {
