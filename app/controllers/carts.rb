@@ -1,33 +1,33 @@
 Bridge.controllers :carts do
   get :add do
-    # logger.debug("I made it!: #{session[:cart]}")
-    # logger.debug(session[:cart].to_s)
+    
     @cart = Cart.find(BSON.ObjectId(session[:cart].to_s)) if session[:cart]
     if @cart.nil?
       @cart = Cart.new
       session[:cart] = @cart.id.to_s
     end
-    logger.info("Cart: #{@cart.inspect}")
-    @cart.collected_services << params[:service]
-    logger.debug(@cart.inspect)
-    return { :success => @cart.save, :cart => session[:cart] }.to_json    
+    @cart.collected_services << params[:service] unless @cart.collected_services.include? params[:service]
+    return { :success => @cart.save, :cart => @cart.collected_services }.to_json    
+    # content_type :js
+    # return render :"carts/add"
   end
   
   post :clear do
-    @cart = Cart.find(BSON::ObjectID(session[:cart]))
-    @cart.collected_services = []
-    return {:success => @cart.save, :cart => session[:cart]}.to_json
+    session[:cart] = nil
+    # @cart = Cart.find(BSON::ObjectID(session[:cart]))
+    # @cart.collected_services = []
+    # return {:success => @cart.save, :cart => session[:cart]}.to_json
+    return {:cleared => true}.to_json
   end
   
   get :show do 
     @cart = Cart.find(BSON::ObjectId(session[:cart].to_s))
-    puts @cart.inspect
     service_ids = @cart.collected_services
     if service_ids.length > 0
       @services = Service.find(service_ids)
     end
-    
-    render :"services/cart"
+    @print = true
+    render :"services/cart", :layout => false
   end
   
 end

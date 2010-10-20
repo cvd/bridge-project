@@ -1,5 +1,4 @@
 // Put your application scripts here
-
 $(document).ready(function(){
 
   function addMarker (latLng, map, i){
@@ -18,6 +17,8 @@ $(document).ready(function(){
 
     latLng = new google.maps.LatLng(lat,lng);
     var myOptions = {
+      streetViewControl: false,
+      mapTypeControl: false,
       center: latLng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -51,6 +52,7 @@ $(document).ready(function(){
     else{
       map.fitBounds(bounds);
     }
+    GLOB = map;
   });  
 
   $('select ~ .select-other').prev().change(function (){
@@ -76,16 +78,23 @@ $(document).ready(function(){
 
   $('[confirm=true]').click(confirmSubmit);//.submit(confirmSubmit);
   
-  $('[data-remote=true]').click(function(){
-    var url = $(this).attr('action');
-    var method = $(this).attr('method');
+  $('.add-to-list form[data-remote=true]').click(function(e){
+    $this = $(this);
+    var url = $this.attr('action') + "?";
+    url += $this.serialize();
+    var method = $this.attr('method');
+    method = method || "get";
     $.ajax({
       method: method,
       url: url,
-      success: function(){alert("I'm Back!"); }
+      success: function(){ 
+        $this.slideUp();
+        $('.add-to-list .added-holder').slideDown();
+      },
+      error: function(){ alert('Error adding service to list');}
     });
-    return false;
-  });
+    e.preventDefault();
+  }).find('button').button().click(function(){});
 
   $(".autocomplete-selector").each(function(){
     var selected = [];

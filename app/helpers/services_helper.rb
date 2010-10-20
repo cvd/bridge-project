@@ -24,4 +24,14 @@ Bridge.helpers do
   def query_url
     
   end
+  def printing?
+    @print ||= false
+  end
+  
+  def cart_items
+    if session[:cart]
+      return Cart.find(session[:cart]).collected_services
+    end
+    return []
+  end
 end

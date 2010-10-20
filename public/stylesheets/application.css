@@ -61,6 +61,7 @@
 }
 #search-result .paginate{
   font-size: 15px;
+  padding: 0 10px;
 }
 
 .page-status{
@@ -218,4 +219,12 @@ div.inner table tr th.last{
   width: 15em;
   height: 2.25em;
   white-space: nowrap;
+}
+
+.add-to-list .added {
+  padding: 4px;
+  line-height: 2em;
+}
+.add-to-list button{
+  font-size: .8em;
 }
