@@ -78,6 +78,13 @@ $(document).ready(function(){
 
   $('[confirm=true]').click(confirmSubmit);//.submit(confirmSubmit);
   
+  $("button.remove-from-list").click(function(){
+    var button = this;
+    var serviceId = $(this).attr('service-id');
+    $.post('/carts/remove', {id: serviceId}, function(){ $(button).parents('.service-holder').slideUp().remove();})
+  });
+  
+  
   $('.add-to-list form[data-remote=true]').click(function(e){
     $this = $(this);
     var url = $this.attr('action') + "?";
@@ -113,6 +120,11 @@ $(document).ready(function(){
          });
     }, 'json');    
   })
+  
+  $('button.show-list-view').button().click(function(e){
+    e.preventDefault();
+    window.open("/carts/show");
+  });
   
   
 });

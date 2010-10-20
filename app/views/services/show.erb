@@ -1,4 +1,4 @@
-<div id="contentMain" class="full">
+<div id="contentMain" class="service-holder full">
 	<div class="hr"><hr /></div>
     <div class="service-display mapable" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>">
 
@@ -13,6 +13,10 @@
               <button class="to_button save-to-list">Save to List</button>            
             </form>            
           <% end %>
+        </div>
+      <% else %>
+        <div class="remove-from-list-holder">
+          <button class="remove-from-list" service-id="<%= service.id.to_s %>" title="Remove this service from your list (this button won't appear when printing)">Remove from list</button>
         </div>
       <% end %>
 

@@ -228,3 +228,7 @@ div.inner table tr th.last{
 .add-to-list button{
   font-size: .8em;
 }
+
+.remove-from-list-holder{
+  float: right;
+}

@@ -27,7 +27,15 @@ Bridge.controllers :carts do
       @services = Service.find(service_ids)
     end
     @print = true
-    render :"services/cart", :layout => false
+    render :"services/cart", :layout => :"layouts/print"
+  end
+  
+  post :remove do
+    id = params[:id]
+    @cart = Cart.find(BSON::ObjectId(session[:cart].to_s))
+    @cart.collected_services.delete_if {|a| a == id.to_s } 
+    @cart.save
+    return {:success => true}.to_json
   end
   
 end
