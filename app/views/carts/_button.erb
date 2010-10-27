@@ -1,6 +1,7 @@
-<div class="right">
-  <% if session[:cart] %>
-    <!-- <a class="show" onclick="window.open('')">Print list</a> -->
+<div class="show-list-holder right">
+  <% if empty_cart? %>
+    <button class="show-list-view hide" href="/carts/show">Print List</button>
+  <% else %>
     <button class="show-list-view" href="/carts/show">Print List</button>
   <% end %>
 </div>

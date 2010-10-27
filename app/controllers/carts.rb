@@ -23,9 +23,7 @@ Bridge.controllers :carts do
   get :show do 
     @cart = Cart.find(BSON::ObjectId(session[:cart].to_s))
     service_ids = @cart.collected_services
-    if service_ids.length > 0
-      @services = Service.find(service_ids)
-    end
+    @services = Service.find(service_ids)
     @print = true
     render :"services/cart", :layout => :"layouts/print"
   end

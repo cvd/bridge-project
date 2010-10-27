@@ -875,7 +875,7 @@
 	#container #contentWrapperShadow #contentWrapper #contentNav, 
 	#container #contentWrapperShadow #contentWrapper #contentMain,
 	#container #contentWrapperShadow #contentWrapper #contentRelated {
-		margin-top: 2.0em;
+/*    margin-top: 2.0em;*/
 	}
 	
 	#container #contentWrapperShadow #contentWrapper #contentMain {
@@ -886,7 +886,8 @@
 	
 	#container #contentWrapperShadow #contentWrapper #contentMain.full {
 		width: 700px;
-		margin: 2.0em 0 0 0;
+/*    margin: 2.0em 0 0 0;*/
+  margin: 0;
 	}
 	
 	#container #contentWrapperShadow #contentWrapper #contentMain .pagination {

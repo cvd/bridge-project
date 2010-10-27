@@ -218,7 +218,7 @@ div.inner table tr th.last{
   float: left;
   width: 15em;
   height: 2.25em;
-  white-space: nowrap;
+/*  white-space: nowrap;*/
 }
 
 .add-to-list .added {

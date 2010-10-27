@@ -34,13 +34,13 @@ class Service
   before_save :set_services
   
   def clean_services
+    # cleaning up some common mispellings
       self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
       self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
   end
   
   def set_services
-    self.services = []
-    
+    self.services = []    
     self.services << self.primary_service.strip.downcase rescue nil
     self.services << self.secondary_service.strip.downcase rescue nil
   end  
@@ -54,10 +54,7 @@ class Service
     self.name_parts = site_name.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
     self.name_parts.delete_if {|term| USELESS_TERMS.include? term}
   end
-  
-  def calculate_search_relavance
-    @search_relevance = 1
-  end
+
   scope :search,  lambda { |search_term| where(:status => "active", :search_terms => search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq) }
   
   def rank_search(search_term)
@@ -66,6 +63,8 @@ class Service
     search_rank_array =  search_array & search_terms.uniq
     @rank = search_rank_array.length
   end
+  
+  scope :pending, lambda { where(:status => "pending") }
 
   def self.service_types_old
     all_services = all

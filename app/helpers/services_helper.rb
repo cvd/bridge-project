@@ -34,4 +34,12 @@ Bridge.helpers do
     end
     return []
   end
+
+  def empty_cart?
+    if session[:cart]
+      return Cart.find(session[:cart]).collected_services.empty?
+    end
+    return false
+  end
+  
 end

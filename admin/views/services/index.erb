@@ -1,9 +1,10 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first active"><%= link_to pat(:list), url(:services, :index) %></li>
-      <li><%= link_to pat(:new), url(:services, :new) %></li>
-      <li><%= link_to "Pending", url(:services, :pending) %></li>      
+      <li class="first active"><%= link_to "List", url(:services, :index) %></li>
+      <li><%= link_to "New", url(:services, :new) %></li>
+      <% pending_count = Service.pending.count %>
+      <li><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>      
     </ul>
   </div>
   <div class="content">

@@ -97,6 +97,7 @@ $(document).ready(function(){
       success: function(){ 
         $this.slideUp();
         $('.add-to-list .added-holder').slideDown();
+        $(".show-list-view").show();
       },
       error: function(){ alert('Error adding service to list');}
     });
