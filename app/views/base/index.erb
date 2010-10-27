@@ -12,7 +12,7 @@
           		  <li class="name-search" style="padding-bottom: 4px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
           		  <li>Filter by Service Type:</li>
                  <div class="wrapper">
-              		<ul class="service-types">
+              		<ul class="service-types" id="service-types-list" style="list-style: none;">
                 		<% Service.service_types.each do |type| %>
                 		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
             		    <% end %>
