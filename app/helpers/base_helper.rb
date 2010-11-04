@@ -9,4 +9,12 @@ Bridge.helpers do
     @start = (@page - 1) * @per_page
     @end = @start + @per_page - 1
   end
+  
+  def empty_cart?
+    if session[:cart]
+      return Cart.find(session[:cart]).collected_services.empty?
+    end
+    return false
+  end
+  
 end
