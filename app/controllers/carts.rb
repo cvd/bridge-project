@@ -1,6 +1,5 @@
 Bridge.controllers :carts do
   get :add do
-    
     @cart = Cart.find(BSON.ObjectId(session[:cart].to_s)) if session[:cart]
     if @cart.nil?
       @cart = Cart.new
@@ -8,15 +7,10 @@ Bridge.controllers :carts do
     end
     @cart.collected_services << params[:service] unless @cart.collected_services.include? params[:service]
     return { :success => @cart.save, :cart => @cart.collected_services }.to_json    
-    # content_type :js
-    # return render :"carts/add"
   end
   
   post :clear do
     session[:cart] = nil
-    # @cart = Cart.find(BSON::ObjectID(session[:cart]))
-    # @cart.collected_services = []
-    # return {:success => @cart.save, :cart => session[:cart]}.to_json
     return {:cleared => true}.to_json
   end
   
@@ -25,6 +19,7 @@ Bridge.controllers :carts do
     service_ids = @cart.collected_services
     @services = Service.find(service_ids)
     @print = true
+    @title = "Print Saved Services - The BRIDGE Project DC"
     render :"services/cart", :layout => :"layouts/print"
   end
   

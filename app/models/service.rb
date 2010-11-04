@@ -70,13 +70,11 @@ class Service
     all_services = all
     types = all_services.map(&:primary_service)
     types  += all_services.map(&:secondary_service)
-    # puts types.uniq.inspect
     types.delete_if(&:nil?).map(&:capitalize).map(&:strip).uniq.delete_if(&:empty?).sort
   end
 
   def self.service_types
     types = fields(:services).map(&:services).flatten
-    # puts types.uniq.inspect
     types.delete_if(&:nil?).map(&:strip).uniq.delete_if(&:empty?).sort
   end
   
@@ -90,7 +88,7 @@ class Service
   end
   
   def geocode
-    return if self.lat && self.lng
+    # return if self.lat && self.lng
     url = "http://maps.google.com/maps/api/geocode/json?"
     geocode_address = URI.escape(full_address)
     r = RestClient.get(url + "address="+geocode_address+"&sensor=false")

@@ -2,7 +2,7 @@
 Bridge.controllers :services do
   get :show, :with => :id do    
     service = Service.find(BSON::ObjectID(params[:id]))
-    # logger.debug(service.inspect)
+    @title = service.site_name + " - The BRIDGE Project DC"
     erb :"services/show", :locals => {:service => service, :show_map => true}
   end
   
@@ -16,27 +16,24 @@ Bridge.controllers :services do
       query_string_parts << "#{k.to_s.capitalize}: #{value}"
     end
     @query_string = query_string_parts.join(", ")
-
-    # puts params.inspect
     
     if params[:service][:name]
       params[:service][:name_parts] = params[:service][:name].gsub(Service::PUNCTUATION, " ").downcase.split.uniq#.map(&strip)
       params[:service].delete('name')
       logger.debug("params[:service][:name_parts]: #{params[:service][:name_parts].inspect}")
     end
-      
-    logger.debug(params[:service].inspect)
-    paginate!    
+    paginate!
     @services = Service.where(params[:service]).paginate(:per_page => @per_page, :page => @page)
-    
+
     @total_pages = @services.total_pages
     @current_page = @services.current_page
-    
+    @title = @query_string + " - The BRIDGE Project DC"
     render :"services/advanced_result"
   end
   
   get :service_types do
     service_types = Service.service_types
+    @title = "The BRIDGE Project DC: List Services by type"
     if request.xhr?
       content_type :json
       return service_types.to_json
@@ -49,6 +46,7 @@ Bridge.controllers :services do
     if params[:q] && params[:type].nil?
       params[:type] = params[:q]
     end
+    @title = "List Services by type: #{params[:type]} - The BRIDGE Project DC"
     paginate!
     @services = Service.where(:services => params[:type].downcase, :status => "active").paginate(:per_page => @per_page, :page => @page)
     @route = "/list_type"
@@ -81,7 +79,8 @@ Bridge.controllers :services do
   
   post :search, :map => "/search" do
     @query = params[:q]
-    @route = "/search"    
+    @route = "/search" 
+    @title = params[:q] + " - The BRIDGE Project DC"
     paginate!
     
     @services = Service.search(@query).all

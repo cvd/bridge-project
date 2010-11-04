@@ -111,12 +111,15 @@ $(document).ready(function(){
         .autocomplete({
            source: r, 
            minLength: 0,
+           close: function(){
+              // $(this).value("");
+           },
            select: function(event, ui) { 
              if(selected.indexOf(this.value)) selected.push(this.value); 
-             console.log(selected);
+             console.log(selected, ui);
              var span = "<span  class=\"ui-widget-header ui-corner-all\" style=\"padding: 4px; margin-left: 4px;\">";
-             
              $(".selected").html(span + selected.join("</span>" + span) + "</span>");
+             // return true;``
            }
          });
     }, 'json');    

@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <META NAME="Description" CONTENT="<%= service.site_name %>. <%= service.description %>" />
+<% end %>
+
 <div id="contentMain" class="service-holder full">
 	<div class="hr"><hr /></div>
     <div class="service-display mapable" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>">

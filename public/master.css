@@ -165,3 +165,7 @@ body #container #contentWrapperShadow div#contentWrapper div#contentMain.limited
 body #container #contentWrapperShadow div#contentWrapper #contentColumns{
   width: 100%;
 }
+
+.service-display em{
+  font-weight: bold;
+}

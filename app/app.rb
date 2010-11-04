@@ -31,6 +31,9 @@ class Bridge < Padrino::Application
   ##
   # You can manage errors like:
   #
+  before do
+    @title = "The BRIDGE Project DC"
+  end
     error 404 do
       render :"errors/404"
     end
