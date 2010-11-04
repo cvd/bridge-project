@@ -33,7 +33,7 @@ Bridge.controllers :services do
   
   get :service_types do
     service_types = Service.service_types
-    @title = "The BRIDGE Project DC: List Services by type"
+    @title = "List Services by type - The BRIDGE Project DC"
     if request.xhr?
       content_type :json
       return service_types.to_json
