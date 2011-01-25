@@ -33,14 +33,14 @@
       <% end %>
 
       <% if service.address? %>
-      <div class="address">
-        <div><%= service.address %></div>
-        <div><%= service.city %> <%= service.state %> <%= service.zip %> 
-          <% unless printing? %>
-            - <span class="directions-url"><a href="<%= service.google_maps_url %>" target="_blank">Get Directions</a></span>
-          <% end %>
+        <div class="address">
+          <div><%= service.address %></div>
+          <div><%= service.city %> <%= service.state %> <%= service.zip %> 
+            <% unless printing? %>
+              - <span class="directions-url"><a href="<%= service.google_maps_url %>" target="_blank">Get Directions</a></span>
+            <% end %>
+          </div>
         </div>
-      </div>
       <% end %>
   
       <% if service.phone? %>

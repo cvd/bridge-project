@@ -10,11 +10,12 @@ Bridge.helpers do
     @end = @start + @per_page - 1
   end
   
-  def empty_cart?
-    if session[:cart]
-      return Cart.find(session[:cart]).collected_services.empty?
-    end
-    return false
-  end
+  # def empty_cart?
+  #   puts "session[:cart]: #{session[:cart].inspect}"
+  #   if session[:cart].nil?
+  #     return Cart.find(session[:cart]).collected_services.empty?
+  #   end
+  #   return false
+  # end
   
 end

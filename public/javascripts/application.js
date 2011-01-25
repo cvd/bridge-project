@@ -129,6 +129,8 @@ $(document).ready(function(){
     e.preventDefault();
     window.open("/carts/show");
   });
-  
+  if($('button.show-list-view').hasClass("hide")){
+    $('button.show-list-view').hide()
+  };
   
 });

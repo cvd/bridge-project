@@ -232,3 +232,7 @@ div.inner table tr th.last{
 .remove-from-list-holder{
   float: right;
 }
+
+.hide{
+  display: none;
+}

@@ -34,12 +34,17 @@ Bridge.helpers do
     end
     return []
   end
-
+  
+  def clear_old_sessions
+    Cart.where(:updated_at.lt => (Time.now-24000)).map(&:delete)
+  end
+  
   def empty_cart?
+        puts "session[:cart]: #{session[:cart].inspect}"
     if session[:cart]
       return Cart.find(session[:cart]).collected_services.empty?
     end
-    return false
+    return true
   end
   
 end

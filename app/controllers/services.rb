@@ -1,7 +1,8 @@
 
 Bridge.controllers :services do
   get :show, :with => :id do    
-    service = Service.find(BSON::ObjectID(params[:id]))
+    puts "params[:id]: #{params[:id]}"
+    service = Service.find(BSON::ObjectId(params[:id]))
     @title = service.site_name + " - The BRIDGE Project DC"
     erb :"services/show", :locals => {:service => service, :show_map => true}
   end

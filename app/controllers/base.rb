@@ -9,4 +9,9 @@ Bridge.controllers :base do
     render "base/about"
   end
   
+  get :clear_sessions, :map => "/clear_old_sessions" do
+    if params[:key] == 'awesome_secret_key'
+      clear_old_sessions
+    end
+  end
 end
