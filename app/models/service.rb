@@ -25,14 +25,17 @@ class Service
   key :search_terms, Array, :default => []
   key :status, String, :default => "active"
   key :services, Array, :default => []
+  key :site_contact_name, String
+  key :site_contact_email, String
+  key :site_contact_phone, String
+
   timestamps!
 
   validates_presence_of :site_name, :address, :city, :state
-  before_save :create_search_terms
-  before_save :clean_services
-  before_save :geocode
-  before_save :set_services
-  
+  before_save :create_search_terms, :clean_services, :geocode, :uniq_services #, :set_services
+   def uniq_services
+     self.services.uniq!
+   end
   def clean_services
     # cleaning up some common mispellings
       self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
@@ -55,7 +58,12 @@ class Service
     self.name_parts.delete_if {|term| USELESS_TERMS.include? term}
   end
 
-  scope :search,  lambda { |search_term| where(:status => "active", :search_terms => search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq) }
+  scope :search,  lambda { |search_term| where(:status => "active", :search_terms => cleaned_search_terms) }
+  scope :pending, lambda { where(:status => "pending") }
+  
+  def cleaned_search_terms
+    search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
+  end
   
   def rank_search(search_term)
     @rank = 0    
@@ -64,7 +72,6 @@ class Service
     @rank = search_rank_array.length
   end
   
-  scope :pending, lambda { where(:status => "pending") }
 
   def self.service_types_old
     all_services = all
@@ -75,7 +82,7 @@ class Service
 
   def self.service_types
     types = fields(:services).map(&:services).flatten
-    types.delete_if(&:nil?).map(&:strip).uniq.delete_if(&:empty?).sort
+    types.compact.map(&:strip).uniq.delete_if(&:empty?).sort
   end
   
   def full_address
@@ -88,7 +95,6 @@ class Service
   end
   
   def geocode
-    # return if self.lat && self.lng
     url = "http://maps.google.com/maps/api/geocode/json?"
     geocode_address = URI.escape(full_address)
     r = RestClient.get(url + "address="+geocode_address+"&sensor=false")

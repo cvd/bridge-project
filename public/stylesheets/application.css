@@ -236,3 +236,34 @@ div.inner table tr th.last{
 .hide{
   display: none;
 }
+
+.selected .ui-widget-header{
+  margin-left: 4px;
+  padding: 4px 20px 4px 4px;
+  position: relative;
+}
+
+.selected .ui-widget-header .ui-icon{
+  position: absolute;
+  top: 4px;
+  right: 3px;
+  cursor: pointer;
+}
+.ui-autocomplete.ui-menu{
+  height: 200px;
+  overflow: auto;  
+}
+form .person p {
+  margin: 10px 15px;
+}
+form.form .person h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.ui-icon-container{
+  margin: 1px 4px;
+  cursor: pointer;
+}
+form.form button.add{
+  font-size: 10px;
+}

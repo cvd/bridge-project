@@ -86,7 +86,7 @@ $(document).ready(function(){
   
   
   $('.add-to-list form[data-remote=true]').click(function(e){
-    $this = $(this);
+    var $this = $(this);
     var url = $this.attr('action') + "?";
     url += $this.serialize();
     var method = $this.attr('method');
@@ -104,27 +104,69 @@ $(document).ready(function(){
     e.preventDefault();
   }).find('button').button().click(function(){});
 
-  $(".autocomplete-selector").each(function(){
-    var selected = [];
+  function removeService(){
+    $(this).parents(".single-service").remove();
+    var i = selected.indexOf("affordable/transitional housing");
+    selected.pop(i);
+  }
+  function addRemoveHandler(el){
+    el.find(".remove-service").click(removeService);
+  }
+  function formatService(service){
+    var x = "<span class=\"ui-icon ui-icon-circle-close remove-service\"></span>";
+    var html = "<p class='single-service'><span class=\"ui-widget-header ui-corner-all\">" + service + x + "</span></p>";
+    var input  = $("<input type='hidden' name='service[services][]' />").val(service);
+    html = $(html);
+    html.find(".remove-service").click(removeService);
+    html.data('service', service);
+    html.append(input);
+    return html;
+  }
+  function addService(item){
+    if(selected.indexOf(item.value)){
+      selected.push(item.value); 
+      var service = item.value;
+      var html = formatService(service);
+      $(".selected").append(html);
+    }
+  }
+  function gatherServices(){
+    $(".single-service").each(function(e){
+      var $this = $(this);
+      addRemoveHandler($this);
+      selected.push($this.data("service"));
+    });
+  }
+
+  selected = [];
+  if($(".autocomplete-selector").length > 0){
+    gatherServices(); //from page...
+    //find and setup the show all button
+    var showAll = $(".show-all-services");
+    showAll.click(function(e){
+      var event = $.extend(true, e, {KeyCode: $.ui.keyCode.DOWN});
+      $(".autocomplete-selector").val('');
+      $('.autocomplete-selector').trigger("keydown.autocomplete", event);
+    });
+    //setup the add button
+    $("#autocompleting-selector button.add").click(function(e){
+      e.preventDefault();
+      var completer = $('.autocomplete-selector');
+      var s = completer.val();
+      if(s=="") return;
+      addService({value: s});
+      $(completer).val("");
+    }).button();
+    
     $.get("/services/service_types", function(r){
       $('.autocomplete-selector')
         .autocomplete({
            source: r, 
            minLength: 0,
-           close: function(){
-              // $(this).value("");
-           },
-           select: function(event, ui) { 
-             if(selected.indexOf(this.value)) selected.push(this.value); 
-             console.log(selected, ui);
-             var span = "<span  class=\"ui-widget-header ui-corner-all\" style=\"padding: 4px; margin-left: 4px;\">";
-             $(".selected").html(span + selected.join("</span>" + span) + "</span>");
-             // return true;``
-           }
+           delay: 0,
          });
-    }, 'json');    
-  })
-  
+    }, 'json');
+  }
   $('button.show-list-view').button().click(function(e){
     e.preventDefault();
     window.open("/carts/show");

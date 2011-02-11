@@ -77,6 +77,24 @@
   <%= f.text_field :restrictions, :class => :text_field %>
 </div>
 
+<div class="person">
+  <h3>Site Contact Person:</h3>
+  <p>
+  <%= f.label :site_contact_name %><%= f.error_message_on :site_contact_name %>
+  <%= f.text_field :site_contact_name, :class => :text_field %>
+  </p>
+
+  <p>
+  <%= f.label :site_contact_email %><%= f.error_message_on :site_contact_email %>
+  <%= f.text_field :site_contact_email, :class => :text_field %>
+  </p>
+
+  <p>
+  <%= f.label :site_contact_phone %><%= f.error_message_on :site_contact_phone %>
+  <%= f.text_field :site_contact_phone, :class => :text_field %>
+  </p>
+</div>
+
 
 <%= f.hidden_field :status, :value => "pending"%>
 

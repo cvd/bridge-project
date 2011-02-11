@@ -45,6 +45,7 @@ Admin.controllers :services do
 
   get :selector do
     @service = Service.new
+    @service.services += ["Child Care", "Advocacy"]
     render 'services/selector'
   end
 
@@ -80,6 +81,7 @@ Admin.controllers :services do
   end
 
   put :update, :with => :id do
+    puts params.inspect
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
       flash[:notice] = 'Service was successfully updated.'
