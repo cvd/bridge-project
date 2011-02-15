@@ -250,7 +250,7 @@ div.inner table tr th.last{
   cursor: pointer;
 }
 .ui-autocomplete.ui-menu{
-  height: 200px;
+  max-height: 200px;
   overflow: auto;  
 }
 form .person p {
