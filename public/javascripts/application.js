@@ -81,7 +81,9 @@ $(document).ready(function(){
   $("button.remove-from-list").click(function(){
     var button = this;
     var serviceId = $(this).attr('service-id');
-    $.post('/carts/remove', {id: serviceId}, function(){ $(button).parents('.service-holder').slideUp().remove();})
+    $.post('/carts/remove', {id: serviceId}, function(){ 
+      $(button).parents('.service-holder').slideUp().remove();
+    });
   });
   
   
@@ -103,7 +105,10 @@ $(document).ready(function(){
     });
     e.preventDefault();
   }).find('button').button().click(function(){});
+});
 
+
+$(document).ready(function(){
   function removeService(){
     $(this).parents(".single-service").remove();
     var i = selected.indexOf("affordable/transitional housing");
@@ -123,7 +128,7 @@ $(document).ready(function(){
     return html;
   }
   function addService(item){
-    if(selected.indexOf(item.value)){
+    if(selected.indexOf(item.value)==-1){
       selected.push(item.value); 
       var service = item.value;
       var html = formatService(service);
@@ -134,7 +139,7 @@ $(document).ready(function(){
     $(".single-service").each(function(e){
       var $this = $(this);
       addRemoveHandler($this);
-      selected.push($this.data("service"));
+      selected.push($this.attr("data-service"));
     });
   }
 
@@ -142,9 +147,10 @@ $(document).ready(function(){
   if($(".autocomplete-selector").length > 0){
     gatherServices(); //from page...
     //find and setup the show all button
-    var showAll = $(".show-all-services");
+    var showAll = $("#show-all");
     showAll.click(function(e){
-      var event = $.extend(true, e, {KeyCode: $.ui.keyCode.DOWN});
+      // var event = $.extend(true, e, {KeyCode: $.ui.keyCode.DOWN});
+      var event = $.extend(true, e, {KeyCode: 65});
       $(".autocomplete-selector").val('');
       $('.autocomplete-selector').trigger("keydown.autocomplete", event);
     });
@@ -159,12 +165,11 @@ $(document).ready(function(){
     }).button();
     
     $.get("/services/service_types", function(r){
-      $('.autocomplete-selector')
-        .autocomplete({
-           source: r, 
-           minLength: 0,
-           delay: 0,
-         });
+      $('.autocomplete-selector').autocomplete({
+        source: r,
+        minLength: 0,
+        delay: 0
+      });
     }, 'json');
   }
   $('button.show-list-view').button().click(function(e){
