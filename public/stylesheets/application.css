@@ -267,3 +267,9 @@ form.form .person h3 {
 form.form button.add{
   font-size: 10px;
 }
+
+table.table td.last {
+    text-align: right;
+    width: 150px;
+}
+

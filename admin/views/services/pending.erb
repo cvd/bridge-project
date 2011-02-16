@@ -14,14 +14,18 @@
       <table class="table">
         <tr>
           <th class="first"><%= mat(:service, :site_name) %></th>
-          <th>Services</th>
-          <th><%= mat(:service, :secondary_service) %></th>
+          <th>Service Types</th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @services.each_with_index do |service, index| %>
         <tr>
           <td class="first"><%= service.site_name %></td>
-          <td><%= service.services.join(", ") %></td>
+          <td>
+            <% service.services.each do |type| %>
+              <%= type %> 
+              (<%= link_to "show", "#{url(:services, :type)}?service=#{type}" %>)
+            <% end %>
+          </td>
           <td class="last">
             <%= button_to "accept", url(:services, :activate, :id => service.id), :method => :post, :class => :button_to %> |            
             <%= button_to pat(:edit), url(:services, :edit, :id => service.id), :method => :get, :class => :button_to %> |
