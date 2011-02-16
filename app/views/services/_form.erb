@@ -3,20 +3,32 @@
   <%= f.text_field :site_name, :class => :text_field %>
 </div>
 
-<div class="group">
-  <% @service_types ||= Service.service_types.unshift('').push("Other") %>
-  <%= f.label :primary_service %><%= f.error_message_on :primary_service %>
-  <%= f.select :primary_service, :class => :select_field, :options => @service_types %>
-  <div class="select-other hide">
-    <%= f.text_field :primary_service, :class => :text_field, :disabled => true %>
-  </div>
-</div>
-
-<div class="group">
-  <%= f.label :secondary_service %><%= f.error_message_on :secondary_service %>
-  <%= f.select :secondary_service, :class => :select_field, :options => @service_types %>
-  <div class="select-other hide">
-    <%= f.text_field :secondary_service, :class => :text_field, :disabled => true %>
+<% @service_types ||= Service.service_types.unshift('').push("Other") %>
+<% content_for :head  do %>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/themes/start/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.js" type="text/javascript" charset="utf-8"></script>
+<% end %>
+<div class="group" id="autocompleting-selector">
+  <label>Services Provided:</label>
+  <p class="instruct">You may assign as many service types as you want to a site. Please type them in the box below and click add.
+  The box will show matching existing service types as you type. You may also press the down arrow in the box while it is empty 
+  to show all the existing service types.
+  </p>
+  
+  <input type="text" value="" class="autocomplete-selector left" size="50" />
+  <span class="ui-state-default ui-corner-all left ui-icon-container">
+    <span id="show-all" class="ui-icon ui-icon-circle-triangle-s show-all-services" title='Show all service types'></span>
+  </span>
+  <button class="add">Add</button>
+  <div class="selected" style="margin-top: 10px;">
+    <% @service.services.each do |service| %>
+      <p class='single-service' data-service="<%= service %>">
+        <span class="ui-widget-header ui-corner-all"><%= service %>
+          <span class="ui-icon ui-icon-circle-close remove-service"></span>
+        </span>
+        <input type='hidden' name='service[services][]' value="<%= service %>" />
+      </p>
+    <% end %>
   </div>
 </div>
 
