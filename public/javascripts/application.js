@@ -128,10 +128,10 @@ $(document).ready(function(){
     return html;
   }
   function addService(item){
-    if(selected.indexOf(item.value)==-1){
-      selected.push(item.value); 
-      var service = item.value;
-      var html = formatService(service);
+    var v = item.value;
+    if( selected.indexOf(v) == -1 ){
+      selected.push(v); 
+      var html = formatService(v);
       $(".selected").append(html);
     }
   }
@@ -143,7 +143,7 @@ $(document).ready(function(){
     });
   }
 
-  selected = [];
+  var selected = [];
   if($(".autocomplete-selector").length > 0){
     gatherServices(); //from page...
     //find and setup the show all button
