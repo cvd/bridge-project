@@ -6,7 +6,7 @@ Admin.controllers :services do
     @services = Service.sort(:site_name).paginate(:per_page => 25, :page => @page)
     @total_pages = @services.total_pages
     @current_page = @services.current_page
-    render 'services/index'
+    render 'services/index', :locals => {:list_title => "All Services"}
   end
   
   get :search do
@@ -28,13 +28,12 @@ Admin.controllers :services do
     @services.sort! {|a,b|b.rank<=>a.rank}
     @services = @services.slice!(@start..@end)
  
-    render 'services/index'
+    render 'services/index', :locals => {:list_title => "All Services"}
   end
 
   get :type do
     @type = params[:service].downcase
-    @services = Service.where(:services => @type)      
-    
+    @services = Service.where(:services => @type)
     render 'services/type'
   end
   
@@ -50,8 +49,19 @@ Admin.controllers :services do
   end
 
   get :pending do
-    @services = Service.where(:status => "pending")
-    render 'services/pending'
+    @page = params[:page] || 1
+    @services = Service.where(:status => "pending").paginate(:per_page => 25, :page => @page)
+    @total_pages = @services.total_pages
+    @current_page = @services.current_page
+    render 'services/index', :locals => {:list_title => "Pending Services"}
+  end
+
+  get :updated do
+    @page = params[:page] || 1
+    @services = Service.where(:status => "updated").paginate(:per_page => 25, :page => @page)
+    @total_pages = @services.total_pages
+    @current_page = @services.current_page
+    render 'services/index', :locals => {:list_title => "Updated Services"}
   end
 
   post :activate, :with => :id do
@@ -77,11 +87,17 @@ Admin.controllers :services do
 
   get :edit, :with => :id do
     @service = Service.find(params[:id])
-    render 'services/edit'
+    if @service.status == "updated"
+      @old_service = Service.find(@service.parent_service)
+      puts @service.parent_service
+      puts @old_service.inspect
+      render "services/update"
+    else
+      render 'services/edit'
+    end
   end
 
   put :update, :with => :id do
-    puts params.inspect
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
       flash[:notice] = 'Service was successfully updated.'
@@ -91,6 +107,18 @@ Admin.controllers :services do
     end
   end
     
+  put :update_modified, :with => :id do
+    #may want to rework this flow a bit so as to not ruing links by removing the 
+    #old one and replacing with the new one. fine for now though...
+    @service = Service.find(params[:id])
+    if @service.update_attributes(params[:service])
+      Service.find(params[:service][:parent_service]).update_attributes(:status => "void")
+      flash[:notice] = 'Service was successfully updated.'
+      redirect url(:services, :edit, :id => @service.id)
+    else
+      render 'services/edit'
+    end
+  end
   delete :destroy, :with => :id do
     service = Service.find(params[:id])
     service.destroy

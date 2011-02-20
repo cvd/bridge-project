@@ -1,0 +1,19 @@
+<div id="contentMain" class="full">
+	<div class="hr"><hr /></div>
+  <div class="flash">
+    <%#= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
+  </div>
+
+<div class="block">
+  <div class="content">
+    <h2 class="title">Update <%= service.site_name %></h2>
+    <div class="inner">
+      <div class="clear"></div>
+      <% form_for :service, url(:services, :update, :id => service.id), :method => :put, :class => :form do |f| %>
+        <%= partial "services/form", :locals => { :f => f } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+</div>

@@ -1,14 +1,17 @@
 <div class="block">
   <div class="secondary-navigation">
     <ul class="wat-cf">
-      <li class="first active"><%= link_to "List", url(:services, :index) %></li>
+      <li class="first <% if list_title == "All Services" %> active <% end %>"><%= link_to "List", url(:services, :index) %></li>
       <li><%= link_to "New", url(:services, :new) %></li>
       <% pending_count = Service.pending.count %>
-      <li><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>      
+      <% updated_count = Service.updated.count %>
+      
+      <li <% if list_title == "Pending Services" %> active <% end %>><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>
+      <li <% if list_title == "Updated Services" %> active <% end %>><%= link_to "Updated (#{updated_count})", url(:services, :updated) %></li>
     </ul>
   </div>
   <div class="content">
-    <h2 class="title left">All Services 
+    <h2 class="title left"><%= list_title %>  
       <span class="page-status">
         page <%= @current_page %> of <%= @total_pages %> <%=", Matching <em>#{@query.gsub(Service::PUNCTUATION, "").downcase.split.uniq.join(", ")}</em>" if @query %>
       </span>
@@ -24,9 +27,8 @@
     <div class="inner">
       <table class="table">
         <tr>
-          <th class="first"><%= mat(:service, :site_name) %></th>
-          <th><%= mat(:service, :primary_service) %></th>
-          <th><%= mat(:service, :secondary_service) %></th>
+          <th class="first">Site Name</th>
+          <th>Service Types</th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @services.each_with_index do |service, index| %>

@@ -14,7 +14,8 @@ Bridge.controllers :services do
 
   put :update, :with => :id do
     @service = Service.new(params["service"])
-    @service.parent_service = params["id"]
+    puts params.inspect
+    @service.parent_service = params[:id]
     @service.save
     @title = @service.site_name + " - The BRIDGE Project DC"
     erb :"services/updated", :locals => {:service => @service}

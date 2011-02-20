@@ -105,6 +105,9 @@ $(document).ready(function(){
     });
     e.preventDefault();
   }).find('button').button().click(function(){});
+
+
+  $('.modify-site input').button();
 });
 
 

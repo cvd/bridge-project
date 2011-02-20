@@ -60,6 +60,7 @@ class Service
 
   scope :search,  lambda { |term| where(:status => "active", :search_terms => cleaned_search_terms(term)) }
   scope :pending, lambda { where(:status => "pending") }
+  scope :updated, lambda { where(:status => "updated") }
   
   def cleaned_search_terms(search_term)
     search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq

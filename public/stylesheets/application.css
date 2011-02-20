@@ -90,7 +90,7 @@ img.marker{
 	color: #FFFFFF;
 	display: block;	
 }
-.content div.paginate ul.page-list li.page a:link, div.paginate ul.page-list li.page a:visited, div.paginate ul.page-list li.page a:hover, div.paginate ul.page-list li.page a:active{
+.content div.paginate ul.page-list li.page a:link, div.paginate ul.page-list li.page a:visited, div.paginate ul.page-list li.page a:hover, div.paginate ul.page-list li.page a:active {
 	color: #FFFFFF;
 	text-decoration: none;
 }
@@ -105,7 +105,7 @@ div.paginate ul.page-list li.page.active{
 }
 
 .form .group {
-	margin-bottom:15px;
+	margin-top:15px;
 	font-size: 12px;
 }
 
@@ -272,4 +272,10 @@ table.table td.last {
     text-align: right;
     width: 150px;
 }
-
+.site-updated{
+  float: left;
+  margin-top: 10px;
+}
+.modify-site{
+  margin-bottom: 10px;
+}

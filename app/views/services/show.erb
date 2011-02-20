@@ -84,7 +84,7 @@
       <% end %>
   
     </div>
-    <div>
-      <%= link_to "Modify This Site", url(:services, :update, :id => service.id) %>
+    <div class="modify-site">
+      <%= button_to "Modify This Site", url(:services, :update, :id => service.id), :method => "get" %>
     </div>
 </div>
