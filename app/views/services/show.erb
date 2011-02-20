@@ -10,12 +10,12 @@
         <div class="form add-to-list">
           <% if cart_items.include? service.id.to_s %>
             <span class="ui-state-default ui-corner-all added">Already in your list</span>
-          <% else %>            
+          <% else %>
             <div class="added-holder" style="display: none;"><span class="ui-state-active ui-corner-all added">Service added to your list</span></div>
             <form data-remote="true" action="/carts/add" method="post">
               <input type="hidden" value="<%= service.id.to_s %>" name="service"/>
               <button class="to_button save-to-list">Save to List</button>            
-            </form>            
+            </form>
           <% end %>
         </div>
       <% else %>
@@ -83,5 +83,8 @@
         <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="16"></div>
       <% end %>
   
+    </div>
+    <div>
+      <%= link_to "Modify This Site", url(:services, :update, :id => service.id) %>
     </div>
 </div>

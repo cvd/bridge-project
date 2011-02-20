@@ -4,7 +4,6 @@ class Service
   USELESS_TERMS = ["a", "the", "of", "it", "for", "is", "i", "to", "in", "be"]
   PUNCTUATION = Regexp.new("[>@!*~`;:<?,./;'\"\\)(*&^{}#]")
 
-  # SITE NAME,ADDRESS,QUADRANT,CITY,STATE,ZIP CODE,PHONE,HOURS,TRANSPORTATION,WEBSITE,PRIMARY SERVICE,SECONDARY SERVICE,Re2strictions
   key :site_name, String
   key :name_parts, Array
   key :address, String
@@ -28,6 +27,7 @@ class Service
   key :site_contact_name, String
   key :site_contact_email, String
   key :site_contact_phone, String
+  key :parent_service
 
   timestamps!
 
@@ -58,13 +58,16 @@ class Service
     self.name_parts.delete_if {|term| USELESS_TERMS.include? term}
   end
 
-  scope :search,  lambda { |search_term| where(:status => "active", :search_terms => cleaned_search_terms) }
+  scope :search,  lambda { |term| where(:status => "active", :search_terms => cleaned_search_terms(term)) }
   scope :pending, lambda { where(:status => "pending") }
   
-  def cleaned_search_terms
+  def cleaned_search_terms(search_term)
     search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
   end
   
+  def self.cleaned_search_terms(search_term)
+    search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
+  end
   def rank_search(search_term)
     @rank = 0    
     search_array = search_term.gsub(PUNCTUATION, "").downcase.split.uniq

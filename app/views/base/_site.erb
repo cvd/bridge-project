@@ -10,7 +10,9 @@
       <div class="city-state"><%= site.city %> <%= site.state %> <%= site.zip %></div>
     </div>
     <div class="primary-service">
-      <em>Primary Service: </em><%= site.primary_service %>
+      <em>
+        <%= site.services.join(", ") %>
+      </em>
     </div>
   </div>
   <div class="clear"></div>

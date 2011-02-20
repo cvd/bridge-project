@@ -20,7 +20,7 @@
             <% if p==@total_pages && @current_page != @total_pages %>
               <span><%= link_to ">>", url(:services, :advanced_search)+"/?#{@request_string}&page=#{@current_page+1}" %></span>            
             <% end %>
-          <% end %>          
+          <% end %>
         </div>
       </ul>
       <div id="map" data-lat="38.876067" data-lng="-77.036133" data-method="map" ></div>  
