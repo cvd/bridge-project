@@ -26,22 +26,30 @@ $(document).ready(function(){
 
     var bounds = new google.maps.LatLngBounds();
     $('.mapable').each(function(index, el){
-      var marker_lat, marker_lng, marker_latlng, marker, siteName, service;
+      var marker_lat, marker_lng, marker_latlng, marker, siteName, services;
       marker_lat = $(this).attr("data-lat");
       marker_lng = $(this).attr("data-lng");
       marker_latlng = new google.maps.LatLng(marker_lat, marker_lng);
       marker = addMarker(marker_latlng, map, index);
-      service = $(this).find('.primary-service').html();
+      services = $(this).attr("data-services").split(",");
       siteName = $(this).find('.site-name').html();
+      var directionsUrl = $(this).attr('data-directions');
       function showInfoWindow () {
-          var myHtml = '<div class="info-window"><div>' + siteName + '</div><div>' + service+'</div></div>';
+          var myHtml = '<div id="info-window"><div><strong>' + siteName + '</strong></div>';
+          myHtml += "<div><strong>Services Provided:</strong></div><ul class='services'>";
+          $(services).each(function(i, v){
+            myHtml+= "<li class='service'>"+v+"</li>";
+          });
+          myHtml += '</ul><a href="'+directionsUrl+'" target="_new">Get Directions</a>';
+          myHtml += '</div>';
+
           infoWindow.setContent(myHtml);
           infoWindow.open(map, marker);
           map.panTo(marker.getPosition());
           if(map.getZoom()!=13) map.setZoom(13);
       }
       google.maps.event.addListener(marker, 'click', showInfoWindow);
-      $(".marker", this).click(showInfoWindow);
+      $(".marker, .address, .primary-service", this).click(showInfoWindow);
       bounds.extend(marker_latlng);
     });
 
@@ -55,18 +63,7 @@ $(document).ready(function(){
     GLOB = map;
   });  
 
-  $('select ~ .select-other').prev().change(function (){
-    if($(this).val() == "Other"){
-      $(this).next('.select-other').show().find('input').attr('disabled', false).val("");
-    }
-    else{
-      $(this).next('.select-other').hide().find('input').attr('disabled', true);
-    }
-  });
   
-  $('[data-remote=true]').each(function(){
-    
-  });
 
   function confirmSubmit (argument) {
     var message = $(this).attr('data-confirm');

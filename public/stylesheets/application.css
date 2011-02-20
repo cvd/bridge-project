@@ -38,7 +38,7 @@
   width: 90%;
 }
 
-.info-window{
+#info-window{
   font-size: 12px;
   overflow: hidden;
 }
@@ -70,7 +70,7 @@
 .admin-search{
   margin: 19px;
 }
-img.marker{
+img.marker, .result {
   cursor: pointer;
 }
 
@@ -278,4 +278,20 @@ table.table td.last {
 }
 .modify-site{
   margin-bottom: 10px;
+}
+
+div#info-window ul.services {
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 2px;
+}
+#info-window {
+  max-width: 300px;
+}
+.service-display .description{
+  margin: 10px 20px;
+}
+.service-display div.address div.address-part{
+  margin-left: 20px;
+  margin-top: 4px;
 }

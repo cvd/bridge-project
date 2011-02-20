@@ -4,7 +4,7 @@
 
 <div id="contentMain" class="service-holder full">
 	<div class="hr"><hr /></div>
-    <div class="service-display mapable" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>">
+  <div class="service-display mapable" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-directions="<%= service.google_maps_url %>" data-services="<%= service.services.join(",") %>">
 
       <% unless printing? %>
         <div class="form add-to-list">
@@ -34,8 +34,9 @@
 
       <% if service.address? %>
         <div class="address">
-          <div><%= service.address %></div>
-          <div><%= service.city %> <%= service.state %> <%= service.zip %> 
+          <div><strong>Address:</strong></div>
+          <div class="address-part"><%= service.address %></div>
+          <div class="address-part"><%= service.city %> <%= service.state %> <%= service.zip %> 
             <% unless printing? %>
               - <span class="directions-url"><a href="<%= service.google_maps_url %>" target="_blank">Get Directions</a></span>
             <% end %>
@@ -51,15 +52,9 @@
         <div class="website"><em>Website:</em> <a target="new" href="<%= service.website %>"><%= service.website %></a></div>
       <% end %>
   
-      <% if service.primary_service? %>
+      <% if service.services? %>
         <div class="primary-service">
-          <em>Primary Service:</em> <%= service.primary_service %>
-        </div>
-      <% end %>
-  
-      <% if service.secondary_service? %>
-        <div class="secondary-service">
-          <em>Secondary Service:</em> <%= service.secondary_service %>
+          <em>Services Provided:</em> <%= service.services.join ", " %>
         </div>
       <% end %>
   
@@ -78,7 +73,11 @@
       <% if service.restrictions? %>
         <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
       <% end %>
-      
+
+      <div>
+        Service Last Updated: <%= service.updated_at.strftime "%m/%d/%Y" %>
+      </div>
+
       <% if service.lat && service.lng && !printing? %>
         <div class="map" data-method="map" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-zoom="16"></div>
       <% end %>
