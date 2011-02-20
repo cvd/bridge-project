@@ -5,7 +5,7 @@ GEM
     awesome_print (0.2.1)
     bacon (1.1.0)
     bson (1.1.5)
-    bson_ext (1.0.7)
+    bson_ext (1.1.5)
     daemons (1.1.0)
     eventmachine (0.12.10)
     git (1.2.5)
@@ -84,9 +84,11 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bacon
-  bson_ext
+  bson (= 1.1.5)
+  bson_ext (= 1.1.5)
   hashie
   json
+  mongo (= 1.1.5)
   mongo_mapper
   padrino (= 0.9.15)
   rack-flash

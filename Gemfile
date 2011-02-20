@@ -7,7 +7,9 @@ gem 'thin' # or mongrel
 
 # Component requirements
 gem 'mongo_mapper'
-gem 'bson_ext', :require => "mongo"
+gem 'mongo', "1.1.5", :require => "mongo"
+gem 'bson', "1.1.5"
+gem 'bson_ext', "1.1.5"
 
 # Test requirements
 gem 'bacon', :group => "test"
