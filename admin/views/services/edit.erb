@@ -15,7 +15,15 @@
       <% end %>
       <div>
         <% if @service.lat && @service.lng %>
-          <div class="mapable map" data-method="map" data-lat="<%= @service.lat %>" data-lng="<%= @service.lng %>" data-zoom="16"></div>
+          <div class="mapable" data-lat="<%= @service.lat %>" 
+            data-lng="<%= @service.lng %>" 
+            data-zoom="16" 
+            data-directions="<%= @service.google_maps_url %>" 
+            data-services="<%= @service.services.join(",") %>">
+            <span style="display: none;" class="site-name"><%= @service.site_name %></span>
+            <div class="map" data-method="map" ></div>
+          </div>
+          
         <% end %>
       </div>
       
