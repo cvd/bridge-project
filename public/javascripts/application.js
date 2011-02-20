@@ -129,7 +129,7 @@ $(document).ready(function(){
   }
   function addService(item){
     var v = item.value;
-    if( selected.indexOf(v) == -1 ){
+    if( $.inArray(v, selected) == -1 ){
       selected.push(v); 
       var html = formatService(v);
       $(".selected").append(html);
