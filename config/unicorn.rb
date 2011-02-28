@@ -1,4 +1,4 @@
-worker_processes 2
+worker_processes 4
 working_directory "/var/code/bridge-project/"
 
 # This loads the application in the master process before forking
