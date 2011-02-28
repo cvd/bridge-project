@@ -5,16 +5,19 @@
 <div id="contentMain" class="service-holder full">
 	<div class="hr"><hr /></div>
   <div class="service-display mapable" data-lat="<%= service.lat %>" data-lng="<%= service.lng %>" data-directions="<%= service.google_maps_url %>" data-services="<%= service.services.join(",") %>">
-
       <% unless printing? %>
         <div class="form add-to-list">
+          <span class="modify-site right">
+            <%= button_to "Modify This Site", url(:services, :update, :id => service.id), :method => "get" %>
+          </span>
+
           <% if cart_items.include? service.id.to_s %>
             <span class="ui-state-default ui-corner-all added">Already in your list</span>
           <% else %>
             <div class="added-holder" style="display: none;"><span class="ui-state-active ui-corner-all added">Service added to your list</span></div>
             <form data-remote="true" action="/carts/add" method="post">
               <input type="hidden" value="<%= service.id.to_s %>" name="service"/>
-              <button class="to_button save-to-list">Save to List</button>            
+              <button class="to_button save-to-list">Save to List</button>
             </form>
           <% end %>
         </div>
@@ -90,9 +93,4 @@
       <% end %>
   
     </div>
-    <% unless printing? %>
-      <div class="modify-site">
-        <%= button_to "Modify This Site", url(:services, :update, :id => service.id), :method => "get" %>
-      </div>
-    <% end %>
 </div>
