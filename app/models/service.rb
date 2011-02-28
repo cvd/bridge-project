@@ -28,6 +28,7 @@ class Service
   key :site_contact_email, String
   key :site_contact_phone, String
   key :parent_service
+  key :internal_notes, String
 
   timestamps!
 
