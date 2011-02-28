@@ -53,8 +53,15 @@
       <% end %>
   
       <% if service.services? %>
-        <div class="primary-service">
-          <em>Services Provided:</em> <%= service.services.join ", " %>
+        <div class="primary-service selected">
+          <div><em>Services Provided:</em></div>
+          <% service.services.each do |s| %>
+            <p class='single-service'>
+            <span class="ui-widget-header ui-corner-all">
+              <%= link_to s.capitalize, "/list_type?type=#{s}", :title => "Show All #{s.capitalize}" %>
+            </span>
+            </p>
+          <% end %>
         </div>
       <% end %>
   

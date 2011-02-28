@@ -295,3 +295,17 @@ div#info-window ul.services {
   margin-left: 20px;
   margin-top: 4px;
 }
+.service-display .single-service span{
+  font-size: 12px;
+  font-weight:bold;
+}
+.service-display .single-service{
+  margin-top: 4px;
+}
+.service-display .single-service a{
+  cursor: pointer;
+}
+
+.service-display .single-service a:hover{
+  text-decoration: none;
+}
