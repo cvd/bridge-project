@@ -40,7 +40,6 @@ Bridge.helpers do
   end
   
   def empty_cart?
-        puts "session[:cart]: #{session[:cart].inspect}"
     if session[:cart]
       return Cart.find(session[:cart]).collected_services.empty?
     end
