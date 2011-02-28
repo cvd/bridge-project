@@ -15,15 +15,17 @@ Bridge.controllers :carts do
   end
   
   get :show do 
+    @services = []
     unless session[:cart].nil?
-      @cart = Cart.find(BSON::ObjectId(session[:cart].to_s)) 
-      service_ids = @cart.collected_services
-      @services = Service.find(service_ids)
-    else
-      @services = []
+      @cart = Cart.find(BSON::ObjectId(session[:cart].to_s))
+      if @cart.nil?
+        session[:cart] = nil
+      else
+        service_ids = @cart.collected_services
+        @services = Service.find(service_ids)
+      end
     end
     @print = true
-    
     @title = "Print Saved Services - The BRIDGE Project DC"
     render :"services/cart", :layout => :"layouts/print"
   end

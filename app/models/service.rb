@@ -63,14 +63,18 @@ class Service
   scope :updated, lambda { where(:status => "updated") }
   
   def cleaned_search_terms(search_term)
-    search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
+    unless search_term.nil?
+      return search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
+    end
   end
   
   def self.cleaned_search_terms(search_term)
-    search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
+    unless search_term.nil?
+      return search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
+    end
   end
   def rank_search(search_term)
-    @rank = 0    
+    @rank = 0
     search_array = search_term.gsub(PUNCTUATION, "").downcase.split.uniq
     search_rank_array =  search_array & search_terms.uniq
     @rank = search_rank_array.length

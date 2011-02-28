@@ -22,7 +22,7 @@ Bridge.controllers :services do
   end
 
   get :advanced_search do
-    params[:service].delete_if {|k,v| v.empty?}
+    params[:service].delete_if {|k,v| v.empty?} unless params[:service].nil?
     # ap request.methods.sort
     @request_string =  request.query_string
     query_string_parts = []
