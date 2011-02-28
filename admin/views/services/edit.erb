@@ -10,7 +10,7 @@
   <div class="content">
     <h2 class="title"><%= pat(:edit) %> <% mt(:service) %></h2>
     <div class="inner">
-      <% form_for :service, url(:services, :update, :id => @service.id), :method => :put, :class => :form do |f| %>
+      <% form_for :service, url(:services, :update, :id => @service.id), :method => :put, :class => :form, :"accept-charset" => "UTF-8" do |f| %>
         <%= partial "services/form", :locals => { :f => f } %>
       <% end %>
       <div>

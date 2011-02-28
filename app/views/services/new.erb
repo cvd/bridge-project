@@ -8,7 +8,7 @@
   <div class="content">
     <h2 class="title">Suggest a Service</h2>
     <div class="inner">
-      <% form_for :service, url(:services, :create), :class => :form do |f| %>
+      <% form_for :service, url(:services, :create), :class => :form, :"accept-charset" => "UTF-8" do |f| %>
         <%= partial "services/form", :locals => { :f => f } %>
       <% end %>
     </div>
