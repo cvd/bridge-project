@@ -90,7 +90,7 @@ class Service
   end
 
   def self.service_types
-    types = fields(:services).map(&:services).flatten
+    types = fields(:services).where(:status => "active").map(&:services).flatten
     types.compact.map(&:strip).uniq.delete_if(&:empty?).sort
   end
   
