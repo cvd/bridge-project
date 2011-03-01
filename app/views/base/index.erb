@@ -1,40 +1,43 @@
 <div id="contentMain" class="limited">
-	<div class="hr"><hr /></div>
+  <div class="hr"><hr /></div>
     <div id="index-body" class="middle">
-      <h1>Explore Services</h1>
+      <h1>Search for Services</h1>
+      <p class="search-instructions">
+        Check the box next to the type of service/organization you are looking for. You can check more than one box. 
+        To find services in a specific area check the Quadrant/Region where you are looking for services. 
+        To be more specific you can also include a zip code.
+      </p>
       <div id="moduleCM22">
         <div id="index-search">
           <div class="group">
-            
             <form action="/services/advanced_search" method="get" accept-charset="utf-8">
 
-          		<ul style="list-style-type:none;">
-          		  <li class="name-search" style="padding-bottom: 4px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
-          		  <li>Filter by Service Type:</li>
+              <ul style="list-style-type:none;">
+                <li class="name-search" style="padding-bottom: 10px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
+                <li>Filter by Service Type:</li>
                  <div class="wrapper">
-              		<ul class="service-types" id="service-types-list" style="list-style: none;">
-                		<% Service.service_types.each do |type| %>
-                		  <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
-            		    <% end %>
-              		</ul>
-              		<br />
-              		</div>
+                  <ul class="service-types" id="service-types-list" style="list-style: none;">
+                    <% Service.service_types.each do |type| %>
+                      <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
+                    <% end %>
+                  </ul>
+                  <br />
+                  </div>
                 <div class="clear"></div>
-          			<li>Filter by Quadrant:</li>
-          			<ul style="list-style-type:none;">
-          			  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="NW"/>NW</label></li>
-          			  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="NE"/>NE</label></li>
-                  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="SW"/>SW</label></li>
-                  <li class="quadrant-search"><label><input type="checkbox" name="service[quadrant][]" value="SE"/>SE</label></li>
+                <li>Filter by Quadrant:</li>
+                <ul style="list-style-type:none;">
+                  <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="NW"/>NW</label></li>
+                  <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="NE"/>NE</label></li>
+                  <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="SW"/>SW</label></li>
+                  <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="SE"/>SE</label></li>
                 </ul>
 
-          			<li class="last">Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="service[zip]" value="" /></li>
-          			<br />
+                <li class="last clear" style="padding-top: 10px;">Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="service[zip]" value="" /></li>
+                <br />
                 <div class="search-button">
                    <span class="ds"><span class="lsbb"><input type="submit" class="lsb" value="Search Services" name="btnG" style="vertical-align: middle;"></span></span>  
                  </div>
             </form>
-            
           </div>
         </div>
       </div>

@@ -1,31 +1,29 @@
 <div class='clear'></div>
 <div id="contentNav">
 
-<div class="hr"><hr></div>							
+<div class="hr"><hr></div>              
 
 <!-- START: ModuleCM33-1 -->
 <div class="moduleCM33-1">
-	<h2>Links</h2>
-	<div class="hr small"><hr></div>
-	<div class="linkList">
-		<ul>
-			<li>
-			  <%= link_to "Show Services by Type", url(:services, :service_types) %>
-			</li>
-			<li>
-			  <%= link_to "Suggest or Update a Service", url(:services, :new) %>
-			</li>
-			<li><a href="http://hmsr152project.blogspot.com/" target="_blank">Visit our Blog</a></li>
-			<li><a href="mailto: hmsr152project@gmail.com">Contact Us</a></li>
-			<li class="last">
-			  <%= link_to "Mission Statement", url(:base, :about), :unless => :current %>
-			</li>
-			
-			
-		</ul>						
-	</div>
+  <h2>Links</h2>
+  <div class="hr small"><hr></div>
+  <div class="linkList" id="link-list">
+    <ul>
+      <li>
+        <%= link_to "Show Services by Type", url(:services, :service_types) %>
+      </li>
+      <li>
+        <%= link_to "Suggest a Service", url(:services, :new) %>
+      </li>
+      <li><a href="http://hmsr152project.blogspot.com/" target="_blank">Visit our Blog</a></li>
+      <li><a href="mailto: hmsr152project@gmail.com">Contact Us</a></li>
+      <li class="last">
+        <%= link_to "Mission Statement", url(:base, :about), :unless => :current %>
+      </li>
+    </ul>
+  </div>
   <h2>Mission</h2>
-	<div class="hr small"><hr></div>
+  <div class="hr small"><hr></div>
   <p>To provide an up-to-date and comprehensive guide to social services and public resources in the District of Columbia. </p>
 
 </div>

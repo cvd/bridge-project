@@ -204,7 +204,13 @@ div.inner table tr th.last{
   padding-bottom: 4px;
   padding-top: 2px;
 }
-
+#link-list a {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+#link-list {
+  margin-bottom: 15px;
+}
 .sub-title{
   font-size: 14px; 
   font-weight: bold; 
@@ -307,6 +313,11 @@ div#info-window ul.services {
   cursor: pointer;
 }
 
-.service-display .single-service a:hover{
+.service-display .single-service a:hover {
   text-decoration: none;
+}
+
+#index-body .search-instructions {
+  font-weight: 11px;
+  margin: 10px;
 }
