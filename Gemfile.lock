@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (3.0.3)
+    activesupport (3.0.5)
     awesome_print (0.2.1)
     bacon (1.1.0)
     bson (1.1.5)
