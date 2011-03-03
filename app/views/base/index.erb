@@ -18,7 +18,7 @@
                  <div class="wrapper">
                   <ul class="service-types" id="service-types-list" style="list-style: none;">
                     <% Service.service_types.each do |type| %>
-                      <li class="service-search"><Label><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
+                      <li class="service-search"><label title="<%= type.capitalize %>"><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
                     <% end %>
                   </ul>
                   <br />

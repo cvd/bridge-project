@@ -189,6 +189,9 @@ div.inner table tr th.last{
 .service-search label{
   display: block;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .button_to input{

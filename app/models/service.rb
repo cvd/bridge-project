@@ -79,7 +79,7 @@ class Service
     search_array = search_term.gsub(PUNCTUATION, "").downcase.split.uniq
     search_rank_array =  search_array & search_terms.uniq
     @rank = search_rank_array.length
-    if site_name =~ %r[#{search_term}]i
+    if site_name =~ %r[#{search_term.strip}]i
       @rank = @rank * 1.5
     end
     @rank
