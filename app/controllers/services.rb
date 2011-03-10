@@ -14,11 +14,18 @@ Bridge.controllers :services do
 
   put :update, :with => :id do
     @service = Service.new(params["service"])
-    puts params.inspect
     @service.parent_service = params[:id]
-    @service.save
-    @title = @service.site_name + " - The BRIDGE Project DC"
-    erb :"services/updated", :locals => {:service => @service}
+    if recaptcha_valid? and @service.save
+      @title = @service.site_name + " - The BRIDGE Project DC"
+      render :"services/updated", :locals => {:service => @service}
+    else
+      flash[:notice] = "Error Saving Service!"
+      if !recaptcha_valid?
+        @service.errors.add(:captcha, "Invalid Captcha Response")
+      end
+      render :"services/update", :locals => {:service => @service, :show_map => true}
+    end
+
   end
 
   get :advanced_search do
@@ -121,10 +128,13 @@ Bridge.controllers :services do
 
   post :create do
     @service = Service.new(params[:service])
-    if @service.save
+    if recaptcha_valid? and @service.save
       render :"services/added"
     else
       flash[:notice] = "Error Saving Service!"
+      if !recaptcha_valid?
+        @service.errors.add(:captcha, "Invalid Captcha Response")
+      end
       render :"services/new"
     end
   end

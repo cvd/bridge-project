@@ -4,7 +4,7 @@ class Bridge < Padrino::Application
   # reCAPTCHA
   # Public Key: 6LefFb0SAAAAAAS7GyGHvy_vHl8zTIicvIz48BLK
   # Private Key: 6LefFb0SAAAAAABLMU7v97r_c-oFNo6of5L8WZla
-  use Rack::Recaptcha, :public_key => '6LefFb0SAAAAAAS7GyGHvy_vHl8zTIicvIz48BLK', :private_key => '6LefFb0SAAAAAABLMU7v97r_c-oFNo6of5L8WZla', :paths => '/services/new'
+  use Rack::Recaptcha, :public_key => '6LefFb0SAAAAAAS7GyGHvy_vHl8zTIicvIz48BLK', :private_key => '6LefFb0SAAAAAABLMU7v97r_c-oFNo6of5L8WZla'
   helpers Rack::Recaptcha::Helpers
   ##
   # Application configuration options
