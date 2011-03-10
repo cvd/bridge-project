@@ -42,12 +42,12 @@ class Service
       self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
       self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
   end
-  
+
   def set_services
-    self.services = []    
+    self.services = []
     self.services << self.primary_service.strip.downcase rescue nil
     self.services << self.secondary_service.strip.downcase rescue nil
-  end  
+  end
 
   def create_search_terms
     [site_name, description, primary_service, secondary_service, quadrant].each do |term|
@@ -62,13 +62,13 @@ class Service
   scope :search,  lambda { |term| where(:status => "active", :search_terms => cleaned_search_terms(term)) }
   scope :pending, lambda { where(:status => "pending") }
   scope :updated, lambda { where(:status => "updated") }
-  
+
   def cleaned_search_terms(search_term)
     unless search_term.nil?
       return search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
     end
   end
-  
+
   def self.cleaned_search_terms(search_term)
     unless search_term.nil?
       return search_term.gsub(/\//, " ").gsub(PUNCTUATION, " ").downcase.split.uniq
@@ -84,7 +84,7 @@ class Service
     end
     @rank
   end
-  
+
 
   def self.service_types_old
     all_services = all
@@ -95,9 +95,9 @@ class Service
 
   def self.service_types
     types = fields(:services).where(:status => "active").map(&:services).flatten
-    types.compact.map(&:strip).uniq.delete_if(&:empty?).sort
+    types.compact.map(&:strip).map(&:downcase).uniq.delete_if(&:empty?).sort
   end
-  
+
   def full_address
     "#{address} #{city}, #{state} #{zip}"
   end
@@ -106,7 +106,7 @@ class Service
     # &f=d directs it straight to the directions function
     "http://maps.google.com/maps?q=#{URI.escape(full_address)}&f=d"
   end
-  
+
   def geocode
     url = "http://maps.google.com/maps/api/geocode/json?"
     geocode_address = URI.escape(full_address)
