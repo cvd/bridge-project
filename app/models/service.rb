@@ -33,7 +33,7 @@ class Service
   timestamps!
 
   validates_presence_of :site_name, :address, :city, :state
-  before_save :create_search_terms, :clean_services, :geocode, :uniq_services #, :set_services
+  before_save :create_search_terms, :clean_services, :geocode, :uniq_services
    def uniq_services
      self.services.uniq!
    end
@@ -41,12 +41,6 @@ class Service
     # cleaning up some common mispellings
       self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
       self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
-  end
-
-  def set_services
-    self.services = []
-    self.services << self.primary_service.strip.downcase rescue nil
-    self.services << self.secondary_service.strip.downcase rescue nil
   end
 
   def create_search_terms
