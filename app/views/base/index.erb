@@ -15,28 +15,38 @@
               <ul style="list-style-type:none;">
                 <li class="name-search" style="padding-bottom: 10px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
                 <li>Filter by Service Type:</li>
-                 <div class="wrapper">
+
+                <li>
                   <ul class="service-types" id="service-types-list" style="list-style: none;">
                     <% Service.service_types.each do |type| %>
                       <li class="service-search"><label title="<%= type.capitalize %>"><input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label></li>
                     <% end %>
                   </ul>
-                  <br />
-                  </div>
-                <div class="clear"></div>
+                  <div class="clear"></div>
+                </li>
+
+
                 <li>Filter by Quadrant:</li>
+                <li>
                 <ul style="list-style-type:none;">
                   <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="NW"/>NW</label></li>
                   <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="NE"/>NE</label></li>
                   <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="SW"/>SW</label></li>
                   <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="SE"/>SE</label></li>
                 </ul>
+                </li>
+                <li class="last clear" style="padding-top: 10px;">
+                  Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="service[zip]" value="" />
+                </li>
 
-                <li class="last clear" style="padding-top: 10px;">Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="service[zip]" value="" /></li>
                 <br />
                 <div class="search-button">
-                   <span class="ds"><span class="lsbb"><input type="submit" class="lsb" value="Search Services" name="btnG" style="vertical-align: middle;"></span></span>  
-                 </div>
+                  <span class="ds">
+                    <span class="lsbb">
+                      <input type="submit" class="lsb" value="Search Services" name="btnG" style="vertical-align: middle;" />
+                    </span>
+                  </span>
+                </div>
             </form>
           </div>
         </div>
