@@ -9,7 +9,6 @@ $(document).ready(function(){
     });
   }
 
-
   $("[data-method=map]").each(function () {
     var lat, lng, map, latLng, infoWindow = new google.maps.InfoWindow();
     lat = $(this).attr("data-lat");
@@ -174,7 +173,8 @@ $(document).ready(function(){
   }
   $('button.show-list-view').button().click(function(e){
     e.preventDefault();
-    window.open("/carts/show");
+    var action = $(this).data('action');
+    window.open(action);
   });
   if($('button.show-list-view').hasClass("hide")){
     $('button.show-list-view').hide()
