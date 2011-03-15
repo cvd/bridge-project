@@ -8,26 +8,26 @@ Admin.controllers :services do
     @current_page = @services.current_page
     render 'services/index', :locals => {:list_title => "All Services"}
   end
-  
+
   get :search do
 
     @query = params[:q]
     @page = params[:page] || 1
     @page = @page.to_i
     @current_page = @page.to_i
-    @per_page = 25    
+    @per_page = 25
     @start = (@page-1) * @per_page
     @end = @start.to_i + @per_page - 1
     # paginate!
     @services = Service.search(params[:q]).all#.paginate(:per_page => 25, :page => @page)
-    
+
     @total_pages = @services.length/@per_page
     @total_pages +=1 if @services.length % @per_page
 
     @services.each {|s| s.rank_search @query}
     @services.sort! {|a,b|b.rank<=>a.rank}
     @services = @services.slice!(@start..@end)
- 
+
     render 'services/index', :locals => {:list_title => "All Services"}
   end
 
@@ -36,7 +36,7 @@ Admin.controllers :services do
     @services = Service.where(:services => @type)
     render 'services/type'
   end
-  
+
   get :new do
     @service = Service.new
     render 'services/new'
@@ -66,7 +66,7 @@ Admin.controllers :services do
 
   post :activate, :with => :id do
     @service = Service.find(params[:id])
-    @service.status = "active"    
+    @service.status = "active"
     if @service.save
       flash[:notice] = 'Service was successfully accepted.'
       redirect url(:services, :index)
@@ -106,9 +106,9 @@ Admin.controllers :services do
       render 'services/edit'
     end
   end
-    
+
   put :update_modified, :with => :id do
-    #may want to rework this flow a bit so as to not ruing links by removing the 
+    #may want to rework this flow a bit so as to not ruing links by removing the
     #old one and replacing with the new one. fine for now though...
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
