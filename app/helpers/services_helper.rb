@@ -11,10 +11,10 @@ Bridge.helpers do
   end
 
   def query_string
-     if @query
-       @query.gsub(/\//, " ").gsub(Service::PUNCTUATION, " ").downcase.split.uniq.join(", ").strip
-     elsif @query_string
+     if @query_string
        @query_string.strip
+     elsif @query
+       @query.gsub(/\//, " ").gsub(Service::PUNCTUATION, " ").downcase.split.uniq.join(", ").strip
      else 
         ""
      end

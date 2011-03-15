@@ -70,10 +70,11 @@ Bridge.controllers :services do
     end
     @title = "List Services by type: #{params[:type]} - The BRIDGE Project DC"
     paginate!
-    @services = Service.where(:services => params[:type].downcase, :status => "active").paginate(:per_page => @per_page, :page => @page)
+    @services = Service.where(:services => %r[#{params[:type].downcase}]i, :status => "active").paginate(:per_page => @per_page, :page => @page)
     @route = "/list_type"
     @query = params[:type]
     logger.info(@query)
+    @query_string = "Service type: #{@query.capitalize}"
     @total_pages = @services.total_pages
     @current_page = @services.current_page
     render :"services/result"

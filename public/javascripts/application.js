@@ -8,8 +8,8 @@ $(document).ready(function(){
       icon: "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
     });
   }
-  
-  
+
+
   $("[data-method=map]").each(function () {
     var lat, lng, map, latLng, infoWindow = new google.maps.InfoWindow();
     lat = $(this).attr("data-lat");
@@ -56,14 +56,14 @@ $(document).ready(function(){
     if($(this).attr('data-zoom')){
       var z=$(this).attr('data-zoom');
       map.setZoom(parseInt(z));
-    } 
+    }
     else{
       map.fitBounds(bounds);
     }
     GLOB = map;
-  });  
+  });
 
-  
+
 
   function confirmSubmit (argument) {
     var message = $(this).attr('data-confirm');
@@ -74,16 +74,16 @@ $(document).ready(function(){
   };
 
   $('[confirm=true]').click(confirmSubmit);//.submit(confirmSubmit);
-  
+
   $("button.remove-from-list").click(function(){
     var button = this;
     var serviceId = $(this).attr('service-id');
-    $.post('/carts/remove', {id: serviceId}, function(){ 
+    $.post('/carts/remove', {id: serviceId}, function(){
       $(button).parents('.service-holder').slideUp().remove();
     });
   });
-  
-  
+
+
   $('.add-to-list form[data-remote=true]').click(function(e){
     var $this = $(this);
     var url = $this.attr('action') + "?";
@@ -93,7 +93,7 @@ $(document).ready(function(){
     $.ajax({
       method: method,
       url: url,
-      success: function(){ 
+      success: function(){
         $this.slideUp();
         $('.add-to-list .added-holder').slideDown();
         $(".show-list-view").show();
@@ -130,7 +130,7 @@ $(document).ready(function(){
   function addService(item){
     var v = item.value;
     if( $.inArray(v, selected) == -1 ){
-      selected.push(v); 
+      selected.push(v);
       var html = formatService(v);
       $(".selected").append(html);
     }
@@ -163,7 +163,7 @@ $(document).ready(function(){
       addService({value: s});
       $(completer).val("");
     }).button();
-    
+
     $.get("/services/service_types", function(r){
       $('.autocomplete-selector').autocomplete({
         source: r,
@@ -179,5 +179,5 @@ $(document).ready(function(){
   if($('button.show-list-view').hasClass("hide")){
     $('button.show-list-view').hide()
   };
-  
+
 });
