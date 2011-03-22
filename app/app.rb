@@ -34,12 +34,12 @@ class Bridge < Padrino::Application
   before do
     @title = "The BRIDGE Project DC"
   end
-    error 404 do
-      render :"errors/404"
-    end
-    error do 
-      render :"errors/error"
-    end
-    
+  error 404 do
+    render :"errors/404"
+  end
+  error do
+    render :"errors/error"
+  end
+
   #
 end
