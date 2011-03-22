@@ -1,6 +1,7 @@
 Bridge.controllers :base do
 
   get :index, :map => "/" do
+    @index = true
     render "base/index"
   end
 
