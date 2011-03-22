@@ -3,12 +3,15 @@ Bridge.controllers :services do
   get :show, :with => :id do    
     service = Service.find(BSON::ObjectId(params[:id]))
     @title = service.site_name + " - The BRIDGE Project DC"
+    @breadcrumb_title = service.site_name
+    puts "BC: #{breadcrumbs}"
     erb :"services/show", :locals => {:service => service, :show_map => true}
   end
 
   get :update, :with => :id do
     @service = Service.find(BSON::ObjectId(params[:id]))
     @title = @service.site_name + " - The BRIDGE Project DC"
+    @breadcrumb_title = @service.site_name
     erb :"services/update", :locals => {:service => @service, :show_map => true}
   end
 
@@ -30,8 +33,8 @@ Bridge.controllers :services do
 
   get :advanced_search do
     params[:service].delete_if {|k,v| v.empty?} unless params[:service].nil?
-    # ap request.methods.sort
     @request_string =  request.query_string
+    session[:last_search] = request.url
     query_string_parts = []
     params[:service].each do |k,v|
       value = v.is_a?(Array) ? v = v.map(&:downcase).join(", ") : v
@@ -44,7 +47,7 @@ Bridge.controllers :services do
       params[:service].delete('name')
     end
     paginate!
-    @services = Service.where(params[:service]).paginate(:per_page => @per_page, :page => @page)
+    @services = Service.active.where(params[:service]).paginate(:per_page => @per_page, :page => @page)
 
     @total_pages = @services.total_pages
     @current_page = @services.current_page
@@ -68,9 +71,10 @@ Bridge.controllers :services do
     if params[:q] && params[:type].nil?
       params[:type] = params[:q]
     end
+    session[:last_search] = request.url
     @title = "List Services by type: #{params[:type]} - The BRIDGE Project DC"
     paginate!
-    @services = Service.where(:services => %r[#{params[:type].downcase}]i, :status => "active").paginate(:per_page => @per_page, :page => @page)
+    @services = Service.active.where(:services => %r[#{params[:type].downcase}]i).paginate(:per_page => @per_page, :page => @page)
     @route = "/list_type"
     @query = params[:type]
     logger.info(@query)
@@ -83,26 +87,7 @@ Bridge.controllers :services do
   get :search, :map => "/search" do
     @query = params[:q]
     @route = "/search"
-    paginate!
-
-    @services = Service.search(params[:q]).all
-
-    @total_pages = @services.length/@per_page
-    @total_pages +=1 if @services.length % @per_page
-
-    @services.each {|s| s.rank_search @query}
-    @services.sort! {|a,b| b.rank <=> a.rank }
-    @services = @services.slice!(@start..@end)
-
-    if request.xhr?
-      return result.to_json
-    end
-    render :"services/result", :layout => !request.xhr?
-  end
-
-  post :search, :map => "/search" do
-    @query = params[:q]
-    @route = "/search" 
+    session[:last_search] = request.url
     @title = params[:q] + " - The BRIDGE Project DC"
     paginate!
 

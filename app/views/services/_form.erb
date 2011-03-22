@@ -54,7 +54,7 @@
 
 <div class="group">
   <%= f.label :state %><%= f.error_message_on :state %>
-  <%= f.text_field :state, :class => :text_field %>
+  <%= f.text_field :state, :class => :text_field, :maxlength => 2 %>
 </div>
 
 <div class="group">
@@ -63,7 +63,7 @@
 </div>
 
 <div class="group">
-  <%= f.label :quadrant %><%= f.error_message_on :quadrant %>
+  <%= f.label :"quadrant (optional)" %><%= f.error_message_on :quadrant %>
   <%= f.select :quadrant, :options =>["", "NE", "NW", "SE", "SW"], :class => :text_field %>
 </div>
 

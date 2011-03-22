@@ -1,7 +1,7 @@
 class Service
   include MongoMapper::Document
   attr_accessor :search_relevance, :rank, :current_page, :total_pages
-  USELESS_TERMS = ["a", "the", "of", "it", "for", "is", "i", "to", "in", "be"]
+  USELESS_TERMS = ["a", "the", "of", "it", "for", "is", "i", "to", "in", "be", "and", "on"]
   PUNCTUATION = Regexp.new("[>@!*~`;:<?,./;'\"\\)(*&^{}#]")
 
   key :site_name, String
@@ -33,27 +33,31 @@ class Service
   timestamps!
 
   validates_presence_of :site_name, :address, :city, :state
-  before_save :create_search_terms, :clean_services, :geocode, :uniq_services
-   def uniq_services
-     self.services.uniq!
-   end
+  before_save :create_search_terms, :clean_services, :geocode
+
   def clean_services
     # cleaning up some common mispellings
-      self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
-      self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
+      # self.primary_service = primary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional") rescue nil
+      # self.secondary_service = secondary_service.strip.downcase.gsub("/ ", "/").gsub('serivces', "services").gsub("transitioal", "transitional")  rescue nil
+      self.services = services.map(&:strip).map(&:downcase).uniq.delete_if(&:empty?)
   end
 
   def create_search_terms
-    [site_name, description, primary_service, secondary_service, quadrant].each do |term|
+    self.search_terms = [site_contact_email, site_contact_name, zip, state, quadrant, city]
+    [site_name, description, services].each do |term|
       next if term.nil?
+      term = term.join(" ") if term.is_a? Array
       self.search_terms += term.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
-      self.search_terms.delete_if {|term| USELESS_TERMS.include? term}
     end
+    self.search_terms.delete_if {|term| USELESS_TERMS.include? term}
+    self.search_terms.delete_if(&:empty?)
+    self.search_terms.uniq!
     self.name_parts = site_name.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
     self.name_parts.delete_if {|term| USELESS_TERMS.include? term}
   end
 
   scope :search,  lambda { |term| where(:status => "active", :search_terms => cleaned_search_terms(term)) }
+  scope :active, lambda { where(:status => "active") }
   scope :pending, lambda { where(:status => "pending") }
   scope :updated, lambda { where(:status => "updated") }
 
@@ -74,7 +78,7 @@ class Service
     search_rank_array =  search_array & search_terms.uniq
     @rank = search_rank_array.length
     if site_name =~ %r[#{search_term.strip}]i
-      @rank = @rank * 1.5
+      @rank = @rank * 2
     end
     @rank
   end

@@ -9,13 +9,37 @@ Bridge.helpers do
     @start = (@page - 1) * @per_page
     @end = @start + @per_page - 1
   end
-  
-  # def empty_cart?
-  #   puts "session[:cart]: #{session[:cart].inspect}"
-  #   if session[:cart].nil?
-  #     return Cart.find(session[:cart]).collected_services.empty?
-  #   end
-  #   return false
-  # end
-  
+  def show_breadcrumbs?
+    !@index
+  end
+
+  def breadcrumbs
+    return "" if @index
+    crumbs = ["<a href='/'>Home</a>"]
+    if request.path =~ /search/i
+      crumbs << "Search Results"
+    end
+    if request.path =~ /\/services\/show/ && session[:last_search]
+      crumbs << "<a href='#{session[:last_search]}'>Search Results</a>"
+      crumbs << "<span class='current'>#{@breadcrumb_title}</span>"
+    end
+
+    if request.path =~ /\/services\/new/
+      crumbs << "Suggest a Service"
+    end
+    if request.path =~ /\/services\/service_types/
+      crumbs << "Show Services by Type"
+    end
+    if request.path =~ /\/about/
+      crumbs << "Mission Statement"
+    end
+    if request.path =~ /\/list_type/
+      crumbs << "List Services by Type"
+    end
+    if request.path =~ /\/services\/update/
+      crumbs << "Updating '#{@breadcrumb_title}'"
+    end
+    crumbs.join " :: "
+  end
+
 end

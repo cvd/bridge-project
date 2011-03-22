@@ -326,3 +326,9 @@ div#info-window ul.services {
   font-weight: 11px;
   margin: 10px;
 }
+.breadcrumbs {
+  float: left;
+  font-size: 13px;
+  margin-left: 5px;
+  width: 100%;
+}

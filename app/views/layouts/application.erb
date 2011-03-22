@@ -51,14 +51,17 @@
                 <div class="sub-title">DC Social Service Research Guide</div>
               </div>
               <div class="search">
-                <form action="/search" method="post" accept-charset="utf-8">
+                <form action="/search" method="GET" accept-charset="utf-8">
                   <%= render "base/_search_bar", :layout=> false %>
                 </form>
               </div>
-
             </div>
             <%= yield_content :sidebar %>
-
+            <% if show_breadcrumbs? %>
+              <div class="breadcrumbs">
+                <%= breadcrumbs %>
+              </div>
+            <% end %>
               <%= yield %>
 
             <div class="clear"></div>
