@@ -1,6 +1,7 @@
 <div class="paginate">
   <ul class='page-list'>
     <% route = @query ? :search : :index %>
+    <% route = @route unless @route.nil? %>
     <% if @current_page != 1%>
       <li class="page"><%= link_to "previous", url(:services, route, :page => @current_page-1, :q => @query) %></li>
     <% end %>

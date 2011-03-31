@@ -18,7 +18,6 @@ Admin.controllers :services do
     @per_page = 25
     @start = (@page-1) * @per_page
     @end = @start.to_i + @per_page - 1
-    # paginate!
     @services = Service.search(params[:q]).all#.paginate(:per_page => 25, :page => @page)
 
     @total_pages = @services.length/@per_page
@@ -53,6 +52,7 @@ Admin.controllers :services do
     @services = Service.where(:status => "pending").paginate(:per_page => 25, :page => @page)
     @total_pages = @services.total_pages
     @current_page = @services.current_page
+    @route = :pending
     render 'services/index', :locals => {:list_title => "Pending Services"}
   end
 
@@ -61,6 +61,7 @@ Admin.controllers :services do
     @services = Service.where(:status => "updated").paginate(:per_page => 25, :page => @page)
     @total_pages = @services.total_pages
     @current_page = @services.current_page
+    @route = :updated
     render 'services/index', :locals => {:list_title => "Updated Services"}
   end
 
