@@ -1,11 +1,15 @@
 
 Bridge.controllers :services do
-  get :show, :with => :id do    
-    service = Service.find(BSON::ObjectId(params[:id]))
-    @title = service.site_name + " - The BRIDGE Project DC"
-    @breadcrumb_title = service.site_name
-    puts "BC: #{breadcrumbs}"
-    erb :"services/show", :locals => {:service => service, :show_map => true}
+  get :show, :with => :id do
+    begin
+      service = Service.find(BSON::ObjectId(params[:id]))
+      @title = service.site_name + " - The BRIDGE Project DC"
+      @breadcrumb_title = service.site_name
+      erb :"services/show", :locals => {:service => service, :show_map => true}
+    rescue BSON::InvalidObjectId
+      @message = "Service Not Found"
+      return 404
+    end
   end
 
   get :update, :with => :id do
