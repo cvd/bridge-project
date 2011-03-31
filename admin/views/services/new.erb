@@ -4,7 +4,9 @@
       <li class="first"><%= link_to pat(:list), url(:services, :index) %></li>
       <li class="active"><%= link_to pat(:new), url(:services, :new) %></li>
       <% pending_count = Service.pending.count %>
-      <li><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>      
+      <% updated_count = Service.updated.count %>
+      <li><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>
+      <li><%= link_to "Updated (#{updated_count})", url(:services, :updated) %></li>
     </ul>
   </div>
   <div class="content">
