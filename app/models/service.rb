@@ -43,7 +43,7 @@ class Service
   end
 
   def create_search_terms
-    self.search_terms = [site_contact_email, site_contact_name, zip, state, quadrant, city]
+    self.search_terms = [site_contact_email, site_contact_name, zip, state, quadrant, city].delete_if(&:nil?).map(&:downcase)
     [site_name, description, services].each do |term|
       next if term.nil?
       term = term.join(" ") if term.is_a? Array
