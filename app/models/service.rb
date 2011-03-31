@@ -50,6 +50,7 @@ class Service
       self.search_terms += term.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
     end
     self.search_terms.delete_if {|term| USELESS_TERMS.include? term}
+    self.search_terms.delete_if(&:nil?)
     self.search_terms.delete_if(&:empty?)
     self.search_terms.uniq!
     self.name_parts = site_name.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
@@ -105,12 +106,17 @@ class Service
     "http://maps.google.com/maps?q=#{URI.escape(full_address)}&f=d"
   end
 
+  def any_address_parts_changed?
+    return (address_changed? or zip_changed? or city_changed? or state_changed?)
+  end
   def geocode
+    return unless any_address_parts_changed?
     url = "http://maps.google.com/maps/api/geocode/json?"
     geocode_address = URI.escape(full_address)
     r = RestClient.get(url + "address="+geocode_address+"&sensor=false")
     results = Hashie::Mash.new(JSON.parse(r)).results[0]
     logger.debug "Geocoding Results: #{results.inspect}"
+    return if results.nil?
     self.lat = results.geometry.location.lat
     self.lng = results.geometry.location.lng
   end
