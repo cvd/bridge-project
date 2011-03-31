@@ -103,7 +103,7 @@ li.g {
   width: 256px
 }
 .csb,.ss,#logo span,.play_icon,.mini_play_icon,.micon,.close_btn,#tbp,.lsb,.mbi {
-  /* background: url(public/images/search_background.png) no-repeat;*/
+  background: url(public/images/search_background.png) no-repeat;
   overflow: hidden
 }
 .csb,.ss {
