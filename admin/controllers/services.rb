@@ -90,8 +90,9 @@ Admin.controllers :services do
     @service = Service.find(params[:id])
     if @service.status == "updated"
       @old_service = Service.find(@service.parent_service)
-      puts @service.parent_service
-      puts @old_service.inspect
+      # puts @service.parent_service
+      # puts @old_service.inspect
+      @old_service = Service.new if @old_service.nil?
       render "services/update"
     else
       render 'services/edit'
