@@ -1,9 +1,0 @@
-<div id="contentMain" class="full error-page">
-  <div class="hr"><hr /></div>
-    <% if @message.nil? %>
-      <h2>There was an Error with your request</h2>
-    <% else %>
-      <h2><%= @message %></h2>
-    <% end %>
-  <div class="error"> <%= link_to "Return Home", url(:base, :index) %></div>
-</div>
