@@ -19,7 +19,7 @@ class Bridge < Padrino::Application
   # layout  :my_layout          # Layout can be in views/layouts/foo.ext or views/foo.ext (default :application)
   #
   disable :show_exceptions
-
+  mime_type :kml, "application/vnd.google-earth.kml+xml"
   ##
   # You can configure for a specified environment like:
   #
