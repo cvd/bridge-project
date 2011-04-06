@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Site name:</b>
+  <%= @service.site_name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @service.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @service.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @service.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @service.zip %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @service.phone %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%= @service.hours %>
+</p>
+
+<p>
+  <b>Transportation:</b>
+  <%= @service.transportation %>
+</p>
+
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>
