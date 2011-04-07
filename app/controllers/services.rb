@@ -129,4 +129,13 @@ Bridge.controllers :services do
     end
   end
 
+  get :map do
+    render :"services/map", :layout => false
+  end
+  get :kml do
+    @services = Service.active
+    mime_type :kml
+    render :"services/kml", :layout => false
+  end
+
 end

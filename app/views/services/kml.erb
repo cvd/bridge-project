@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<% @services.each do |service| %>
+  <Placemark>
+    <name><%= service.site_name %></name>
+    <description><%= service.description %></description>
+    <Point>
+    <coordinates><%= service.lng %>,<%= service.lat %>,0</coordinates>
+    </Point>
+  </Placemark>
+<% end %>
+</kml>
+
