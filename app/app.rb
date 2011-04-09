@@ -36,7 +36,7 @@ class Bridge < Padrino::Application
     @title = "The BRIDGE Project DC"
   end
   error 404 do
-    puts "message: #{@message}"
+    # puts "message: #{@message}"
     render :"errors/404"
   end
   error do
