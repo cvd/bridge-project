@@ -5,6 +5,7 @@ gem 'rake'
 gem 'rack-flash'
 gem 'thin' # or mongrel
 
+gem 'fastercsv'
 # Component requirements
 gem 'mongo_mapper'
 gem 'mongo', "1.1.5", :require => "mongo"

@@ -8,6 +8,7 @@ GEM
     bson_ext (1.1.5)
     daemons (1.1.0)
     eventmachine (0.12.10)
+    fastercsv (1.5.4)
     git (1.2.5)
     hashie (0.4.0)
     http_router (0.5.4)
@@ -93,6 +94,7 @@ DEPENDENCIES
   bacon
   bson (= 1.1.5)
   bson_ext (= 1.1.5)
+  fastercsv
   hashie
   json
   mongo (= 1.1.5)
