@@ -21,3 +21,5 @@ pkg
 ## PROJECT::SPECIFIC
 .bundle
 .rvmrc
+log/
+data/
