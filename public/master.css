@@ -1,6 +1,10 @@
 body{
   font-family: verdana;
 }
+strong {
+  font-weight: bold;
+}
+
 #index-body{}
 
 .middle{
@@ -168,4 +172,12 @@ body #container #contentWrapperShadow div#contentWrapper #contentColumns{
 
 .service-display em{
   font-weight: bold;
+}
+
+
+.updated-at {
+  float: right;
+  font-size: 10px;
+  padding-right: 10px;
+  font-weight: normal;
 }
