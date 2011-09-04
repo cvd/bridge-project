@@ -95,7 +95,7 @@ Bridge.controllers :services do
     @title = params[:q] + " - The BRIDGE Project DC"
     paginate!
 
-    @services = Service.search(@query).all
+    @services = Service.active.search(@query).all
 
     @total_pages = @services.length/@per_page
     #need one more if there is a remainder
