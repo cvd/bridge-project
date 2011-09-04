@@ -7,6 +7,7 @@
       <% updated_count = Service.updated.count %>
       <li><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>
       <li><%= link_to "Updated (#{updated_count})", url(:services, :updated) %></li>
+      <li><%= link_to "Last Modified", url(:services, :modified) %></li>
     </ul>
   </div>
   <div class="content">

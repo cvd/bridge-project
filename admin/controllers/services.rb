@@ -3,10 +3,19 @@ Admin.controllers :services do
   get :index do
     @query = nil
     @page = params[:page] || 1
-    @services = Service.sort(:site_name).paginate(:per_page => 25, :page => @page)
+    @services = Service.active.sort(:site_name).paginate(:per_page => 25, :page => @page)
     @total_pages = @services.total_pages
     @current_page = @services.current_page
     render 'services/index', :locals => {:list_title => "All Services"}
+  end
+
+  get :modified do
+    @query = nil
+    @page = params[:page] || 1
+    @services = Service.active.sort(:updated_at.desc).paginate(:per_page => 25, :page => @page)
+    @total_pages = @services.total_pages
+    @current_page = @services.current_page
+    render 'services/index', :locals => {:list_title => "Most Recently Modified"}
   end
 
   get :search do
@@ -18,7 +27,7 @@ Admin.controllers :services do
     @per_page = 25
     @start = (@page-1) * @per_page
     @end = @start.to_i + @per_page - 1
-    @services = Service.search(params[:q]).all#.paginate(:per_page => 25, :page => @page)
+    @services = Service.active.search(params[:q]).all#.paginate(:per_page => 25, :page => @page)
 
     @total_pages = @services.length/@per_page
     @total_pages +=1 if @services.length % @per_page

@@ -8,6 +8,7 @@
       
       <li <% if list_title == "Pending Services" %> active <% end %>><%= link_to "Pending (#{pending_count})", url(:services, :pending) %></li>
       <li <% if list_title == "Updated Services" %> active <% end %>><%= link_to "Updated (#{updated_count})", url(:services, :updated) %></li>
+      <li <% if list_title == "Most Recently Modified" %> active <% end %>><%= link_to "Last Modified", url(:services, :modified) %></li>
     </ul>
   </div>
   <div class="content">
