@@ -30,6 +30,9 @@
         <tr>
           <th class="first">Site Name</th>
           <th>Service Types</th>
+          <% if @view == :modified %>
+            <th>Updated At</th>
+          <% end %>
           <th class="last">&nbsp;</th>
         </tr>
         <% @services.each_with_index do |service, index| %>
@@ -41,6 +44,9 @@
               (<%= link_to "show", "#{url(:services, :type)}?service=#{type}" %>)
             <% end %>
           </td>
+          <% if @view == :modified %>
+            <td><%= service.updated_at.getlocal.strftime("%m/%d/%Y %I:%M %p") %></td>
+          <% end %>
           <td class="last">
             <%= button_to pat(:edit), url(:services, :edit, :id => service.id), :method => :get, :class => :button_to %> |
             <%= button_to pat(:delete), url(:services, :destroy, :id => service.id), :method => :delete, :class => :button_to, :confirm => true %>

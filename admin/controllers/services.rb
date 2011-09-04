@@ -10,6 +10,7 @@ Admin.controllers :services do
   end
 
   get :modified do
+    @view = :modified
     @query = nil
     @page = params[:page] || 1
     @services = Service.active.sort(:updated_at.desc).paginate(:per_page => 25, :page => @page)
