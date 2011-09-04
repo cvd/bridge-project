@@ -247,17 +247,22 @@ div.inner table tr th.last{
 .hide{
   display: none;
 }
-
-.selected .ui-widget-header{
+form .selected .ui-widget-header{
   margin-left: 4px;
   padding: 4px 20px 4px 4px;
   position: relative;
 }
 
+.selected .ui-widget-header{
+  margin-left: 4px;
+  padding: 4px 4px 4px 4px;
+  position: relative;
+}
+
 .selected .ui-widget-header .ui-icon{
   position: absolute;
-  top: 4px;
-  right: 3px;
+  top: 5px;
+  right: 6px;
   cursor: pointer;
 }
 .ui-autocomplete.ui-menu{
@@ -316,6 +321,11 @@ div#info-window ul.services {
 }
 .service-display .single-service a{
   cursor: pointer;
+}
+.single-service span {
+  font-family: verdana;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .service-display .single-service a:hover {
