@@ -33,7 +33,6 @@
 
           <div class="clear"></div>
 
-          <div id="contentColumns">
             <div class="flash">
               <%= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
             </div>
@@ -46,13 +45,35 @@
                 <%= partial :"carts/button" %>
                 <div class="sub-title">DC Social Service Research Guide</div>
               </div>
+
               <div class="search">
                 <form action="/search" method="GET" accept-charset="utf-8">
                   <%= render "base/_search_bar", :layout=> false %>
                 </form>
               </div>
             </div>
+
+<div class="clear"></div>
+<div class="nav">
+  <ul>
+    <li><%= link_to "Home", "/" %></li>
+    <li>
+      <%= link_to "Show Services by Type", url(:services, :service_types) %>
+    </li>
+    <li>
+      <%= link_to "Suggest a Service", url(:services, :new) %>
+    </li>
+    <li><a href="http://hmsr152project.blogspot.com/" target="_blank">Visit our Blog</a></li>
+    <li><a href="mailto:bridgeprojectdc@gmail.com">Contact Us</a></li>
+    <li class="last">
+      <%= link_to "Mission Statement", url(:base, :about), :unless => :current %>
+    </li>
+  </ul>
+<div class="clear"></div>
+</div>
+
             <%= yield_content :sidebar %>
+
             <% if show_breadcrumbs? %>
               <div class="breadcrumbs">
                 <%= breadcrumbs %>
@@ -61,23 +82,13 @@
               <%= yield %>
 
             <div class="clear"></div>
-          </div>
 
         </div>
         <div id="footer">
           <div class="hr"><hr /></div>
           <div id="footerParentMenu">
             <div class="footer940">
-              <h2><a href="#">The George Washington University</a></h2>
-              <ul>
-                <li class="first"><a href="http://www.gwu.edu">GW Home</a></li>
-                <li><a href="http://www.campusadvisories.gwu.edu/">Campus Advisories</a></li>
-                <li><a href="http://www.gwu.edu/legal/copyright">Copyright</a></li>
-                <li><a href="http://www.gwu.edu/legal/privacypolicy">Privacy Policy</a></li>
-                <li><a href="http://www.gwu.edu/legal/termsofuse">Terms of Use</a></li>
-                <li><a href="mailto:bridgeprojectdc@gmail.com">Contact Us</a></li>
-                <li><a href="http://www.gwu.edu/azindex">A - Z Index</a></li>
-              </ul>
+              <h2><a href="/">The BRIDGE Project</a></h2>
             </div>
           </div>
         </div>

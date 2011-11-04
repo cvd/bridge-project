@@ -9,7 +9,7 @@ strong {
 
 .middle{
   margin: 10px auto;
-  width: 680px;
+  width: 100%;
 }
 #left_panel{
   left: 0;
@@ -163,7 +163,7 @@ body #container #contentWrapperShadow div#contentWrapper div#contentMain.full{
   width: 100%;
 }
 body #container #contentWrapperShadow div#contentWrapper div#contentMain.limited{
-  width: 700px;
+  width: 100%;
   margin-right: 0;
 }
 body #container #contentWrapperShadow div#contentWrapper #contentColumns{

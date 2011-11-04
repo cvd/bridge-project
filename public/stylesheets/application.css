@@ -16,6 +16,57 @@
   background-color: #EDE2CD;
 }
 
+.nav {
+  background-color: #4282B1;
+  border:1px solid #4282B1;
+  display: block;
+  width: 100%;
+  /* padding-bottom: 3px;*/
+}
+.nav ul {
+  list-style-type: none;
+  clear:both;
+}
+
+.nav ul li {
+  color: #ffffff;
+  background-color: #4282B1;
+  float: left;
+  /* border-bottom: 3px solid #4282B1;*/
+}
+.nav ul li a {
+  border-top: 1px solid #4282B1;
+  border-bottom: 3px solid #4282B1;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px;
+  border-left: 1px solid #4282B1;
+  padding-left: 3px;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  display: block;
+}
+
+.nav ul li:hover {
+  /* border-bottom: 3px solid #FFF;*/
+}
+.nav ul li a:hover {
+  border-top: 1px solid #FFF;
+  border-bottom: 3px solid #FFF;
+  /* border-left: 1px solid #FFF;*/
+}
+
+div.mission {
+  margin-top: 10px;
+  clear: both;
+  font-size: 14px;
+}
+.mission h2 {
+  color: #2971A7;
+  font-size: 25px;
+}
+
 .search-results #map{
   width: 630px;
   height: 450px;
@@ -117,8 +168,7 @@ div.paginate ul.page-list li.page.active{
 form label {
   font-weight:bold;
   padding-bottom:2px;
-  text-indent: -2em;
-  padding-left: 2em;
+  padding-left: 3px;
 }
 
 .inner {
@@ -183,15 +233,14 @@ div.inner table tr th.last{
 .service-search {
   padding-top: 2px;
   float: left;
-  padding-left: 15px;
+  padding-left: 20px;;
 }
 
 .service-search label{
-  display: block;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  /* text-overflow: ellipsis;*/
 }
 
 .button_to input{
@@ -225,8 +274,9 @@ div.inner table tr th.last{
 }
 #index-search ul.service-types li{
   float: left;
-  width: 15em;
+  width: 30%;
   height: 2.25em;
+  overflow: hidden;
 /*  white-space: nowrap;*/
 }
 #service-types-list {
@@ -337,6 +387,7 @@ div#info-window ul.services {
   margin: 10px;
 }
 .breadcrumbs {
+  margin-top: 10px;
   float: left;
   font-size: 13px;
   margin-left: 5px;
