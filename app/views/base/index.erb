@@ -22,13 +22,16 @@
               <li>Filter by Service Type:</li>
 
               <li style="margin-bottom: 4px;">
-                <ul class="service-types" id="service-types-list" style="list-style: none;">
-                  <% Service.service_types.each do |type| %>
-                    <li class="service-search"><label title="<%= type.capitalize %>">
-                      <input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label>
-                    </li>
+                  <% Service.service_types.in_groups(3).each do |service_groups| %>
+                  <ul class="service-types" id="service-types-list" style="list-style: none;">
+                    <% service_groups.each do |type| %>
+                      <% next if type.nil? %>
+                      <li class="service-search"><label title="<%= type.capitalize %>">
+                        <input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label>
+                      </li>
+                    <% end %>
+                  </ul>
                   <% end %>
-                </ul>
                 <div class="clear"></div>
               </li>
 

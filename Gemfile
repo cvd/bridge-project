@@ -15,7 +15,7 @@ gem 'bson_ext', "1.1.5"
 # Test requirements
 gem 'bacon', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
-
+gem 'activesupport'
 
 # Padrino
 gem 'padrino'#, "0.9.15"

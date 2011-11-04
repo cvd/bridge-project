@@ -282,10 +282,11 @@ div.inner table tr th.last{
 #index-search ul.service-types{
   list-style-type: none; 
   margin-left: 0pt;
+  float: left;
+
 }
 #index-search ul.service-types li{
-  float: left;
-  width: 30%;
+  float: none;
   height: 2.25em;
   overflow: hidden;
 /*  white-space: nowrap;*/
