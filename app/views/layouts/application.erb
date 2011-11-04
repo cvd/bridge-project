@@ -19,19 +19,10 @@
   <body>
     <div id="container">
       <div id="header">
-        <div id="topHat">
-          <div id="logo">
-            <a href="http://www.gwu.edu">The George Washington University | Washington DC</a>
-          </div>
-        </div>
       </div>
 
       <div id="contentWrapperShadow">
         <div id="contentWrapper"> 
-
-<!-- /END: ModuleH1-2 (Small) -->
-
-          <div class="clear"></div>
 
             <div class="flash">
               <%= [:error, :warning, :notice].map { |type| flash_tag(type, :class => "message #{type}") }.join %>
@@ -56,9 +47,9 @@
 <div class="clear"></div>
 <div class="nav">
   <ul>
-    <li><%= link_to "Home", "/" %></li>
+    <li class="first"><%= link_to "Home", "/" %></li>
     <li>
-      <%= link_to "Show Services by Type", url(:services, :service_types) %>
+      <%= link_to "Services by Type", url(:services, :service_types) %>
     </li>
     <li>
       <%= link_to "Suggest a Service", url(:services, :new) %>
@@ -89,6 +80,21 @@
           <div id="footerParentMenu">
             <div class="footer940">
               <h2><a href="/">The BRIDGE Project</a></h2>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><%= link_to "Home", "/" %></li>
+                <li>
+                  <%= link_to "Services by Type", url(:services, :service_types) %>
+                </li>
+                <li>
+                  <%= link_to "Suggest a Service", url(:services, :new) %>
+                </li>
+                <li><a href="http://hmsr152project.blogspot.com/" target="_blank">Visit our Blog</a></li>
+                <li><a href="mailto:bridgeprojectdc@gmail.com">Contact Us</a></li>
+                <li class="last">
+                  <%= link_to "Mission Statement", url(:base, :about), :unless => :current %>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

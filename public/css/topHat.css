@@ -5,9 +5,11 @@ body {
 
 #container #header {
 	width: 100%;
+  /*
 	background-color: #fff;
 	background-image: url(../images/bgHeader.gif);
 	background-repeat: repeat-x;
+  */
 }
 
 #container #header #topHat {
