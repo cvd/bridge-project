@@ -820,7 +820,7 @@
 	#container #contentWrapperShadow #contentWrapper #contentNav div.hr,
 	#container #contentWrapperShadow #contentWrapper #contentMain div.hr,
 	#container #contentWrapperShadow #contentWrapper #contentRelated div.hr {
-		height: 12px;
+		height: 5px;
 		background-color: #eee4d1;
 		border-top: 1px solid #b5b4b4	;
 		width: 100%;
