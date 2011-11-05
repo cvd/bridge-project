@@ -59,13 +59,27 @@
   height: 10px;
 }
 
-.nav ul li:hover {
-  /* border-bottom: 3px solid #FFF;*/
-}
 .nav ul li a:hover {
   border-top: 1px solid #FFF;
   border-bottom: 3px solid #FFF;
   /* border-left: 1px solid #FFF;*/
+}
+.nav ul li a.dd {
+  background-image: url("/images/arrow-down.gif");
+  background-position: right center;
+  background-repeat: no-repeat;
+  padding-right: 10px;
+}
+.nav ul li a.dd:hover {
+  border-top: 1px solid #FFF;
+  border-bottom: 3px solid #4282B1;
+}
+.nav ul li ul.inner-dd li a {
+  border-bottom: 1px solid #4282B1;
+}
+.nav ul li ul.inner-dd li a:hover {
+  border-top: 1px solid #4282B1;
+  border-bottom: 1px solid #FFF;
 }
 
 div.mission {
@@ -404,4 +418,97 @@ div#info-window ul.services {
   font-size: 13px;
   margin-left: 5px;
   width: 100%;
+}
+
+.article {
+  font-size: 14.5px;
+  font-family: georgia;
+  margin-top: 15px;
+  line-height: 1.4;
+  clear: both;
+}
+
+.article blockquote {
+  margin: 30px 30px 10px 30px;
+  background-color: #DDDDDD;
+  padding: 10px;
+}
+.article p.attribution {
+  margin: 0 0 20px 30px;
+}
+
+.article h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.article p {
+  margin: 10px 0;
+  padding: 0 30px 0 10px;
+  /* padding: 20px;*/
+}
+
+.article ol {
+  list-style-type: decimal;
+}
+.article li {
+  margin-left: 40px;
+}
+
+.article .key-image {
+  float: left;
+  padding-right: 10px;
+  border: none;
+}
+
+ul.dropdown,
+ul.dropdown li,
+ul.dropdown ul {
+ list-style: none;
+ /* margin: 0;*/
+ padding: 0;
+}
+
+ul.dropdown {
+ position: relative;
+ z-index: 597;
+ float: left;
+}
+
+ul.dropdown li {
+ float: left;
+ line-height: 1.8em;
+ vertical-align: middle;
+ zoom: 1;
+}
+
+ul.dropdown li.hover,
+ul.dropdown li:hover {
+ position: relative;
+ z-index: 599;
+ cursor: default;
+}
+
+ul.dropdown ul {
+ visibility: hidden;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ z-index: 598;
+ width: 100%;
+}
+
+ul.dropdown ul li {
+ float: none;
+ width: 100%;
+ padding-bottom: 3px;
+}
+
+ul.dropdown ul ul {
+ top: 1px;
+ left: 99%;
+}
+
+ul.dropdown li:hover > ul {
+ visibility: visible;
 }

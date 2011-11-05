@@ -10,7 +10,7 @@ Bridge.helpers do
     @end = @start + @per_page - 1
   end
   def show_breadcrumbs?
-    !@index
+    !@index && @show_breadcrumbs != false
   end
 
   def breadcrumbs

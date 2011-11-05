@@ -44,24 +44,48 @@
               </div>
             </div>
 
-<div class="clear"></div>
-<div class="nav">
-  <ul>
-    <li class="first"><%= link_to "Home", "/" %></li>
-    <li>
-      <%= link_to "Services by Type", url(:services, :service_types) %>
-    </li>
-    <li>
-      <%= link_to "Suggest a Service", url(:services, :new) %>
-    </li>
-    <li><a href="http://hmsr152project.blogspot.com/" target="_blank">Visit our Blog</a></li>
-    <li><a href="mailto:bridgeprojectdc@gmail.com">Contact Us</a></li>
-    <li class="last">
-      <%= link_to "Mission Statement", url(:base, :about) %>
-    </li>
-  </ul>
-<div class="clear"></div>
-</div>
+            <div class="clear"></div>
+            <div class="nav">
+              <ul class="dropdown">
+                <li class="first"><%= link_to "Home", "/" %></li>
+
+                <li><a class="dd" href="#">Campus-Community Collaborations</a>
+                  <ul class="inner-dd">
+                    <li>
+                    <%= link_to "GWU - Human Services Program", url(:base, :human_services) %>
+                    </li>
+                    <li>
+                    <%= link_to "UMD - Jes Koepfler", url(:base, :jes) %>
+                    </li>
+
+                    <li>
+                    <%= link_to "AU - Localizing Peace Initiative", url(:base, :au) %>
+                    </li>
+
+                    <li>
+                    <%= link_to "Become a Partner", url(:base, :partner) %>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <%= link_to "Services by Type", url(:services, :service_types) %>
+                </li>
+
+                <li>
+                  <%= link_to "Suggest a Service", url(:services, :new) %>
+                </li>
+
+                <li><a href="http://hmsr152project.blogspot.com/" target="_blank">Blog</a></li>
+
+                <li><a href="mailto:bridgeprojectdc@gmail.com">Contact</a></li>
+
+                <li class="last">
+                  <%= link_to "Mission Statement", url(:base, :about) %>
+                </li>
+              </ul>
+            <div class="clear"></div>
+            </div>
 
             <%= yield_content :sidebar %>
 
