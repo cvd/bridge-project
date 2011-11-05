@@ -512,3 +512,13 @@ ul.dropdown ul ul {
 ul.dropdown li:hover > ul {
  visibility: visible;
 }
+
+.twitter {
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+
+#header-title {
+  position: relative;
+}
