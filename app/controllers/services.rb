@@ -174,4 +174,9 @@ Bridge.controllers :services do
     file.rewind
     send_file(file.path, :disposition => :attachment, :filename => "bridge_project_data.csv")
   end
+
+  get :all do
+    content_type :json
+    Service.all.to_json(:only =>[:_id, :lat, :lng])
+  end
 end
