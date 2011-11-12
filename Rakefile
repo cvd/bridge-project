@@ -9,3 +9,8 @@ task :clear_sessions do
   Cart.where(:updated_at.lt => t).each &:delete
 end
 
+task :seed_data do
+  
+  %x[(cd data  && gunzip < seeds.tar.gz | tar xvf - && mongorestore -d test_db ./bridge_production && rm -rf bridge_production)]
+end
+
