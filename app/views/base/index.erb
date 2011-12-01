@@ -3,63 +3,64 @@
 <div class="mission">
   <p>The BRIDGE Project seeks to provide an up-to-date and comprehensive guide to social services and public resources in the District of Columbia. </p>
 </div>
-<script>
 
-  $.get('/all_services.json', function(data) {
-element = $('#map_all_of_the_things')[0];
+<div id="contentMain" class="limited">
+  <div class="hr"><hr /></div>
+    <div id="index-body" class="middle">
+      <h1>Search for Services</h1>
+      <p class="search-instructions">
+        Check the box next to the type of service/organization you are looking for. You can check more than one box. 
+        To find services in a specific area check the Quadrant/Region where you are looking for services. 
+        To be more specific you can also include a zip code.
+      </p>
+      <div id="moduleCM22">
+        <div id="index-search">
+          <form action="/services/advanced_search" method="get" accept-charset="utf-8">
 
-    var lat, lng, map, latLng, infoWindow = new google.maps.InfoWindow();
-    lat = $(element).attr("data-lat");
-    lng = $(element).attr("data-lng");
+            <ul style="list-style-type:none;">
+              <li class="name-search" style="padding-bottom: 10px;">Search by name:&nbsp;<input type="text" name="service[name]" value=""/></li> 
+              <li>Filter by Service Type:</li>
 
-    latLng = new google.maps.LatLng(lat,lng);
-    var myOptions = {
-      streetViewControl: false,
-      mapTypeControl: false,
-      center: latLng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map = new google.maps.Map(element, myOptions);
-
-    var bounds = new google.maps.LatLngBounds(); 
-
-   $.each(data, function(ind, svc) {
-      var marker_lat, marker_lng, marker_latlng, marker, siteName, services;
-      marker_lat = svc.lat;
-
-      marker_lng = svc.lng;
-      marker_latlng = new google.maps.LatLng(marker_lat, marker_lng);
-      marker = addMarker(marker_latlng, map);
-   //   services = $(svc).name;
-    //  siteName = $(svc).find('.site-name').html();
-      /*
-      function showInfoWindow () {
-          var myHtml = '<div id="info-window"><div><strong>' + siteName + '</strong></div>';
-          myHtml += "<div><strong>Services Provided:</strong></div><ul class='services'>";
-          $(services).each(function(i, v){
-            myHtml+= "<li class='service'>"+v+"</li>";
-          });
-          myHtml += '</ul><a href="'+directionsUrl+'" target="_new">Get Directions</a>';
-          myHtml += '</div>';
-
-          infoWindow.setContent(myHtml);
-          infoWindow.open(map, marker);
-          map.panTo(marker.getPosition());
-          if(map.getZoom()!=13) map.setZoom(13);
-      }
-      */
-     // google.maps.event.addListener(marker, 'click', showInfoWindow);
-      bounds.extend(marker_latlng);
-    });
-    map.fitBounds(bounds);
-
-    //name
-    //category
-    //link to show all
-
-});
-</script>
-
-  <div id="map_all_of_the_things" style="width: 100%; height: 300px;"></div>
+              <li style="margin-bottom: 4px;">
+                  <% Service.service_types.in_groups(3).each do |service_groups| %>
+                  <ul class="service-types" id="service-types-list" style="list-style: none;">
+                    <% service_groups.each do |type| %>
+                      <% next if type.nil? %>
+                      <li class="service-search"><label title="<%= type.capitalize %>">
+                        <input type="checkbox" name="service[services][]" value="<%= type %>"/><%= type.capitalize %></label>
+                      </li>
+                    <% end %>
+                  </ul>
+                  <% end %>
+                <div class="clear"></div>
+              </li>
 
 
+              <li>Filter by Region:</li>
+              <li>
+              <ul style="list-style-type:none;">
+                <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="NW"/>NW</label></li>
+                <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="NE"/>NE</label></li>
+                <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="SW"/>SW</label></li>
+                <li class="quadrant-search left"><label><input type="checkbox" name="service[quadrant][]" value="SE"/>SE</label></li>
+                <li class="quadrant-search left"><label><input type="checkbox" name="service[state][]" value="MD"/>MD</label></li>
+                <li class="quadrant-search left"><label><input type="checkbox" name="service[state][]" value="VA"/>VA</label></li>
+              </ul>
+              </li>
+              <li class="last clear" style="padding-top: 10px;">
+                Filter Zip Code:&nbsp;<input type="text" length="5" size="5" name="service[zip]" value="" />
+              </li>
+
+              <br />
+              <div class="search-button">
+                <span class="ds">
+                  <span class="lsbb">
+                    <input type="submit" class="lsb" value="Search Services" name="btnG" style="vertical-align: middle;" />
+                  </span>
+                </span>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

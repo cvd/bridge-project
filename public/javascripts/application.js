@@ -1,19 +1,13 @@
 // Put your application scripts here
+$(document).ready(function(){
+
   function addMarker (latLng, map, i){
-    if(i){
-      var markIcon = "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
-    }
-    else {
-      var markIcon = "http://maps.google.com/mapfiles/marker.png";
-    }
     return new google.maps.Marker({
       position: latLng,
       map: map,
-      icon: markIcon
+      icon: "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
     });
   }
-$(document).ready(function(){
-
 
   $("[data-method=map]").each(function () {
     var lat, lng, map, latLng, infoWindow = new google.maps.InfoWindow();
