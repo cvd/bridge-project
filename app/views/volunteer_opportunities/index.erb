@@ -1,0 +1,6 @@
+<h3>Volunteer Opportunities</h3>
+<ul>
+  <% @volunteer_opportunities.each do |v| %>
+    <li><%= link_to v.title, url(:volunteer_opportunities, :show, :id => v) %><li>
+  <% end %>
+</ul>

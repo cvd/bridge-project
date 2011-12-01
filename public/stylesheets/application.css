@@ -527,3 +527,7 @@ ul.dropdown li:hover > ul {
 #main {
   clear: both;
 }
+
+div.body {
+  font-size: 14px;
+}
