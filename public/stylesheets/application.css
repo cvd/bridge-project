@@ -521,6 +521,7 @@ ul.dropdown li:hover > ul {
   position: absolute;
   right: 0;
   top: 4px;
+  width: 165px;
 }
 
 #header-title {
