@@ -1,0 +1,67 @@
+<div class="volunteer_opportunnity">
+  <h3>Volunteer Opportunity</h3>
+  <h1> <%= @opp.title %> </h1>
+
+  <div class="field description">
+    <div class="title">Description:</div>
+    <%= @opp.description %>
+  </div>
+
+  <% if @opp.service? %>
+    <div class="field">
+      <div class="title">Parent Service:</div>
+      <div class="title">
+        <%= link_to @opp.service.site_name, url(:services, :show, :id => @opp.service_id) %>
+      </div>
+
+      <% if @opp.service.address? %>
+        <div class="field address">
+          <div><strong>Address:</strong></div>
+          <div class="address-part"><%= @opp.service.address %></div>
+          <div class="address-part"><%= @opp.service.city %>
+            <%= @opp.service.state %> <%= @opp.service.zip %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="field requirements">
+    <div class="title">Requirements:</div>
+    <%= @opp.requirements %>
+  </div>
+
+  <div class="field population_served">
+    <span class="label">Population Served:</span>
+    <%= @opp.population_served %>
+  </div>
+
+
+  <div class="field hours_requested">
+    <span class="label">Hours Requested:</span>
+    <%= @opp.hours_requested %>
+  </div>
+
+  <div class="field number_requested">
+    <span class="label">Number Requested:</span>
+    <%= @opp.number_requested %>
+  </div>
+
+
+  <div class="field contact">
+    <h3>Contact:</h3>
+    <div class="name">
+      <span class="label">Name:</span>
+      <%= @opp.contact_name %>
+    </div>
+    <div class="email">
+      <span class="label">Email:</span>
+      <%= @opp.contact_email %>
+    </div>
+    <div class="phone">
+      <span class="label">Phone:</span>
+      <%= @opp.contact_phone %>
+    </div>
+  </div>
+
+</div>

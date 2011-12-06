@@ -1,0 +1,54 @@
+<div class="volunteer-opp-form">
+  <h1>Create New Research Opportunity</h1>
+  <% form_for @research_opportunity, url(:research_opportunities, :create), 
+    :class => :form, :id => "volunteer-opp" do |f| %>
+
+    <% if @research_opportunity.service? %>
+      <h3>For the service: <%= @research_opportunity.service.site_name %></h3>
+      <input type="hidden" name="research_opportunity[service_id]" value="<%= @research_opportunity.service_id %>" />
+    <% end %>
+    <fieldset>
+      <ol>
+        <li class="string">
+          <%= f.label :title %><%= f.error_message_on :title %>
+          <%= f.text_field :title %>
+        </li>
+
+        <li>
+        <%= f.label :description %><%= f.error_message_on :description %>
+          <%= f.text_area :description %>
+        </li>
+
+        <li class="string">
+          <%= f.label :requirements %>
+          <%= f.text_area :requirements %>
+        </li>
+
+        <li class="string">
+          <%= f.label :population_served %>
+          <%= f.text_field :population_served %>
+        </li>
+
+        <li class="string">
+          <%= f.label :contact_name %>
+          <%= f.text_field :contact_name %>
+        </li>
+
+        <li class="string">
+          <%= f.label :contact_email %>
+          <%= f.text_field :contact_email %>
+        </li>
+        
+        <li class="string">
+          <%= f.label :contact_phone %>
+          <%= f.text_field :contact_phone %>
+        </li>
+
+      </ol>
+    </fieldset>
+    <fieldset>
+      <%= f.submit "Save" %> |
+      <%= link_to "Cancel", url(:research_opportunities, :index) %>
+    </fieldset>
+  <% end %>
+</div>

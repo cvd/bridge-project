@@ -1,0 +1,38 @@
+<div class="opps-index">
+
+<div class="search-form">
+    <% form_tag url(:volunteer_opportunities, :index), :method => :get do |f| %>
+    <div class="search-bar">
+      <input style="background: none repeat scroll 0% 0% rgb(255, 255, 255); border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); color: rgb(0, 0, 0); font: 18px arial,sans-serif bold; height: 25px; margin: 0pt; padding: 5px 8px 0pt 6px; vertical-align: top; width: 400px;" size="57" value="" title="Search" class="lst" name="q" maxlength="350"  autocomplete="off">  
+    </div>
+    <div class="search-button">
+        <span class="ds">
+          <span class="lsbb">
+            <input type="submit" class="lsb" value="Search Volunteer Opportunities" name="btnG" style="vertical-align: middle;">
+          </span>
+        </span>
+    </div>
+  <% end %>
+</div>
+
+<div class="clear"></div>
+
+<h2>Volunteer Opportunities</h2>
+<% if @query.present? %>
+  <h3>Showing results matching: <em><%= @query %></em></h3>
+<% end %>
+<ul>
+  <% @volunteer_opportunities.each do |v| %>
+    <li class="item">
+      <h3><%= link_to v.title, url(:volunteer_opportunities, :show, :id => v) %></h3>
+      <% if v.service? %>
+        <div class="parent-service"><%= link_to v.service.site_name, url(:services, :show, :id => v.service_id) %></div>
+      <% end %>
+      <div class="body"><strong>Description: </strong><%= v.description %></div>
+    </li>
+  <% end %>
+  <% if @volunteer_opportunities.length == 0 %>
+    <li>No Results Found</li>
+  <% end %>
+</ul>
+</div>

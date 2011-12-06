@@ -1,0 +1,19 @@
+<% form_for @volunteer_opportunity, url(:services, :update), :class => :form do |f| %>
+  <fieldset>
+    <ol>
+      <li>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+
+      <li>
+        <%= f.label :title %>
+        <%= f.text_area :title %>
+      </li>
+    </ol>
+  </fieldset>
+  <fieldset>
+    <%= f.submit "Save" %> |
+    <%= link_to "Cancel", url(:volunteer_opportunities, :index) %>
+  </fieldset>
+<% end %>

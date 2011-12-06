@@ -93,15 +93,20 @@
             </div>
 
             <%= yield_content :sidebar %>
+            <div class="body">
 
-            <% if show_breadcrumbs? %>
-              <div class="breadcrumbs">
-                <%= breadcrumbs %>
-              </div>
-            <% end %>
+              <% if show_breadcrumbs? %>
+                <div class="breadcrumbs">
+                  <%= breadcrumbs %>
+                </div>
+              <% end %>
+
+              <div class="clear"></div>
+
               <%= yield %>
 
-            <div class="clear"></div>
+              <div class="clear"></div>
+            </div>
 
         </div>
         <div id="footer">

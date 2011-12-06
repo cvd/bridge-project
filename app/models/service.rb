@@ -30,6 +30,9 @@ class Service
   key :parent_service
   key :internal_notes, String
 
+  many :volunteer_opportunities
+  many :research_opportunities
+
   timestamps!
 
   validates_presence_of :site_name, :address, :city, :state

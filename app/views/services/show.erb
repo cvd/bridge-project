@@ -10,6 +10,15 @@
           <span class="modify-site right">
             <%= button_to "Modify This Site", url(:services, :update, :id => service.id), :method => "get" %>
           </span>
+          <span class="modify-site right">
+            <%= link_to "Add Volunteer Opportunity", 
+              url(:volunteer_opportunities, :new, :"volunteer_opportunity[service_id]" => service.id), :method => "get" %>
+          </span>
+
+          <span class="modify-site right">
+            <%= link_to "Add Research Opportunity", 
+              url(:research_opportunities, :new, :"research_opportunity[service_id]" => service.id), :method => "get" %>
+          </span>
 
           <% if cart_items.include? service.id.to_s %>
             <span class="ui-state-default ui-corner-all added">Already in your list</span>
@@ -82,6 +91,24 @@
   
       <% if service.restrictions? %>
         <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
+      <% end %>
+
+      <% if service.volunteer_opportunities.length > 0 %>
+        <h3>Volunteer Opportunities</h3>
+        <ul class="volunteer_opportunities">
+          <% service.volunteer_opportunities.each do |v| %>
+            <li><%= link_to v.title, url(:volunteer_opportunities, :show, :id => v.id) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if service.research_opportunities.length > 0 %>
+        <h3>Research Opportunities</h3>
+        <ul class="volunteer_opportunities">
+          <% service.research_opportunities.each do |v| %>
+            <li><%= link_to v.title, url(:research_opportunities, :show, :id => v.id) %></li>
+          <% end %>
+        </ul>
       <% end %>
 
       <div>
