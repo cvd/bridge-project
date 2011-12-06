@@ -1,11 +1,11 @@
 <div class="volunteer-opp-form">
-  <h1>Create New Volunteer Opportunity</h1>
-  <% form_for @volunteer_opportunity, url(:volunteer_opportunities, :create), 
+  <h1>Create New Research Opportunity</h1>
+  <% form_for @research_opportunity, url(:research_opportunities, :create), 
     :class => :form, :id => "volunteer-opp" do |f| %>
 
-    <% if @volunteer_opportunity.service? %>
-      <h3>For the service: <%= @volunteer_opportunity.service.site_name %></h3>
-      <input type="hidden" name="volunteer_opportunity[service_id]" value="<%= @volunteer_opportunity.service_id %>" />
+    <% if @research_opportunity.service? %>
+      <h3>For the service: <%= @research_opportunity.service.site_name %></h3>
+      <input type="hidden" name="research_opportunity[service_id]" value="<%= @research_opportunity.service_id %>" />
     <% end %>
     <fieldset>
       <ol>
@@ -44,20 +44,11 @@
           <%= f.text_field :contact_phone %>
         </li>
 
-        <li class="string">
-          <%= f.label :hours_requested %>
-          <%= f.text_field :hours_requested %>
-        </li>
-
-        <li class="string">
-          <%= f.label :number_requested %>
-          <%= f.text_field :number_requested %>
-        </li>
       </ol>
     </fieldset>
     <fieldset>
       <%= f.submit "Save" %> |
-      <%= link_to "Cancel", url(:volunteer_opportunities, :index) %>
+      <%= link_to "Cancel", url(:research_opportunities, :index) %>
     </fieldset>
   <% end %>
 </div>

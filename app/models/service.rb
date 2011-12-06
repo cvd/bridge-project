@@ -31,6 +31,7 @@ class Service
   key :internal_notes, String
 
   many :volunteer_opportunities
+  many :research_opportunities
 
   timestamps!
 

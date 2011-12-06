@@ -1,4 +1,4 @@
-class VolunteerOpportunity
+class ResearchOpportunity
   include MongoMapper::Document
   attr_accessor :search_relevance, :rank, :current_page, :total_pages
   USELESS_TERMS = ["a", "the", "of", "it", "for", "is", "i", "to", "in", "be", "and", "on"]
@@ -6,8 +6,6 @@ class VolunteerOpportunity
 
   key :title, String
   key :description, String
-  key :hours_requested, String
-  key :number_requested, String
   key :requirements, String
   key :population_served, String
   key :tags, Array, :default => []
@@ -45,8 +43,6 @@ class VolunteerOpportunity
     self.search_terms.delete_if(&:nil?)
     self.search_terms.delete_if(&:empty?)
     self.search_terms.uniq!
-    #self.name_parts = title.gsub(/\//, " ").gsub(PUNCTUATION, "").downcase.split.uniq
-    #self.name_parts.delete_if {|term| USELESS_TERMS.include? term}
   end
 
   def rank_search(search_term)

@@ -177,6 +177,10 @@ Bridge.controllers :services do
 
   get :all do
     content_type :json
-    Service.all.to_json(:only =>[:_id, :lat, :lng])
+    File.open(File.join(settings.public, "all_services.json"), 'w') do |f|
+      @json = Service.all.to_json(:only =>[:_id, :lat, :lng, :site_name, :services])
+      f.puts @json
+    end
+    @json
   end
 end

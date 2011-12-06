@@ -110,6 +110,7 @@ $(document).ready(function(){
 
 
   $('.modify-site input').button();
+  $('.modify-site a').button();
 });
 
 
