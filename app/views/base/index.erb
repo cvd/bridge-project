@@ -10,7 +10,7 @@
 </div>
 <script>
 
-  $.get('/all_services.json', function(data) {
+  $.getJSON('/all_services.json', function(data) {
     element = $('#map_all_of_the_things')[0];
 
     var lat, lng, latLng, infoWindow = new google.maps.InfoWindow();
@@ -27,9 +27,7 @@
 
     var bounds = new google.maps.LatLngBounds(); 
 
-    data = data.slice(0, 500);
    $.each(data, function(ind, svc) {
-     console.log(svc);
       var marker_lat, marker_lng, marker_latlng, marker, siteName, services;
       marker_lat = svc.lat;
 
