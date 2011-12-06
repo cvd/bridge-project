@@ -27,6 +27,7 @@
 
     var bounds = new google.maps.LatLngBounds(); 
 
+    data = data.slice(0, 500);
    $.each(data, function(ind, svc) {
       var marker_lat, marker_lng, marker_latlng, marker, siteName, services;
       marker_lat = svc.lat;
@@ -41,11 +42,13 @@
       function showInfoWindow () {
         var myHtml = '<div id="info-window"><div><strong><a href="/services/show/'+svc._id+'">' + name + '</a></strong></div>';
           myHtml += "<ul>";
-          $(services).each(function(){
+            /*
+            $(services).each(function(){
             myHtml += "<li>";
             myHtml += this;
             myHtml += "</li>";
           });
+          */
           myHtml += "<ul>";
           myHtml += '</div>';
 
