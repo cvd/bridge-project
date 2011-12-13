@@ -175,6 +175,10 @@ Bridge.controllers :services do
     send_file(file.path, :disposition => :attachment, :filename => "bridge_project_data.csv")
   end
 
+  get :advanced_search do
+    render "services/advanced_search"
+  end
+
   get :all do
     content_type :json
     File.open(File.join(settings.public, "all_services.json"), 'w') do |f|
