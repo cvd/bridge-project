@@ -88,7 +88,7 @@ div.mission {
   font-size: 20px;
   font-weight: bold;
   line-height: 1.5;
-  margin: 30px 20px;
+  margin: 70px 20px;
   width: 500px;
 }
 .mission h2 {
@@ -612,6 +612,9 @@ form#volunteer-opp textarea {
 .categories a.category {
   border: 1px solid #444444;
   display: block;
+  -moz-box-shadow: 0 2px 5px #888;
+  -webkit-box-shadow: 0 2px 5px #888;
+  -o-box-shadow: 0 2px 5px #888;
   box-shadow: 0 2px 5px #888;
   color: #FFFFFF;
   float: right;
@@ -619,9 +622,13 @@ form#volunteer-opp textarea {
   font-weight: bold;
   margin: 10px;
   padding: 20px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  -o-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   width: 300px;
   text-align: center;
+  text-shadow: 0 1px 1px #444;
 }
 .categories a.volunteer {
   background-color: #8818C9;
@@ -629,6 +636,9 @@ form#volunteer-opp textarea {
 
 .categories a.research {
   background-color: #E31029;
+}
+.categories a.services {
+  background-color: green;
 }
 .categories a.category:hover {
   color: #FFFFFF;

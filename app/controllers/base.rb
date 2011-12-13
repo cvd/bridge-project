@@ -5,6 +5,10 @@ Bridge.controllers :base do
     render "base/index"
   end
 
+  get :advanced_search do
+    render "services/advanced_search"
+  end
+
   get :about, :map => '/about' do
     @title = "About - The BRIDGE Project DC"
     render "base/about"

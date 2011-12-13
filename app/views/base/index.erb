@@ -4,6 +4,8 @@
   <p>The BRIDGE Project seeks to provide an up-to-date and comprehensive guide to social services and public resources in the District of Columbia. </p>
 </div>
 <div class="categories">
+<%= link_to "Search for Services", url(:base, :advanced_search), :class=> 'services category' %>
+<br/>
 <%= link_to "Volunteer Opportunities", url(:volunteer_opportunities, :index), :class=> 'volunteer category' %>
 <br/>
 <%= link_to "Research Opportunities", url(:research_opportunities, :index), :class=> 'research category' %>
