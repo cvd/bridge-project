@@ -1,15 +1,18 @@
 // Put your application scripts here
-  function addMarker (latLng, map, i){
+  function addMarker (latLng, map, i, animation, markIcon){
     if(i){
       var markIcon = "http://maps.google.com/mapfiles/marker" + String.fromCharCode(i + 65) + ".png"
     }
     else {
-      var markIcon = "http://maps.google.com/mapfiles/marker.png";
+      if(!markIcon){
+        var markIcon = "http://maps.google.com/mapfiles/marker.png";
+      }
     }
     return new google.maps.Marker({
       position: latLng,
       map: map,
-      icon: markIcon
+      icon: markIcon,
+      animation: animation
     });
   }
 $(document).ready(function(){
