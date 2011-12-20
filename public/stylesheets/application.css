@@ -88,7 +88,7 @@ div.mission {
   font-size: 20px;
   font-weight: bold;
   line-height: 1.5;
-  margin: 70px 20px;
+  margin: 50px 20px;
   width: 500px;
 }
 .mission h2 {
@@ -665,4 +665,22 @@ form#volunteer-opp textarea {
   margin-bottom: 2px;
 }
 
+.header-holder {
+  margin-top: 30px;
+  width: 600px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 
+}
+.search-button {
+  color: rgb(0, 0, 0);
+}
+form .search-form .search-button input.lst::-webkit-input-placeholder,
+form .search-form .search-button input.lst:-moz-placeholder {
+  color: #878787;
+  font-size: 12px;
+}
+.sub-title-2 {
+  font-size: 12px;
+  margin-top: 10px;
+k}
