@@ -617,7 +617,6 @@ form#volunteer-opp textarea {
   -o-box-shadow: 0 2px 5px #888;
   box-shadow: 0 2px 5px #888;
   color: #FFFFFF;
-  float: right;
   font-size: 20px;
   font-weight: bold;
   margin: 10px;
@@ -683,4 +682,4 @@ form .search-form .search-button input.lst:-moz-placeholder {
 .sub-title-2 {
   font-size: 12px;
   margin-top: 10px;
-k}
+}
