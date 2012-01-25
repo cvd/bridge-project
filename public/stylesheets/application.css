@@ -1,3 +1,8 @@
+#header {
+  -webkit-box-shadow: 0 5px 5px #999;
+  -moz-box-shadow: 0 5px 5px #999;
+  box-shadow: 0 5px 5px #999;
+}
 #contentMain ul#search-result li.site{
   list-style: none;
   padding: 5px 10px;
@@ -85,10 +90,10 @@
 div.mission {
   clear: both;
   float: left;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   line-height: 1.5;
-  margin: 50px 20px;
+  margin: 30px 20px 30px 20px;
   width: 500px;
 }
 .mission h2 {
@@ -608,6 +613,8 @@ form#volunteer-opp textarea {
 .categories {
   float: right;
   color: #FFFFFF;
+  width: 426px;
+  margin: 10px auto 0;
 }
 .categories a.category {
   border: 1px solid #444444;
@@ -682,4 +689,11 @@ form .search-form .search-button input.lst:-moz-placeholder {
 .sub-title-2 {
   font-size: 12px;
   margin-top: 10px;
+}
+
+#tweets {
+  float: right;
+  margin-right: 31px;
+  margin-top: 20px;
+  width: 300px;
 }

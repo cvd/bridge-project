@@ -293,11 +293,9 @@
 	}
 	
 	#container #contentWrapperShadow {
-		background-image: url(../images/bgShadow.gif);
 		background-repeat: repeat-x;
 		background-position: top;
 		width: 100%;
-		padding-top: 8px;
 	}
 	
 	#container #contentWrapperShadow #contentWrapper {
