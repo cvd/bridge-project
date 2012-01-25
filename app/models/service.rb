@@ -15,8 +15,6 @@ class Service
   key :hours, String
   key :transportation, String
   key :website, String
-  key :primary_service, String
-  key :secondary_service, String
   key :restrictions, String
   key :lat, Float
   key :lng, Float
@@ -29,6 +27,7 @@ class Service
   key :site_contact_phone, String
   key :parent_service
   key :internal_notes, String
+  key :twitter, String
 
   many :volunteer_opportunities
   many :research_opportunities
@@ -87,13 +86,6 @@ class Service
     @rank
   end
 
-
-  def self.service_types_old
-    all_services = all
-    types = all_services.map(&:primary_service)
-    types  += all_services.map(&:secondary_service)
-    types.delete_if(&:nil?).map(&:capitalize).map(&:strip).uniq.delete_if(&:empty?).sort
-  end
 
   def self.service_types
     types = fields(:services).where(:status => "active").map(&:services).flatten
