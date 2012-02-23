@@ -1,0 +1,21 @@
+Can we the twitter streams to the site? So that we can insert their twitter
+handles and have a feed on each page? I want to get this going on the landing
+page from BRIDGE regardless
+We need to fix/ update our Twitter page/ using the cool graphics you were
+working on at the coffee shop
+wordpress blog updates (i was thinking about this--but I would like to link a
+different blog in the future)--more details to come.
+Tabbed View: Services, Volunteer opportunities, Research Opportunities---this
+will expand the views into different tabs instead of all on the same page.
+Honey's List: Social Services Craigslist---apparently MoochList exists (but I
+do not think they have any data populated)--it would be cool to think about
+integration though and the pooling of our assets across the homeless community.
+Putting all of the services that population from a search in a long list
+instead of multiple pages so they can all show up on the map at the same time.
+Different colored markers for different types of services/ categories
+Add the Volunteer and Research Opportunities forms to the backend
+Add placeholder text to the search box on the home page (e.g. Street Address,
+City, State)
+On BRIDGE 2.0--log-in with saved search capabilities
+Internal Notes for Community of Hope--log-ins for nonprofits using the portal
+now?

@@ -697,3 +697,15 @@ form .search-form .search-button input.lst:-moz-placeholder {
   margin-top: 20px;
   width: 300px;
 }
+
+#tweets div {
+  margin: 0;
+}
+
+.service-display #tweets {
+  margin-right: 0;
+}
+
+.service-display .site-name {
+  display: inline-block;
+}

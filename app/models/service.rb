@@ -28,6 +28,7 @@ class Service
   key :parent_service
   key :internal_notes, String
   key :twitter, String
+  key :facebook, String
 
   many :volunteer_opportunities
   many :research_opportunities
@@ -36,6 +37,14 @@ class Service
 
   validates_presence_of :site_name, :address, :city, :state
   before_save :create_search_terms, :clean_services, :geocode
+
+  def facebook
+    if /http/ =~ attributes[:facebook]
+      attributes[:facebook]
+    else
+      "http://#{attributes[:facebook]}"
+    end
+  end
 
   def clean_services
     # cleaning up some common mispellings

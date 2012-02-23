@@ -38,6 +38,39 @@
 
     <h2 class='site-name'><%= service.site_name %></h2>
 
+    <% if service.twitter %>
+      <div id="tweets">
+        <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+        new TWTR.Widget({
+          version: 2,
+          type: 'profile',
+          rpp: 5,
+          interval: 30000,
+          width: 'auto',
+          height: 300,
+          theme: {
+            shell: {
+              background: '#4283b1',
+              color: '#ffffff'
+            },
+            tweets: {
+              background: '#ffffff',
+              color: '#000000',
+              links: '#4283b1'
+            }
+          },
+          features: {
+            scrollbar: false,
+            loop: false,
+            live: false,
+            behavior: 'all'
+          }
+        }).render().setUser('<%= service.twitter %>').start();
+        </script>
+      </div>
+    <% end %>
+
       <% if service.description? %>  
         <div class="description">
           <%= service.description %>
@@ -56,12 +89,17 @@
         </div>
       <% end %>
   
+
       <% if service.phone? %>
-        <div class"phone"><em>Phone:</em> <%= service.phone %></div>
+        <div class="phone"><em>Phone:</em> <%= service.phone %></div>
       <% end %>
   
       <% if service.website? %>
         <div class="website"><em>Website:</em> <a target="new" href="<%= service.website %>"><%= service.website %></a></div>
+      <% end %>
+
+      <% if service.facebook? %>
+        <div class="website"><em>Facebook:</em> <a target="new" href="<%= service.facebook %>"><%= service.facebook %></a></div>
       <% end %>
   
       <% if service.services? %>

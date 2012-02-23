@@ -43,6 +43,16 @@
 </div>
 
 <div class="group">
+  <%= f.label :twitter %><%= f.error_message_on :twitter %>
+  <%= f.text_field :twitter, :class => :text_field %>
+</div>
+
+<div class="group">
+  <%= f.label :facebook %><%= f.error_message_on :facebook %>
+  <%= f.text_field :facebook, :class => :text_field %>
+</div>
+
+<div class="group">
   <%= f.label :address %><%= f.error_message_on :address %>
   <%= f.text_field :address, :class => :text_field %>
 </div>
