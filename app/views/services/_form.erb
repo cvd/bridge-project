@@ -124,10 +124,7 @@
 <% if !@service.new_record?  %>
   <%= f.hidden_field :parent_service, :value => @service.id %>
 <% end %>
-<p>
-  <%= f.error_message_on :captcha %>
-  <%= recaptcha_tag(:ajax, :display => {:theme => 'white'}) %>
-</p>
+
 <div class="group navform wat-cf">
   <%= f.submit "Save", :class => :button %>
   <%= f.submit "Cancel", :onclick => "window.location='#{url(:services, :list)}';return false", :class => :button %>

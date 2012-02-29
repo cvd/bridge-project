@@ -25,4 +25,3 @@ gem "hashie"
 gem "json"
 gem 'awesome_print', :require => 'ap'
 
-gem 'rack-recaptcha', :require => 'rack/recaptcha'
