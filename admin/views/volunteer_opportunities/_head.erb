@@ -1,0 +1,14 @@
+<div class="secondary-navigation">
+  <ul class="wat-cf">
+    <li class="first <% if @list_title == "All Volunteer Opportunities" %> active <% end %>"><%= link_to "List", url(:volunteer_opportunities, :index) %></li>
+    <li><%= link_to "New", url(:volunteer_opportunities, :new) %></li>
+    <% pending_count = VolunteerOpportunity.pending.count %>
+    <% updated_count = VolunteerOpportunity.updated.count %>
+    
+    <li <% if @list_title == "Pending" %> active <% end %>><%= link_to "Pending (#{pending_count})", url(:volunteer_opportunities, :pending) %></li>
+<!---
+    <li <% if @list_title == "Updated" %> active <% end %>><%= link_to "Updated (#{updated_count})", url(:volunteer_opportunities, :updated) %></li>
+-->
+    <li <% if @list_title == "Most Recently Modified" %> active <% end %>><%= link_to "Last Modified", url(:volunteer_opportunities, :modified) %></li>
+  </ul>
+</div>

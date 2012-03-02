@@ -131,19 +131,19 @@
         <div class="restrictions"><em>Restrictions:</em> <%= service.restrictions %></div>
       <% end %>
 
-      <% if service.volunteer_opportunities.length > 0 %>
+      <% if service.volunteer_opportunities.active.to_a.length > 0 %>
         <h3>Volunteer Opportunities</h3>
         <ul class="volunteer_opportunities">
-          <% service.volunteer_opportunities.each do |v| %>
+          <% service.volunteer_opportunities.active.each do |v| %>
             <li><%= link_to v.title, url(:volunteer_opportunities, :show, :id => v.id) %></li>
           <% end %>
         </ul>
       <% end %>
 
-      <% if service.research_opportunities.length > 0 %>
+      <% if service.research_opportunities.active.to_a.length > 0 %>
         <h3>Research Opportunities</h3>
         <ul class="volunteer_opportunities">
-          <% service.research_opportunities.each do |v| %>
+          <% service.research_opportunities.active.each do |v| %>
             <li><%= link_to v.title, url(:research_opportunities, :show, :id => v.id) %></li>
           <% end %>
         </ul>

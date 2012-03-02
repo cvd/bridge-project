@@ -14,17 +14,17 @@ class ResearchOpportunity
   key :contact_phone, String
   key :status, String, :default => "active"
   key :search_terms, Array, :default => []
+  timestamps!
+    
   belongs_to :service
 
   validates_presence_of :title, :description
-  before_save :create_search_terms, :clean_tags
-
-  def clean_tags
-
-  end
+  before_save :create_search_terms
 
   scope :search,  lambda { |term| where(:status => "active", :search_terms => cleaned_search_terms(term)) }
   scope :active, lambda { where(:status => "active") }
+  scope :pending, lambda { where(:status => "pending") }
+  scope :updated, lambda { where(:status => "updated") }
 
   def self.cleaned_search_terms(search_term)
     unless search_term.nil?

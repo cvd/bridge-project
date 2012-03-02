@@ -1,0 +1,22 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to pat(:list), url(:volunteer_opportunities, :index) %></li>
+      <li><%= link_to pat(:new), url(:volunteer_opportunities, :new) %></li>
+      <li><%= link_to "Pending", url(:volunteer_opportunities, :pending) %></li>      
+      <li class="active"><%= link_to pat(:edit), url(:volunteer_opportunities, :edit, :id => @volunteer_opportunity.id) %></li>
+    </ul>
+  </div>
+  <div class="content">
+    <h2 class="title">Edit Updated Volunteer Opportunity</h2>
+    <div class="inner">
+      <% form_for :service, url(:volunteer_opportunities, :update_modified, :id => @volunteer_opportunity.id), :method => :put, :class => :form do |f| %>
+        <%= partial "volunteer_opportunities/updated_form", :locals => { :f => f } %>
+      <% end %>      
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>
+<% content_for :footer do %>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<% end %>

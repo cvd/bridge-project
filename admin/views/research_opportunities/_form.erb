@@ -1,0 +1,59 @@
+  <% if @research_opportunity.service? %>
+    <h3>For the service: <%= @research_opportunity.service.site_name %></h3>
+    <input type="hidden" name="research_opportunity[service_id]" value="<%= @research_opportunity.service_id %>" />
+  <% end %>
+
+	<%= f.hidden_field :status, :value => (@research_opportunity.new_record? ? "pending": "updated" ) %>
+	
+  <fieldset>
+    <ol style="list-style: none;">
+      <li class="string">
+        <%= f.label :title %><%= f.error_message_on :title %>
+        <%= f.text_field :title %>
+      </li>
+
+      <li>
+      <%= f.label :description %><%= f.error_message_on :description %>
+        <%= f.text_area :description %>
+      </li>
+
+      <li class="string">
+        <%= f.label :requirements %>
+        <%= f.text_area :requirements %>
+      </li>
+
+      <li class="string">
+        <%= f.label :population_served %>
+        <%= f.text_field :population_served %>
+      </li>
+
+      <li class="string">
+        <%= f.label :contact_name %>
+        <%= f.text_field :contact_name %>
+      </li>
+
+      <li class="string">
+        <%= f.label :contact_email %>
+        <%= f.text_field :contact_email %>
+      </li>
+      
+      <li class="string">
+        <%= f.label :contact_phone %>
+        <%= f.text_field :contact_phone %>
+      </li>
+
+      <li class="string">
+        <%= f.label :hours_requested %>
+        <%= f.text_field :hours_requested %>
+      </li>
+
+      <li class="string">
+        <%= f.label :number_requested %>
+        <%= f.text_field :number_requested %>
+      </li>
+    </ol>
+  </fieldset>
+  <fieldset>
+    <%= f.submit "Save" %> |
+    <%= link_to "Cancel", url(:volunteer_opportunities, :index) %>
+  </fieldset>

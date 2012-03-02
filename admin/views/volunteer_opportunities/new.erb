@@ -1,0 +1,13 @@
+<div class="block">
+	<%= partial "research_opportunities/head" %>
+  <div class="content">
+    <h2 class="title"><%= pat(:new) %> <% mt(:service) %></h2>
+    <div class="inner">
+	  	<% form_for @research_opportunity, url(:research_opportunities, :create),
+				:class => :form, :id => "volunteer-opp" do |f| %>
+        <%= partial "research_opportunities/form", :locals => { :f => f } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>

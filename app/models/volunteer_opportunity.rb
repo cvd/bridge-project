@@ -16,14 +16,15 @@ class VolunteerOpportunity
   key :contact_phone, String
   key :status, String, :default => "active"
   key :search_terms, Array, :default => []
+  key :parent_volunteer_opportunity
+  timestamps!
   belongs_to :service
 
   validates_presence_of :title, :description
-  before_save :create_search_terms, :clean_tags
-
-  def clean_tags
-
-  end
+  before_save :create_search_terms
+  
+  scope :pending, lambda { where(:status => "pending") }
+  scope :updated, lambda { where(:status => "updated") }
 
   scope :search,  lambda { |term| where(:status => "active", :search_terms => cleaned_search_terms(term)) }
   scope :active, lambda { where(:status => "active") }

@@ -7,6 +7,9 @@
       <h3>For the service: <%= @volunteer_opportunity.service.site_name %></h3>
       <input type="hidden" name="volunteer_opportunity[service_id]" value="<%= @volunteer_opportunity.service_id %>" />
     <% end %>
+
+	<%= f.hidden_field :status, :value => (@volunteer_opportunity.new_record? ? "pending": "updated" ) %>
+	
     <fieldset>
       <ol>
         <li class="string">

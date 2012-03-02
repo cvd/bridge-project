@@ -1,0 +1,48 @@
+<div class="block">
+
+	<%= partial "research_opportunities/head" %>
+	
+  <div class="content">
+    <h2 class="title left"><%= @list_title %>  
+      <span class="page-status">
+        page <%= @current_page %> of <%= @total_pages %> <%=", Matching <em>#{@query.gsub(Service::PUNCTUATION, "").downcase.split.uniq.join(", ")}</em>" if @query %>
+      </span>
+    </h2>
+    <div class="right admin-search">
+      <form action="<%= url(:research_opportunities, :search) %>">
+        <input size="40" value="" title="Search" name="q" maxlength="2048"  autocomplete="off">    
+        <input type="submit" name="submit" value="search" id="submit">
+      </form>      
+    </div>
+    <div class="clear"></div>
+    <%= render "research_opportunities/paginate", :layout => false %>
+    <div class="inner">
+      <table class="table">
+        <tr>
+          <th class="first">Title</th>
+          <% if @view == :modified %>
+            <th>Updated At</th>
+          <% end %>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @research_opportunities.each_with_index do |v, index| %>
+        <tr>
+          <td class="first"><%= v.title %></td>
+          <% if @view == :modified %>
+            <td><%= v.updated_at.getlocal.strftime("%m/%d/%Y %I:%M %p") %></td>
+          <% end %>
+          <td class="last">
+            <%= button_to :edit, url(:research_opportunities, :edit, :id => v.id), :method => :get, :class => :button_to %> |
+            <%= button_to :delete, url(:research_opportunities, :destroy, :id => v.id), :method => :delete, :class => :button_to, :confirm => true %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+      <div class="actions-bar wat-cf">
+        <%= render "research_opportunities/paginate", :layout => false %>    
+        <div class="actions"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, partial("base/sidebar") %>

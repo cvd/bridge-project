@@ -1,0 +1,26 @@
+<div class="paginate">
+  <ul class='page-list'>
+    <% route = @query ? :search : :index %>
+    <% route = @route unless @route.nil? %>
+    <% if @current_page != 1%>
+      <li class="page"><%= link_to "previous", url(:research_opportunities, route, :page => @current_page-1, :q => @query) %></li>
+    <% end %>
+
+    <% (1..@total_pages).each do |page| %>
+      <li class="page <%= "active" if page == @current_page %>">
+        <% if page == @current_page %>
+          <span class="current">
+        <% end %>
+        <%= link_to page, url(:research_opportunities, route, :page => page, :page => page, :q => @query), :unless => page == @current_page unless @total_pages==1 %>
+        <% if page == @current_page %>
+          </span>
+        <% end %>        
+      </li>
+    <% end %>          
+
+    <% if @current_page != @total_pages %>        
+      <li class="page"><%= link_to "next", url(:research_opportunities, route, :page => @current_page+1, :q => @query) %></li>
+    <% end %>    
+  </ul>
+  <div class="clear"></div>
+</div>

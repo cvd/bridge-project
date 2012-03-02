@@ -1,0 +1,24 @@
+<div class="block">
+
+	<%= partial "volunteer_opportunities/head" %>
+	
+  <div class="content">
+    <h2 class="title">
+      <%= pat(:edit) %> <% mt(:service) %>
+      <span class="updated-at"> <strong>Updated At: </strong>
+        <%= @volunteer_opportunity.updated_at.getlocal.strftime("%m/%d/%Y %I:%M %p") %>
+      </span>
+    </h2>
+    <div class="inner">
+	<% form_for @volunteer_opportunity, url(:volunteer_opportunities, :update, :id => @volunteer_opportunity.id),
+		:method => :put, :class => :form, :id => "volunteer-opp" do |f| %>
+        <%= partial "volunteer_opportunities/form", :locals => { :f => f } %>
+    <% end %>
+    <div>
+      
+    </div>
+  </div>
+</div>
+<% content_for :footer do %>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<% end %>

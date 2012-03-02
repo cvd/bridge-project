@@ -26,6 +26,8 @@ class Admin < Padrino::Application
 
   access_control.roles_for :admin do |role|
       role.project_module :services, "/services"
+      role.project_module :research_opportunities, "/research_opportunities"      
+      role.project_module :volunteer_opportunities, "/volunteer_opportunities"      
       role.project_module :accounts, "/accounts"
   end
   error 404 do
