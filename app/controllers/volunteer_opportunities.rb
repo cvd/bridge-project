@@ -36,7 +36,7 @@ Bridge.controllers :volunteer_opportunities do
       @volunteer_opportunity.service = Service.find(@volunteer_opportunity.service_id)
     end
     if @volunteer_opportunity.save
-      flash[:notice] = "Volunteer Opportunity Created"
+      flash[:notice] = "New volunteer opportunity has been created and is awaiting approval"
       if @volunteer_opportunity.service?
         redirect url(:services, :show, :id => @volunteer_opportunity.service.id)
       else
