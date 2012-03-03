@@ -1,9 +1,12 @@
 <div class="block">
 
-	<%= partial "research_opportunities/head" %>
+  <%= partial "research_opportunities/head" %>
   <div class="content">
     <h2 class="title left">Pending Volunteer Opportunities</h2>
     <div class="clear"></div>
+
+    <%= render "research_opportunities/paginate", :layout => false %>
+
     <div class="inner">
       <table class="table">
         <tr>
@@ -21,6 +24,12 @@
         </tr>
         <% end %>
       </table>
+
+      <div class="actions-bar wat-cf">
+        <%= render "research_opportunities/paginate", :layout => false %>    
+        <div class="actions"></div>
+      </div>
+
     </div>
   </div>
 </div>

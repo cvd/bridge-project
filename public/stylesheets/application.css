@@ -709,3 +709,7 @@ form .search-form .search-button input.lst:-moz-placeholder {
 .service-display .site-name {
   display: inline-block;
 }
+
+form .service-selector {
+  width: 300px;
+}

@@ -12,6 +12,11 @@
         <%= f.text_field :title %>
       </li>
 
+      <li class="string">
+        <%= f.label :service %><%= f.error_message_on :service %>
+        <%= f.select :service_id, :options => Service.active.order(:site_name).map {|s| [s.site_name, s.id] }, :class => "service-selector" %>
+      </li>
+
       <li>
       <%= f.label :description %><%= f.error_message_on :description %>
         <%= f.text_area :description %>
