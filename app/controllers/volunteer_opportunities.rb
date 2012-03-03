@@ -20,7 +20,7 @@ Bridge.controllers :volunteer_opportunities do
       @volunteer_opportunities = @volunteer_opportunities.slice!(@start..@end)
 
     else
-      @volunteer_opportunities = VolunteerOpportunity.all
+      @volunteer_opportunities = VolunteerOpportunity.active.all
     end
     render "volunteer_opportunities/index"
   end

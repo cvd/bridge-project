@@ -20,7 +20,7 @@ Bridge.controllers :research_opportunities do
       @research_opportunities = @research_opportunities.slice!(@start..@end)
 
     else
-      @research_opportunities = ResearchOpportunity.all
+      @research_opportunities = ResearchOpportunity.active.all
     end
     render "research_opportunities/index"
   end
