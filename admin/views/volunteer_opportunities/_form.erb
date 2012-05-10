@@ -19,7 +19,7 @@
 
       <li class="string">
         <%= f.label :service %><%= f.error_message_on :service %>
-        <%= f.select :service_id, :options => Service.active.order(:site_name).map {|s| [s.site_name, s.id] }, :class => "service-selector"%>
+        <%= f.select :service_id, :options => @services, :class => "service-selector"%>
       </li>
 
       <li class="string">
@@ -55,6 +55,11 @@
       <li class="string">
         <%= f.label :number_requested %>
         <%= f.text_field :number_requested %>
+      </li>
+
+      <li class="group">
+        <%= f.label :status %><%= f.error_message_on :status %>
+        <%= f.select :status, :class => :select_field, :options => ["active", "pending", "void"] %>
       </li>
     </ol>
   </fieldset>

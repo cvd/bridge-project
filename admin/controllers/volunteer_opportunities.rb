@@ -96,6 +96,8 @@ Admin.controllers :volunteer_opportunities do
 
   get :edit, :with => :id do
     @volunteer_opportunity = VolunteerOpportunity.find(params[:id])
+    @services = Service.active.order(:site_name).map {|s| [s.site_name, s.id] }
+    @services.unshift(["",nil])
     if @volunteer_opportunity.status == "updated"
       @old_volunteer_opportunity = VolunteerOpportunity.find(@volunteer_opportunity.parent_volunteer_opportunity)
       # puts @volunteer_opportunity.parent_volunteer_opportunity

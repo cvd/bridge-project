@@ -96,6 +96,8 @@ Admin.controllers :research_opportunities do
 
   get :edit, :with => :id do
     @research_opportunity = ResearchOpportunity.find(params[:id])
+    @services = Service.active.order(:site_name).map {|s| [s.site_name, s.id] }
+    @services.unshift(["",nil])
     if @research_opportunity.status == "updated"
       @old_research_opportunity = ResearchOpportunity.find(@research_opportunity.parent_research_opportunity)
       # puts @research_opportunity.parent_research_opportunity
@@ -108,6 +110,7 @@ Admin.controllers :research_opportunities do
   end
 
   put :update, :with => :id do
+    puts "PARAMS: #{params.inspect}"
     @research_opportunity = ResearchOpportunity.find(params[:id])
     if @research_opportunity.update_attributes(params[:research_opportunity])
       flash[:notice] = 'Research Opportunity was successfully updated.'
