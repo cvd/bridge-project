@@ -72,6 +72,7 @@ Admin.controllers :services do
     @total_pages = @services.total_pages
     @current_page = @services.current_page
     @route = :updated
+    @view = :updated
     render 'services/index', :locals => {:list_title => "Updated Services"}
   end
 
@@ -113,9 +114,9 @@ Admin.controllers :services do
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
       flash[:notice] = 'Service was successfully updated.'
-      redirect url(:services, :edit, :id => @service.id)
+      redirect url(:services, :updated)
     else
-      render 'services/edit'
+      render 'services/update'
     end
   end
 
@@ -124,9 +125,9 @@ Admin.controllers :services do
     #old one and replacing with the new one. fine for now though...
     @service = Service.find(params[:id])
     if @service.update_attributes(params[:service])
-      Service.find(params[:service][:parent_service]).update_attributes(:status => "void")
+      Service.destroy(params[:service][:parent_service])
       flash[:notice] = 'Service was successfully updated.'
-      redirect url(:services, :edit, :id => @service.id)
+      redirect url(:services, :updated)
     else
       render 'services/edit'
     end
