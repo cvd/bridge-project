@@ -145,6 +145,7 @@ Bridge.controllers :services do
     csv = FasterCSV.generate do |csv|
       attributes = Service.first.attributes.map {|k,v| k}
       attributes = attributes.reject {|c| reject.include?(c) }
+      attributes.unshift('id')
       csv << attributes
 
       Service.active.each do |service|
@@ -153,8 +154,9 @@ Bridge.controllers :services do
           value = service.attributes[attr]
           if attr == 'services'
             value.join(", ")
-          elsif
-            value.is_a?(Time)
+          elsif attr == 'id'
+            service._id
+          elsif value.is_a?(Time)
             value.strftime('%m/%d/%Y %I:%M %p')
           else
             value

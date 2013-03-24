@@ -1,13 +1,13 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (3.0.5)
     awesome_print (0.2.1)
     bacon (1.1.0)
     bson (1.1.5)
     bson_ext (1.1.5)
-    daemons (1.1.0)
-    eventmachine (0.12.10)
+    daemons (1.1.9)
+    eventmachine (1.0.3)
     fastercsv (1.5.4)
     git (1.2.5)
     hashie (0.4.0)
@@ -61,7 +61,7 @@ GEM
     plucky (0.3.6)
       mongo (~> 1.1)
     polyglot (0.3.1)
-    rack (1.2.2)
+    rack (1.5.2)
     rack-flash (0.1.1)
       rack
     rack-test (0.5.4)
@@ -72,7 +72,7 @@ GEM
     sinatra (1.2.1)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
-    thin (1.2.7)
+    thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)

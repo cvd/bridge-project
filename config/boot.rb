@@ -3,7 +3,6 @@ PADRINO_ENV  = ENV["PADRINO_ENV"] ||= ENV["RACK_ENV"] ||= "development"  unless 
 PADRINO_ROOT = File.expand_path(File.join(File.dirname(__FILE__), '..')) unless defined?(PADRINO_ROOT)
 puts "=> Loaded application with environment: #{PADRINO_ENV}"
 
-require 'active_support/core_ext/array/grouping'
 
 begin
   # Require the preresolved locked set of gems.
@@ -14,6 +13,8 @@ rescue LoadError
   require 'bundler'
   Bundler.setup
 end
+
+require 'active_support/core_ext/array/grouping'
 
 
 Bundler.require(:default, PADRINO_ENV.to_sym)

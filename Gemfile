@@ -1,4 +1,4 @@
-source :rubygems
+source 'https://rubygems.org'
 
 # Project requirements
 gem 'rake'
@@ -18,7 +18,7 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 gem 'activesupport'
 
 # Padrino
-gem 'padrino'#, "0.9.15"
+gem 'padrino'
 
 gem "rest-client"
 gem "hashie"
