@@ -21,3 +21,8 @@ pkg
 ## PROJECT::SPECIFIC
 .bundle
 log/
+
+tmp/
+dump/
+dump.tar.gz
+.ruby-version
